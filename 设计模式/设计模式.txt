@@ -1,0 +1,485 @@
+创建型模式，共五种：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式。
+结构型模式，共七种：适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式。
+行为型模式，共十一种：策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。
+========================================================================================================================================
+
+单例模式：
+	public class Singleton {
+		饿汉式
+		private Singleton(){}
+	　　    //在自己内部定义自己一个实例，是不是很奇怪？
+	　　    //注意这是private 只供内部调用
+	　　    private static Singleton instance = new Singleton();
+	　　    //这里提供了一个供外部访问本class的静态方法，可以直接访问　　
+	　　    public static Singleton getInstance() {
+	　　　　    return instance; 　　
+	　　    }
+		} 
+		懒汉式（多线程加锁 效率低 每次调用getInstance都要对对象上锁）:
+		public class Singleton {
+		　　private static Singleton instance = null;
+		　　public static synchronized Singleton getInstance() {
+		　　//这个方法比上面有所改进，不用每次都进行生成对象，只是第一次　　　 　
+		　　//使用时生成实例，提高了效率！
+		　　if (instance==null)
+		　　　　instance＝new Singleton();
+			return instance; 　　
+	}
+		懒汉式（多线程加锁 效率高 只需在第一次创建时候加锁，其他不需要）
+		public static Singleton getInstance() {  
+			if (instance == null) {  
+				synchronized (instance) {  
+					if (instance == null) {  
+						instance = new Singleton();  
+					}  
+				}  
+			}  
+			return instance;  
+		}  
+	
+
+代理模式：
+	联想：中介
+	
+	静态代理
+	interface Dun//dun 债务{
+		public void getMoney();
+	}
+
+	class creditor implements Dun//creditor 债主{
+		public void getMoney() {
+			System.out.println("get My Money");
+		}
+	}
+
+	class ProxyDun implements Dun//ProxyDun讨债人{
+		Dun dun;
+		public ProxyDun(Dun dun){
+			this.dun = dun;
+		}
+		public void getMoney() {
+		System.out.println("我帮你讨债");
+		dun.getMoney();
+		System.out.println("讨债结束......");
+		}
+	}
+
+	public class StaticProxyDemo {
+	public static void main(String[] args) {
+	Dun test = new ProxyDun(new creditor());
+	test.getMoney();
+	 }
+	}
+	
+	动态代理
+	public class DymicProxyImpl implements InvocationHandler {
+
+		private Object targetObject;
+		public Object getProxyInstance(Object targetObject){
+		this.targetObject = targetObject;
+		return Proxy.newProxyInstance(targetObject.getClass().getClassLoader(),
+		targetObject.getClass().getInterfaces(),
+		this);
+		}
+		@Override
+		public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+		checkSecurity();
+		return method.invoke(targetObject, args);
+		}
+		//新增方法，需要满足的业务新需求。
+		private void checkSecurity(){
+		System.out.println("安全检查---动态代理实现--");
+		}
+	}
+
+	//测试(该动态代理需要被代理的实现类有其实现的接口，反之没有接口的话就需要用到cglib代理的方式)：
+	UserService service3 = (UserService) new DymicProxyImpl().getProxyInstance(new UserServiceImpl());
+	service3.add(user);
+
+	CGLIB代理 不需要被代理的实现类必须有其实现的接口（增加jar cglib-nodep-2.1_3.jar导入到Spring相关工程中）
+	public class CGlibProxyImpl implements MethodInterceptor
+	{
+		private Object targetObject;
+		public Object getProxyInstance(Object targetObject){
+		this.targetObject = targetObject;
+		//用于生成代理对象
+		Enhancer enhancer = new Enhancer();
+		//设置父类
+		enhancer.setSuperclass(this.targetObject.getClass());
+		//设置回调对象为本身
+		enhancer.setCallback(this);
+		return enhancer.create();
+		}
+
+		public Object intercept(Object arg0, Method arg1, Object[] args,MethodProxy methodProxy) throws Throwable
+		{
+		checkSecurity();
+		return methodProxy.invoke(targetObject,args);
+		}
+		//新增方法，需要满足的业务新需求。
+		private void checkSecurity(){
+		System.out.println("安全检查---CGLIB实现--");
+		}
+	}
+	//测试：
+	UserService service4 = (UserService)new CGlibProxyImpl().getProxyInstance(new UserServiceImpl());
+	service4.add(user);
+
+
+	工厂模式
+		静态工厂模式：
+		public class SendFactory {  
+      
+			public static Sender produceMail(){  
+				return new MailSender();  
+			}  
+			  
+			public static Sender produceSms(){  
+				return new SmsSender();  
+			}  
+		}  
+
+		public class FactoryTest {  
+  
+			public static void main(String[] args) {      
+				Sender sender = SendFactory.produceMail();  
+				sender.Send();  
+			}  
+		}
+
+		动态工厂模式：
+		public interface Sender {  
+			public void Send();  
+		}  
+
+		public class SmsSender implements Sender {  
+  
+			@Override  
+			public void Send() {  
+				System.out.println("this is sms sender!");  
+			}  
+		}  
+
+		public class SendMailFactory implements Provider {  
+      
+			@Override  
+			public Sender produce(){  
+				return new MailSender();  
+			}  
+		} 
+
+		 public class SendMailFactory  implements Provider {  
+			  
+			@Override  
+			public Sender produce(){  
+				return new SmsSender();  
+			}  
+		}  
+
+		public interface Provider {  
+			public Sender produce();  
+		}  
+		 
+ 
+		public class Test {  
+		  
+			public static void main(String[] args) {  
+				Provider provider = new SendMailFactory();  
+				Sender sender = provider.produce();  
+				sender.Send();  
+			}  
+		}  
+	其实这个模式的好处就是，如果你现在想增加一个功能：发及时信息，则只需做一个实现类，实现Sender接口，同时做一个工厂类，实现Provider接口，就OK了，无需去改动现成的代码。这样做，拓展性较好！
+
+
+	适配器模式：
+	public class Source {  
+  
+    public void method1() {  
+        System.out.println("this is original method!");  
+    }  
+	}					
+
+	public interface Targetable {  
+  
+    /* 与原类中的方法相同 */  
+    public void method1();  
+  
+    /* 新类的方法 */  
+    public void method2();  
+	}
+
+	public class Adapter extends Source implements Targetable {  
+  
+    @Override  
+    public void method2() {  
+        System.out.println("this is the targetable method!");  
+    }  
+	} 
+
+	public class AdapterTest {  
+  
+    public static void main(String[] args) {  
+        Targetable target = new Adapter();  
+        target.method1();  
+        target.method2();  
+    }  
+	}
+	输出：
+	this is original method!
+	this is the targetable method!
+	这样Targetable接口的实现类就具有了Source类的功能。
+
+
+	模板方法模式：
+		public abstract class AbstractCalculator {  
+      
+    /*主方法，实现对本类其它方法的调用*/  
+    public final int calculate(String exp,String opt){  
+        int array[] = split(exp,opt);  
+        return calculate(array[0],array[1]);  
+    }  
+      
+    /*被子类重写的方法*/  
+    abstract public int calculate(int num1,int num2);  
+      
+    public int[] split(String exp,String opt){  
+        String array[] = exp.split(opt);  
+        int arrayInt[] = new int[2];  
+        arrayInt[0] = Integer.parseInt(array[0]);  
+        arrayInt[1] = Integer.parseInt(array[1]);  
+        return arrayInt;  
+		}  
+	}  
+
+	public class Plus extends AbstractCalculator {  
+	  
+		@Override  
+		public int calculate(int num1,int num2) {  
+			return num1 + num2;  
+		}  
+	} 
+
+	public class StrategyTest {  
+	  
+		public static void main(String[] args) {  
+			String exp = "8+8";  
+			AbstractCalculator cal = new Plus();  
+			int result = cal.calculate(exp, "\\+");  
+			System.out.println(result);  
+		}  
+	}  
+
+	我跟踪下这个小程序的执行过程：首先将exp和"\\+"做参数，调用AbstractCalculator类里的calculate(String,String)方法，在calculate(String,String)里调用同类的split()，之后再调用calculate(int ,int)方法，从这个方法进入到子类中，执行完return num1 + num2后，将值返回到AbstractCalculator类，赋给result，打印出来。正好验证了我们开头的思路。
+
+
+	装饰模式：
+		public interface Sourceable {  
+			public void method();  
+		}  
+
+		public class Source implements Sourceable {  
+		  
+			@Override  
+			public void method() {  
+				System.out.println("the original method!");  
+			}  
+		}  
+
+		public class Decorator implements Sourceable {  
+  
+			private Sourceable source;  
+		  
+			public Decorator(Sourceable source){  
+				super();  
+				this.source = source;  
+			}  
+			@Override  
+			public void method() {  
+				System.out.println("before decorator!");  
+				source.method();  
+				System.out.println("after decorator!");  
+			}  
+		}  
+
+		public class DecoratorTest {  
+  
+			public static void main(String[] args) {  
+				Sourceable source = new Source();  
+				Sourceable obj = new Decorator(source);  
+				obj.method();  
+			}  
+		}  
+
+		输出：
+		before decorator!
+		the original method!
+		after decorator!
+		装饰器模式的应用场景：
+		1、需要扩展一个类的功能。
+		2、动态的为一个对象增加功能，而且还能动态撤销。（继承不能做到这一点，继承的功能是静态的，不能动态增删。）
+		缺点：产生过多相似的对象，不易排错！
+
+代理模式和装饰模式非常类似，甚至代码都类似。二者最主要的区别是：代理模式中，代理类对被代理的对象有控制权，决定其执行或者不执行。而装饰模式中，装饰类对代理对象没有控制权，只能为其增加一层装饰，以加强被装饰对象的功能，仅此而已。
+ 使用装饰模式， 用户更关系的是B的功能(包含A的原始功能)。
+ 使用代理模式，用户更关心A的功能。并不关系(c的功能)。
+（我觉得代理模式和装饰模式两者在代码上其实是很类似，主要在于调用上的区别，代理是已经知道了具体执行这个动作的人，而装饰模式则不知道）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+

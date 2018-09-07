@@ -1,0 +1,1237 @@
+"==" 和 equals有什么区别？
+		== 既可以比较基本类型也可以比较引用类型。对于基本类型就是比较值，对于引用类型就是比较内存地址
+		equals的话，它是属于java.lang.Object类里面的方法，如果该方法没有被重写过默认也是==;我们可以看到String类的equals方法是被重写过的，而且String类在日常开发中用的比较多，久而久之，形成了equals是比较值的错误观点。
+		具体要看这有没有重写Object的hashCode方法和equals方法来判断。
+		  String s1 = new String("abc");
+		  String s2 = new String("abc");
+		  System.out.println(s1 == s2);//false
+		  System.out.println(s1.equals(s2));//true
+											
+		  Set<String> set01 = new HashSet<String>();
+		  set01.add(s1);
+		  set01.add(s2);
+		  System.out.println(set01.size());//1
+		  System.out.println(s1.hashCode()+"\t"+s2.hashCode());//96354    96354
+		  System.out.println("================================");注意※Person是否重写equals()和hashcode(),就是false true 1
+		  Person p1 = new Person("abc");
+		  Person p2 = new Person("abc");
+		  System.out.println(p1 == p2);//false
+		  System.out.println(p1.equals(p2));//false
+		  Set<Person> set02 = new HashSet<Person>();
+		  set02.add(p1);
+		  set02.add(p2);
+		  System.out.println(set02.size());//2
+		  System.out.println(p1.hashCode()+"\t"+p2.hashCode());//297229282    485579652
+
+
+为什么重写equals()的时候,同时最好重写hashCode()?
+     以Student为例，何时需要重写equals()
+	当一个类有自己特有的“逻辑相等”概念,当改写equals()的时候，总是要改
+	写hashCode()，根据一个类的equals方法（改写后），两个截然不同的实例
+	有可能在逻辑上是相等的，但是，根据Object.hashCode方法，它们仅仅是两
+	个对象。
+	因此，违反了“相等的对象必须具有相等的散列码”。
+	结论：复写equals方法的时候一般都需要同时复写hashCode方法
+	
+	了解:为什么用eclipse复写hashCode方法，有31这个数字？
+	     计算机的乘法涉及到移位计算。当一个数乘以2时，就直接拿该数左移一位
+		 即可！选择31原因是因为31是一个素数！所谓素数：质数又称素数（在一个
+		 大于1的自然数中，除了1和此整数自身外，没法被其他自然数整除的数）
+		 在存储数据计算hash地址的时候，我们希望尽量减少有同样的hash地址，所
+		 谓“冲突”。
+		 因为任何数n * 31就可以被JVM优化为 (n << 5) -n,移位和减法的操作效率要比
+	   	 乘法的操作效率高的多，对左移虚拟机里面都有做相关优化，并且31只占用5bits！
+
+
+String相关？
+        String s1 = new String("abc");
+        String s2 = "abc";
+        String s3 = new String("abc");
+        System.out.println(s1 == s2);//false
+        System.out.println(s1 == s3);//false
+        System.out.println(s2 == s3);//false
+        System.out.println("====================");
+        /**
+        返回字符串对象的规范化表示形式。
+        一个初始为空的字符串池，它由类 String 私有地维护。
+        当调用 intern 方法时，如果池已经包含一个等于此 String 对象的字符串（用 equals(Object) 方法确定），
+        则返回池中的字符串。否则，将此 String 对象添加到池中，并返回此 String 对象的引用。
+        它遵循以下规则：对于任意两个字符串 s 和 t，当且仅当 s.equals(t) 为 true 时，
+        s.intern() == t.intern() 才为 true。
+		※：其中intern()是返回首次创建String对象的引用
+        所有字面值字符串和字符串赋值常量表达式都使用 intern 方法进行操作。
+        字符串字面值在 Java Language Specification
+        的 §3.10.5 定义。
+        返回：一个字符串，内容与此字符串相同，但一定取自具有唯一字符串的池。   */
+        System.out.println(s1 ==s1.intern());//false
+        System.out.println(s2 ==s2.intern());//true
+        System.out.println(s1.intern() ==s2.intern());//true
+        System.out.println("====================");
+        String s4 = "java";
+        String s5 = "ja";
+        String s6 = "va";
+        System.out.println(s4 == "java");//true
+        System.out.println(s4 == (s5+s6));//false
+        System.out.println(s4 == "ja"+s6);//false		 
+
+StringBuffer和StringBuilder、String有什么区别 ？
+		①StringBuffer 是线程安全的，因此效率低
+		②StringBuilder 是线程不安全的，效率高
+		③StringBuffer和StringBuilder 可变的字符序列，String是不可变的字符序列
+
+多态相关？
+		 什么是多态?
+			父类引用指向子类的实例(向上转型和向下转型,例:List lt = new ArrayList())
+			Java里通过方法重载和方法重写来体现多态是否正确？
+			只有在有继承的类的情况下才会有重写,才会有多态的体现,方法重载体现多态是不正确的
+			多态是编译时行为还是运行时行为？运行时的行为,编译时不知道,最后到底执行的是哪个类(spring注入)
+
+向上转型和向下转型
+				向上转型：父类引用指向子类对象。
+
+				Father f = new Son（）；  
+
+				向下转型：子类引用指向父类引用的子类对象 （听的拗口不？哈哈）。 通俗的说就是子类实例对象赋值给父类引用，然后父类引用又要赋值给子类引用，这个过程就是向下转型。
+
+				Father f = new Son（）；  
+				Son s = （Son）f； //看语法，要有（类型） 
+			
+			
+传值？
+	  基本类型传的是值,引用类型传的是地址值
+	public class TestTransferValue{
+	public void changeValue1(int age) {
+        age = 30;
+    }
+    public void changeValue2(Person person) {
+        person.setPersonName("xxx");
+    }
+    public void changeValue3(String str) {
+        str = "xxx";
+    }
+    public static void main(String[] args) {
+        TestTransferValue test = new TestTransferValue();
+        int age = 20;
+        test.changeValue1(age);
+        System.out.println("age----" + age);// age----20
+        Person person = new Person("abc");
+        test.changeValue2(person);
+        System.out.println("personName-----" + person.getPersonName());// personName-----xxx
+
+        String str = "abc";
+        test.changeValue3(str);
+        System.out.println("String-----" + str);// String-----abc
+	}	
+	
+static加载?
+		从父到子,静态先行(默认创建子类对象的时候,会调用父类的无参构造)
+		执行顺序：静态代码块>代码块>构造器
+		class Father
+		{
+			public Father(){
+				System.out.println("111111");
+			}
+			{
+				System.out.println("222222");
+			}
+			static{
+				System.out.println("333333");
+			}
+		}
+		class Son extends Father
+		{
+			public Son(){
+				System.out.println("444444");
+			}
+			{
+				System.out.println("555555");
+			}
+			static{
+				System.out.println("666666");
+			}
+		}
+		public class TestStaticSeq
+		{
+			public static void main(String[] args)
+			{
+				new Son();//3 6 2 1 5 4
+				System.out.println("=====================");
+				new Son();//2 1 5 4
+				System.out.println("=====================");
+				new Father();// 2 1
+			}
+		}	
+
+		static成员和非static成员大对比 ★★★★★ 谁能访问 加载时机 加载几次 存储位置 是否可以供所有对象共享
+
+		static成员  类名或对象名都可以，建议    随着类加载而加载（先）    一次          方法区        可以
+					类名访问
+
+		非static成员  只能对象名访问          随着对象创建而加载（后）    可以多次      堆或栈中      不可以		
+
+
+重载和重写?
+			 发生范围     方法名     参数列表     返回类型     修饰符      异常类型
+
+		重写  父子类之间   必须相同    必须相同    相同或为     只能更宽松    只能更小
+											父类类型的子类型
+
+		重载  在一个类中   必须相同    必须不同    不要求       不要求       不要求
+		
+接口和抽象类?
+	接口和抽象类的对比
+				里面都可以有抽象方法  里面是否可以有普通成员  有无构造方法  是否可以实例化  是否支持多继承    抽象方法的修饰符
+
+		抽象类     		√            	  	 √                   √       	     ×              ×（单继承）     只要不是private、static、final就行
+		接口         	 √               		 ×                    ×              ×              √               只能是public abstract，可以省略		
+
+谈谈你对HashMap中put/get方法的认识？如果了解再谈谈HashMap的扩容机制？默认大小是多少？什么是负载因子？什么是吞吐临界值？（※：jdk1.8以前）
+		HashMap>>>>>Entry<K,V> [ ] table   (初始容量16,负载因子0.75)
+		ArrayList>>>>>>底层是Object[ ] elementData 初始容量为10 扩容为50%
+		put:当程序试图将一个key-value对放入HashMap中时，程序首先根据该key的hashCode()返回值决定该Entry的存储位置：如果两个Entry的key的hashCode()返回值相同，那它们的存储位置相同。如果这两个Entry的key通过equals比较返回true，新添加Entry的value将覆盖集合中原有Entry的value，但key不会覆盖。如果这两个Entry的key通过equals比较返回false，新添加的Entry将与集合中原有Entry形成Entry链，而且新添加的Entry位于Entry链的头部——具体说明继续看addEntry()方法的说明。
+		
+		1 HashSet底层是采用HashMap实现
+		2集合里面放置的永远是对象的引用而不是对象本身
+		3当你在HashSet里add对象的时候，实际是HashMap里面put了key-value
+		键值对，其中key就是你add进来的对象，value是一个固定的Object常量
+		4 HashMap底层是个Entry类型的，名字叫table的数组		
+				
+
+请问ArrayList/LinkedList/Vector的区别？谈谈你的理解？ArrayList底层是什么？扩容机制？Vector和ArrayList的最大区别?
+		ArrayList>>>>>>底层是Object[ ] elementData 初始容量为10 扩容为50%   但是是完全的到了10之后再进行扩容,这点和    HashMap不同
+       LinkedList>>>>双端循环链表 做增删改较快,查询慢
+       vector>>>>>Vector 同步类 强同步类 扩容其2倍 子类stack 比较古老效率较低
+
+		ArrayList和LinkedList的区别?
+		ArrayList是实现了基于动态数组的数据结构，LinkedList基于链表的数据结构。对于随机访问get和set，ArrayList觉得优于LinkedList，因为LinkedList要移动指针。对于新增和删除操作add和remove，LinkedList比较占优势，因为ArrayList要移动数据。
+
+		ArrayList和Vector的区别?
+		Vector和ArrayList几乎是完全相同的,唯一的区别在于Vector是同步类(synchronized)，属于强同步类。因此开销就比ArrayList要大，访问要慢。正常情况下,大多数的Java程序员使用ArrayList而不是Vector,因为同步完全可以由程序员自己来控制。Vector每次扩容请求其大小的2倍空间，而ArrayList是1.5倍。Vector还有一个子类Stack.		
+		 
+请写出最常见的5个Runtime  Exception?
+	ioExcepation-流异常
+	NullPointerException - 空指针引用异常
+	ClassCastException - 类型强制转换异常。
+	IllegalArgumentException - 传递非法参数异常。
+	ArithmeticException - 算术运算异常
+	ArrayStoreException - 向数组中存放与声明类型不兼容对象异常
+	IndexOutOfBoundsException - 下标越界异常
+	NegativeArraySizeException - 创建一个大小为负数的数组错误异常
+	NumberFormatException - 数字格式异常
+	SecurityException - 安全异常
+	UnsupportedOperationException - 不支持的操作异常
+	java.net.ConnectionException
+	java.lang.OutOfMemory:java heap    OOM堆栈溢出异常  （可能出现的情况：
+														  (1)内存泄漏（连接未关闭，单例类中不正确引用了对象）
+														  (2)代码中存在死循环或循环产生过多重复的对象实体
+														  (3)Space大小设置不正确
+														  (4)内存中加载的数据量过于庞大，如一次从数据库取出过多数据
+														  (5)集合类中有对对象的引用，使用完后未清空，使得JVM不能回收）
+
+序列化和反序列化的概念？
+	把对象转换为字节序列的过程称为对象的序列化。
+　　把字节序列恢复为对象的过程称为对象的反序列化。
+　　对象的序列化主要有两种用途：
+　　1） 把对象的字节序列永久地保存到硬盘上，通常存放在一个文件中；
+　　2） 在网络上传送对象的字节序列。							
+	序列化：
+		Person person = new Person();
+		ObjectOutputStream oo = new ObjectOutputStream(new FileOutputStream(new File("E:/Person.txt")));
+		oo.writeObject(person);
+	反序列化：
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File("E:/Person.txt")));
+		Person person = (Person) ois.readObject();			  
+	
+	　　s?e?r?i?a?l?V?e?r?s?i?o?n?U?I?D?:? ?字?面?意?思?上?是?序?列?化?的?版?本?号?，凡是实现Serializable接口的类都有一个表示序列化版本标识符的静态变量
+
+	serialVersionUID的作用
+　　	s?e?r?i?a?l?V?e?r?s?i?o?n?U?I?D?:? ?字?面?意?思?上?是?序?列?化?的?版?本?号?，凡是实现Serializable接口的类都有一个表示序列化版本标识符的静态变量
+		private static final long serialVersionUID=4603642343377807741L;
+
+线程中start()和run()的区别？
+	start() 可以启动一个新线程，run()不能
+	start()不能被重复调用，run()可以
+	start()中的run代码可以不执行完就继续执行下面的代码，即进行了线程切换。直接调用run方法必须等待其代码全部执行完才能继续执行下面的代码。
+	start() 实现了多线程，run()没有实现多线程。
+	
+同步和异步有什么区别，分别在什么情况下进行使用?(联想:两人约吃饭)
+	同步：上一段代码没的完成，下一段必须等到上一段代码完成后才可以执行。如买票排队
+	异步：上一段代码没的完成，下一段不必等到上一段代码完成就可以执行。如手机发送短信。
+
+super()和this()的区别?
+	This（）：当前类的对象,super父类对象。
+	Super（）：在子类访问父类的成员和行为,必须受类继承规则的约束
+	而this他代表当前对象,当然所有的资源都可以访问.
+
+String、StringBuffer、StringBuilder三者的区别？
+    String:final修饰，不可变序列,底层是char[]
+	StringBuffer:可变的,方法synchronized修饰，线程安全，效率低,底层也是char[] ,默认长度是16 ,扩容为2倍原长度 +2
+	StringBuilder: 可变的，线程不安全，效率高，底层也是char[],默认的长度同StringBuffer
+
+TCP和UDP的异同点?
+	①TCP属于面向连接的协议，UDP属于面向无连接的协议；
+	②TCP可以保证数据可靠、有序的传输，可以进行流量控制，UDP无法实现；
+	③TCP协议有效载荷小于UDP协议(基于MSS计算),UDP性能高于TCP;
+	④TCP一般用于可靠的，对延时要求不高的应用，UDP一般应用于小数据量或对延时敏感的应用。
+
+请列出JSP的三个标准动作?
+    JSP:include	JSP:forward	JSP:useBean寻找或者实例化某个JavaBean
+
+Overload和Override的区别。Overloaded的方法是否可以改变返回值的类型?
+	重写Override，子类覆盖父类的方法，将子类传与父类的引用调用的还是子类的方法。
+	重载Overloading 一个类多个方法，名称相同，参数个数类型不同。
+	两者都是Java多态性的不同表现。
+	Overloaded的方法是可以改变返回值的类型。
+
+事务的ACID属性?
+	①原子性(Automicity):事务是一个原子操作单元，其对数据的修改，要么全都执行，要么全都不执行；
+	②一致性(Consisten):在事务开始和完成时，数据都必须保持一致的状态;
+	③隔离性(Isolation):数据库提供一定的隔离机制,保证事务在不受外部并发操作影响下相对独立的执行
+	※（读未提交、读已提交、可重复读(MySQL默认）、序列化)
+	④持久性(Durable):事务完成之后，它对于数据的修改是永久性的，即使出现系统故障也能够保持.	
+	
+Spring的事务传播行为？
+	PROPAGATION_SUPPORTS--支持当前事务，如果当前没有事务，就以非事务方式执行；
+	PROPAGATION_MANDATORY--支持当前事务，如果当前没有事务，就抛出异常；
+	PROPAGATION_REQUIRES_NEW--新建事务，如果当前存在事务，把当前事务挂起；
+	PROPAGATION_NOT_SUPPORTED--以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。
+	PROPAGATION_REQUIRED：如果当前存在事务，则加入该事务；如果当前没有事务，则创建一个新的事务。这是默认值。
+
+
+Servlet生命周期分为三个阶段？
+　　1，初始化阶段  调用init()方法
+　　2，响应客户请求阶段　　调用service()方法
+　　3，终止阶段　　调用destroy()方法
+	
+Http常见状态码(servlet方法 init() service()请求多次调用 destrory())
+	206 - 断点下载时用到，客户端请求了一部分内容，服务器成功把这部分内容返回给它，这时候就是用这个状态。
+	301 - 永久跳转，原地址不存在了，url被指向到另一个地址。这个主要是搜索引擎相关，影响爬虫的检索行为。
+	302 - 临时跳转，服务器会返回一个新的url给客户端，客户端可以继续访问这个url来获取内容。
+	304 - 资源没有改变，客户端可以使用本地缓存的内容，常见于静态内容访问。
+	413 - 请求实体太大。常见的情况是上传大文件，但超出了服务器(比如nginx)限制。或者请求头或请求体超出了后端的server(比如tomcat)的设置（比如当前域名下cookie太多，超出了请求头限制）
+	416 - 跟断点续传有关，客户端请求的范围超出了服务器上文件大小
+	404 - not Found
+	400 - 请求参数非法，基本上是表单提交到业务层时出现
+	500 - 服务器内部错误，不能返回正常的结果。比如最常见的应用抛出空指针异常未进行处理。
+	502 - 网关错误。常见的情况是反向代理后端的服务器(比如resin或tomcat)没有启动。
+	503 - 服务不可用。比如服务器负载太高或者服务器已经停止服务。
+	504 - 网关超时。比如请求时长超出了服务器的响应时间限制。
+
+多线程?
+普通同步方法和静态同步方法不是同一把锁 普通同步所得是当前对象  而静态同步则锁的是当前类 
+一个对象里面如果有多个synchronized方法，某一个时刻内，只要一个线程去调用其中的一个synchronized方法了，其它的线程都只能等待，换句话说，某一个时刻内，只能有唯一一个线程去访问这些synchronized方法
+锁的是当前对象this，被锁定后，其它的线程都不能进入到当前对象的其它的synchronized方法
+加个普通方法后发现和同步锁无关
+换成两个对象后，不是同一把锁了，情况立刻变化。
+都换成静态同步方法后，情况又变化
+所有的非静态同步方法用的都是同一把锁——实例对象本身，也就是说如果一个实例对象的非静态同步方法获取锁后，该实例对象的其他非静态同步方法必须等待获取锁的方法释放锁后才能获取锁，可是别的实例对象的非静态同步方法因为跟该实例对象的非静态同步方法用的是不同的锁，所以毋须等待该实例对象已获取锁的非静态同步方法释放锁就可以获取他们自己的锁。
+所有的静态同步方法用的也是同一把锁——类对象本身，这两把锁是两个不同的对象，所以静态同步方法与非静态同步方法之间是不会有竞态条件的。但是一旦一个静态同步方法获取锁后，其他的静态同步方法都必须等待该方法释放锁后才能获取锁，而不管是同一个实例对象的静态同步方法之间，还是不同的实例对象的静态同步方法之间，只要它们同一个类的实例对象！
+/**
+ * @类名 TestAndroidOrIhone.java
+ * @作者 Aibaozhang
+ * @创建日期 2016年11月10日
+ * @描述 判断打印苹果还是安卓
+ * @版本 V 1.0
+ */
+// 题目：判断出现打印苹果还是android
+// 1 标准构成，先打印苹果还是android？//I A （同一把锁）
+// 2 新增Thread.sleep(4000),先打印苹果还是android？//I A (同一把锁)
+// 4 有两部手机，先打印苹果还是android？//A I (两把锁 普通锁的是对象)
+// 5 两个静态同步方法，有一部手机，先打印苹果还是android？//I A(同一把锁)
+// 6 两个静态同步方法，有2部手机，先打印苹果还是android？//I A(同一把锁  静态锁类)
+// 7 1个普通同步方法，1个静态同步方法,有1部手机，先打印苹果还是android？//I A(两把锁 但是静态锁的是类)
+// 8 1个普通同步方法，1个静态同步方法,有2部手机，先打印苹果还是android？//I A(两把锁 )
+class Phones {
+    public static synchronized void getIOS() throws Exception {
+        Thread.sleep(4000);
+        System.out.println("-----getIOS");
+    }
+    public static synchronized void getAnroid() throws Exception {
+        System.out.println("-----getAnroid");
+    }
+    public void getAI(){
+        System.out.println("----------AI");
+    }
+}
+public class TestAndroidOrIhone {
+    public static void main(String[] args) {
+        final Phones p = new Phones();
+        final Phones p2 = new Phones();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    p.getIOS();
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                     p.getAnroid();
+//                    p2.getAnroid();
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                     p.getAI();
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+}
+
+创建线程的方式???
+          ①、实现Thread类
+/**
+ * @类名 TestTicket01.java
+ * @作者 Aibaozhang
+ * @创建日期 2016年11月10日
+ * @描述 创建多线程方式一,继承Thread类
+ * @关键 线程 操作 资源 高内聚 低耦合
+ * @版本 V 1.0
+ */
+public class TestTicket01 extends Thread {
+    // 保证new对象的时候是同一份资源
+    static int ticket = 30;
+    static Object obj = new Object();
+    @Override
+    public void run() {
+        for (int i = 1; i <= 30; i++) {
+            synchronized (obj) {
+                if (ticket > 0) {
+                    System.out.println(Thread.currentThread().getName()
+                            + "\t售票\t" + ticket-- + "\t还剩\t" + ticket);
+               }
+            }
+        }
+    }
+    // 线程
+    public static void main(String[] args) {
+        TestTicket01 t1 = new TestTicket01();
+        TestTicket01 t2 = new TestTicket01();
+        TestTicket01 t3 = new TestTicket01();
+        t1.setName("售票员A");
+        t1.start();
+        t2.setName("售票员B");
+        t2.start();
+        t3.setName("售票员C");
+        t3.start();
+    }
+}
+          ②继承Runnable接口
+/**
+ * @类名 TestTicket02.java
+ * @作者  Aibaozhang
+ * @创建日期 2016年11月10日
+ * @描述 创建多线程方式二,实现Runnable接口
+ * @关键 线程 操作 资源 高内聚 低耦合
+ * @版本 V 1.0
+ */
+public class TestTicket02 implements Runnable{
+    int ticket = 30;
+    @Override
+    public void run() {
+        for (int i = 1; i <=30; i++) {
+
+            synchronized (this) {
+                if (ticket > 0) {
+                    System.out.println(Thread.currentThread().getName()
+                            + "\t售票\t" + ticket-- + "\t还剩\t" + ticket);
+                }
+            }
+        }
+    }
+    //线程
+    public static void main(String[] args) {
+        TestTicket02 t1 = new TestTicket02();
+             new Thread(t1,"售票员A").start();
+             new Thread(t1,"售票员B").start();
+             new Thread(t1,"售票员C").start();
+    }
+}
+         ③实现Callable接口
+import java.util.Random;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+/**
+ * @类名 TestTicket01.java
+ * @作者 Aibaozhang
+ * @创建日期 2016年11月10日
+ * @描述 创建多线程方式三,实现Callable接口
+ * @关键 线程 操作 资源 高内聚 低耦合
+ * @版本 V 1.0
+ */
+// 资源
+class Ticket implements Callable<Integer> {
+    int ticket = 30;
+    Lock lock = new ReentrantLock();
+    @Override
+    public Integer call() throws Exception {
+        lock.lock();
+        try {
+            for (int i = 1; i <= 20; i++) {
+                while (ticket > 0) {
+                    Thread.sleep(200);
+                    System.out.println(Thread.currentThread().getName()
+                            + "\t售票\t" + ticket-- + "\t还剩\t" + ticket);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
+        return new Random().nextInt(10);
+    }
+}
+public class TestTicket03 {
+    // 线程
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
+        Ticket t = new Ticket();
+        new Thread(new FutureTask<>(t), "售票员A").start();
+        new Thread(new FutureTask<>(t), "售票员B").start();
+        new Thread(new FutureTask<>(t), "售票员C").start();
+    }
+
+}
+
+         ④线程池(自jdk1.5以后,java.util.concurrent包※:Executors)
+import java.util.Random;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+/**
+ * 线程池
+ */
+public class ThreadDemo6 {
+    public static void main(String[] args) {
+        ScheduledExecutorService service = Executors.newScheduledThreadPool(5);
+        ScheduledFuture<Integer> result = null;
+
+        try {
+            for (int i = 1; i <= 20; i++) {
+                result = service.schedule(new Callable<Integer>() {
+                    @Override
+                    public Integer call() throws Exception {
+                        Thread.sleep(500);
+                        System.out.print(Thread.currentThread().getName());
+                        return new Random().nextInt(30);
+                    }
+                }, 3, TimeUnit.SECONDS);
+
+                System.out.println("-----result: " + result.get());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            service.shutdown();
+        }
+
+    }
+    public static void threadPoolTest() {
+        // 一池里面有固定了5个干活的线程
+        // ExecutorService threadPool = Executors.newFixedThreadPool(5);
+        // ExecutorService threadPool = Executors.newSingleThreadExecutor();
+        ExecutorService threadPool = Executors.newCachedThreadPool();
+        Future<Integer> result = null;
+        try {
+            for (int i = 1; i <= 20; i++) {
+                result = threadPool.submit(new Callable<Integer>() {
+                    @Override
+                    public Integer call() throws Exception {
+                        Thread.sleep(500);
+                        System.out.print(Thread.currentThread().getName());
+                        return new Random().nextInt(30);
+                    }
+                });
+                System.out.println("-----: " + result.get());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            threadPool.shutdown();
+        }
+    }
+}
+写+写锁  读+读锁
+import java.util.Random;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+/**
+ * @类名 TestReentrantReadWriteLock.java
+ * @作者 Aibaozhang
+ * @创建日期 2016年11月10日
+ * @描述 写 写锁 读 读锁 1个线程写 100个线程读
+ * @版本 V 1.0
+ */
+// 资源
+class WirteAndReadLock {
+    private Object obj;
+    ReadWriteLock rwl = new ReentrantReadWriteLock();
+    // 写写锁
+    public void set(Object obj) {
+        rwl.writeLock().lock();
+        try {
+            this.obj = obj;
+            System.out.println(Thread.currentThread().getName() + "\t" + obj);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            rwl.writeLock().unlock();
+        }
+    }
+    // 读读锁
+    public void get() {
+        rwl.readLock().lock();
+        try {
+            Thread.sleep(300);
+            System.out.println(Thread.currentThread().getName() + "\t" + obj);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            rwl.readLock().unlock();
+        }
+    }
+}
+public class TestReentrantReadWriteLock {
+    // 线程
+    public static void main(String[] args) {
+        final WirteAndReadLock warl = new WirteAndReadLock();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                warl.set(new Random().nextInt(100));
+            }
+        }, "线程A").start();
+
+        for (int i = 0; i < 100; i++) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    warl.get();
+                }
+            }, "线程B").start();
+        }
+    }
+}
+15、你在项目中碰到SVN或者Git冲突了你如何解决的？
+发生冲突时文件前后有++<<<<HEAD  xxxyyy   ++=======      yyyxxx  ++>>>>>> dev
+冲突:冲突一般指同一个文件同一位置的代码，在两种版本合并时版本管理工具软件无法判断到底应该保留哪个版本，因此会提示该文件发生冲突，需要程序员来手工判断解决冲突。程序合并时发生冲突系统会提示CONFLICT关键字,命令行后缀会进入MERGING状态，表示此时是解决冲突的状态。
+解决冲突：此时通过git diff 可以找到发生冲突的文件及冲突的内容
+然后修改冲突文件的内容,再次git add 和git commit提交后,后缀MERGING消失,即冲突解决!
+
+16、在工作中出现乱码怎么解决?
+1、连接数据库的时候
+jdbc.properties: jdbc:mysql://localhost:3306/myproject?useUnicode=true&characterEncoding=utf8
+
+applicationContext.xml: jdbc:mysql://localhost:3306/myproject?useUnicode=true&amp;characterEncoding=utf8
+2、设置mysql字符集
+ show variables like'character_set_%';
+把显示的character_set_**全都设置成utf8，即是：set character_set_serve='utf8'
+ show variables like '%collation%';
+把显示的都设置成为如下：set collation_server='utf8_general_ci‘
+
+3、修改mysql配置文件my.ini/my.cnf
+default-character-set=utf8
+
+public class CharacterEncodingFilter implements Filter {
+public void init(FilterConfig arg0) throws ServletException{ }
+public void doFilter(ServletRequest request, ServletResponse response,FilterChain chain) throws IOException, ServletException {
+request.setCharacterEncoding("utf-8");
+chain.doFilter(request, response);
+    }
+public void destroy() { }
+}
+web.xml配置加
+<filter>
+   <filter-name>encodefilter</filter-name>
+       <filter-class>com.broadengate.crm.filter.CharacterEncodingFilter</filter-class>
+   </filter>
+   <filter-mapping>
+           <filter-name>encodefilter</filter-name>
+           <url-pattern>/*</url-pattern>
+   </filter-mapping>
+
+第4 ，修改tomcat中的配置文件server.xml改为
+<Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" URIEncoding="UTF-8"/>
+
+第5，在web.xml配置spring过滤器
+<filter>
+    <filter-name>char</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+         <param-name>encoding</param-name>
+         <param-value>UTF-8</param-value>
+    </init-param>
+</filter>
+<filter-mapping>
+    <filter-name>char</filter-name>
+    <url-pattern>/*</url-pattern>
+ </filter-mapping>
+
+
+
+java中为什么byte的取值范围是-128到+127
+概念：java中用补码表示二进制数，补码的最高位是符号位，最高位为“0”表示正数，最高位为“1”表示负数。
+正数补码为其本身；
+负数补码为其绝对值各位取反加1；
+例如：
++21，其二进制表示形式是00010101，则其补码同样为00010101
+-21，按照概念其绝对值为00010101，各位取反为11101010，再加1为11101011，即-21的二进制表示形式为11101011
+
+步骤：
+1、byte为一字节8位，最高位是符号位，即最大值是01111111，因正数的补码是其本身，即此正数为01111111
+十进制表示形式为127
+2、最大正数是01111111，那么最小负是10000000(最大的负数是11111111，即-1)
+3、10000000是最小负数的补码表示形式，我们把补码计算步骤倒过来就即可。10000000减1得01111111然后取反10000000
+因为负数的补码是其绝对值取反，即10000000为最小负数的绝对值，而10000000的十进制表示是128，所以最小负数是-128
+4、由此可以得出byte的取值范围是-128到+127
+5、说明：各个类型取值范围的计算方法与此大致相同，感兴趣的同学可以自己试着计算
+
+补充(给非计算机专业的同学扫下盲)：
+在计算机内，定点数有3种表示法：原码、反码和补码
+[原码]就是二进制定点表示法，即最高位为符号位，“0”表示正，“1”表示负，其余位表示数值的大小。
+[反码]表示法规定：正数的反码与其原码相同；负数的反码是对其原码逐位取反，但符号位除外。
+[补码]表示法规定：正数的补码与其原码相同；负数的补码是在其反码的末位加1。
+
+
+
+内存区域类型
+
+1.寄存器：最快的存储区, 由编译器根据需求进行分配,我们在程序中无法控制；
+
+1. 栈：存放基本类型的变量数据和对象的引用，但对象本身不存放在栈中，而是存放在堆（new 出来的对象）或者常量池中(对象可能在常量池里)（字符串常量对象存放在常量池中。）；
+
+2. 堆：存放所有new出来的对象；
+
+3. 静态域：存放静态成员（static定义的）；
+
+4. 常量池：存放字符串常量和基本类型常量（public static final）。有时，在嵌入式系统中，常量本身会和其他部分分割离开(由于版权等其他原因)，所以在这种情况下，可以选择将其放在ROM中 ；
+
+5. 非RAM存储：硬盘等永久存储空间
+
+运行时常量池（Runtime Constant Pool） 是方法区的一部分
+
+
+
+理解java类加载器以及ClassLoader类
+类加载的机制的层次结构
+每个编写的”.java”拓展名类文件都存储着需要执行的程序逻辑，这些”.java”文件经过Java编译器编译成拓展名为”.class”的文件，”.class”文件中保存着Java代码经转换后的虚拟机指令，当需要使用某个类时，虚拟机将会加载它的”.class”文件，并创建对应的class对象，将class文件加载到虚拟机的内存，
+这个过程称为类加载，这里我们需要了解一下类加载的过程，如下：
+
+
+何时开始类的初始化
+什么情况下需要开始类加载过程的第一个阶段:"加载"。虚拟机规范中并没强行约束，这点可以交给虚拟机的的具体实现自由把握，但是对于初始化阶段虚拟机规范是严格规定了如下几种情况，如果类未初始化会对类进行初始化。
+创建类的实例
+访问类的静态变量(除常量【被final修辞的静态变量】原因:常量一种特殊的变量，因为编译器把他们当作值(value)而不是域(field)来对待。如果你的代码中用到了常变量(constant variable)，编译器并不会生成字节码来从对象中载入域的值，而是直接把这个值插入到字节码中。这是一种很有用的优化，但是如果你需要改变final域的值那么每一块用到那个域的代码都需要重新编译。
+访问类的静态方法
+反射如(Class.forName("my.xyz.Test"))
+当初始化一个类时，发现其父类还未初始化，则先出发父类的初始化
+虚拟机启动时，定义了main()方法的那个类先初始化
+
+
+以上情况称为称对一个类进行“主动引用”，除此种情况之外，均不会触发类的初始化，称为“被动引用”
+接口的加载过程与类的加载过程稍有不同。接口中不能使用static{}块。当一个接口在初始化时，并不要求其父接口全部都完成了初始化，只有真正在使用到父接口时（例如引用接口中定义的常量）才会初始化。
+4 被动引用例子
+子类调用父类的静态变量，子类不会被初始化。只有父类被初始化。。对于静态字段，只有直接定义这个字段的类才会被初始化.
+通过数组定义来引用类，不会触发类的初始化
+访问类的常量，不会初始化类
+[java] view plain copy
+class SuperClass {  
+    static {  
+        System.out.println("superclass init");  
+    }  
+    public static int value = 123;  
+}  
+  
+class SubClass extends SuperClass {  
+    static {  
+        System.out.println("subclass init");  
+    }  
+}  
+  
+public class Test {  
+    public static void main(String[] args) {  
+        System.out.println(SubClass.value);// 被动应用1  
+        SubClass[] sca = new SubClass[10];// 被动引用2  
+    }  
+}  
+程序运行输出    superclass init 
+                            123
+从上面的输入结果证明了被动引用1与被动引用2
+[java] view plain copy
+class ConstClass {  
+    static {  
+        System.out.println("ConstClass init");  
+    }  
+    public static final String HELLOWORLD = "hello world";  
+}  
+  
+public class Test {  
+    public static void main(String[] args) {  
+        System.out.println(ConstClass.HELLOWORLD);// 调用类常量  
+    }  
+
+
+###
+class SingleTon {
+	private static SingleTon singleTon = new SingleTon();
+	public static int count1;
+	public static int count2 = 0;
+
+	private SingleTon() {
+		count1++;
+		count2++;
+	}
+
+	public static SingleTon getInstance() {
+		return singleTon;
+	}
+}
+
+public class Test {
+	public static void main(String[] args) {
+		SingleTon singleTon = SingleTon.getInstance();
+		System.out.println("count1=" + singleTon.count1);
+		System.out.println("count2=" + singleTon.count2);
+	}
+}
+
+分析:
+
+1:SingleTon singleTon = SingleTon.getInstance();调用了类的SingleTon调用了类的静态方法，触发类的初始化
+2:类加载的时候在准备过程中为类的静态变量分配内存并初始化默认值 singleton=null count1=0,count2=0
+3:类初始化化，为类的静态变量赋值和执行静态代码快。singleton赋值为new SingleTon()调用类的构造方法
+4:调用类的构造方法后count=1;count2=1
+5:继续为count1与count2赋值,此时count1没有赋值操作,所有count1为1,但是count2执行赋值操作就变为0
+
+
+
+
+
+######################Java 类加载机制(阿里面试题)########################################
+
+(1)阿里的面试官问我，可以不可以自己写个String类
+
+答案：不可以，因为 根据类加载的双亲委派机制，会去加载父类，父类发现冲突了String就不再加载了;
+
+什么是类加载器
+负责读取 Java 字节代码，并转换成java.lang.Class类的一个实例；
+
+
+类加载器种类
+启动类加载器，Bootstrap ClassLoader，加载JACA_HOME\lib，或者被-Xbootclasspath参数限定的类
+扩展类加载器，Extension ClassLoader，加载\lib\ext，或者被java.ext.dirs系统变量指定的类
+应用程序类加载器，Application ClassLoader，加载ClassPath中的类库
+自定义类加载器，通过继承ClassLoader实现，一般是加载我们的自定义类
+
+
+双亲委派模型
+类加载器 Java 类如同其它的 Java 类一样，也是要由类加载器来加载的；除了启动类加载器，每个类都有其父类加载器（父子关系由组合（不是继承）来实现）；
+所谓双亲委派是指每次收到类加载请求时，先将请求委派给父类加载器完成（所有加载请求最终会委派到顶层的Bootstrap ClassLoader加载器中），如果父类加载器无法完成这个加载（该加载器的搜索范围中没有找到对应的类），子类尝试自己加载。
+
+
+双亲委派好处
+
+避免同一个类被多次加载；
+每个加载器只能加载自己范围内的类；
+
+
+类加载过程
+类加载分为三个步骤：加载，连接，初始化；
+
+如下图 , 是一个类从加载到使用及卸载的全部生命周期，图片来自参考资料；
+
+
+
+加载
+根据一个类的全限定名(如cn.edu.hdu.test.HelloWorld.class)来读取此类的二进制字节流到JVM内部;
+
+将字节流所代表的静态存储结构转换为方法区的运行时数据结构（hotspot选择将Class对象存储在方法区中，Java虚拟机规范并没有明确要求一定要存储在方法区或堆区中）
+
+转换为一个与目标类型对应的java.lang.Class对象；
+
+连接
+验证
+
+验证阶段主要包括四个检验过程：文件格式验证、元数据验证、字节码验证和符号引用验证;
+
+准备
+
+为类中的所有静态变量分配内存空间，并为其设置一个初始值（由于还没有产生对象，实例变量将不再此操作范围内）；
+
+解析
+
+将常量池中所有的符号引用转为直接引用（得到类或者字段、方法在内存中的指针或者偏移量，以便直接调用该方法）。这个阶段可以在初始化之后再执行。
+
+初始化
+
+
+自定义类加载器
+ 要创建用户自己的类加载器，只需要继承java.lang.ClassLoader类，然后覆盖它的findClass(String name)方法即可，即指明如何获取类的字节码流。
+
+如果要符合双亲委派规范，则重写findClass方法（用户自定义类加载逻辑）；要破坏的话，重写loadClass方法(双亲委派的具体逻辑实现)。
+
+例子：
+
+复制代码
+package classloader;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+class TestClassLoad {
+    @Override
+    public String toString() {
+        return "类加载成功。";
+    }
+}
+public class PathClassLoader extends ClassLoader {
+    private String classPath;
+
+    public PathClassLoader(String classPath) {
+        this.classPath = classPath;
+    }
+
+    @Override
+    protected Class<?> findClass(String name) throws ClassNotFoundException {
+        byte[] classData = getData(name);
+        if (classData == null) {
+            throw new ClassNotFoundException();
+        } else {
+            return defineClass(name, classData, 0, classData.length);
+        }
+    }
+
+    private byte[] getData(String className) {
+        String path = classPath + File.separatorChar
+                + className.replace('.', File.separatorChar) + ".class";
+        try {
+            InputStream is = new FileInputStream(path);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            byte[] buffer = new byte[2048];
+            int num = 0;
+            while ((num = is.read(buffer)) != -1) {
+                stream.write(buffer, 0, num);
+            }
+            return stream.toByteArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
+
+    public static void main(String args[]) throws ClassNotFoundException,
+            InstantiationException, IllegalAccessException {
+        ClassLoader pcl = new PathClassLoader("D:\\ProgramFiles\\eclipseNew\\workspace\\cp-lib\\bin");
+        Class c = pcl.loadClass("classloader.TestClassLoad");//注意要包括包名
+        System.out.println(c.newInstance());//打印类加载成功.
+    }
+}
+复制代码
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

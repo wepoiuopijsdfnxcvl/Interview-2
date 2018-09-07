@@ -1,0 +1,97 @@
+package br.com.margel.weblaf.tests;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
+import br.com.margel.weblaf.WebLookAndFeel;
+import br.com.margel.weblaf.borders.WebBorder;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
+
+@SuppressWarnings("serial")
+public class LoginTest extends JDialog {
+
+	private JTextField textField = new JTextField("margel.peretto@gmail.com");
+	private JPasswordField passwordField = new JPasswordField("123456");
+	private JCheckBox checkBox = new JCheckBox("Remember my credentials", true);
+	private JButton buttonLogin = new JButton("Log in");
+	private JButton buttonCancel = new JButton("Cancel");
+	private JButton buttonForgotPass = new JButton("Forgot your password?");
+
+	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel(new WebLookAndFeel());
+		} catch (UnsupportedLookAndFeelException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		JFrame f = new JFrame("fsdfsdfdfsdfds");
+		f.setLayout(new MigLayout(new LC().insetsAll("25").gridGap("25", "25").wrapAfter(5).fill()));
+		new LoginTest(f);
+	     f.setVisible(true);
+	        f.addWindowListener(new WindowAdapter() {
+	            @Override
+	            public void windowClosing(WindowEvent e) {
+	                int option = JOptionPane.showConfirmDialog(null, "确认", "取消",2);
+	                if(option == 0){//0:确认 1：否 2：取消
+	                    System.exit(0);
+	                }
+	            }
+	        });
+	}
+
+	public LoginTest(JFrame owner) {
+		super(owner);
+
+		buttonCancel.setBackground(Color.decode("#6c757d"));
+
+		buttonForgotPass.setContentAreaFilled(false);
+		buttonForgotPass.setForeground(Color.BLUE);
+		buttonForgotPass.setBorderPainted(false);
+		buttonForgotPass.setBorder(new WebBorder(new Insets(2, 2, 2, 2)));
+		buttonForgotPass.setToolTipText("An email will be sent with a temporary password");
+
+		JPanel panel = new JPanel(new MigLayout(new LC().insetsAll("50").fillX()));
+		panel.setBorder(new WebBorder().arcSize(50).color(Color.LIGHT_GRAY));
+		panel.add(new JLabel("Enter with your username or email"), new CC().spanX().wrap());
+		panel.add(textField, new CC().spanX().width("300").wrap());
+		panel.add(new JLabel("Password (6 digits)"), new CC().spanX().gapTop("20").wrap());
+		panel.add(passwordField, new CC().spanX().width("300").wrap());
+		panel.add(checkBox, new CC().spanX().width("300").gapBottom("20").wrap());
+		panel.add(buttonLogin);
+		panel.add(buttonCancel);
+		panel.add(buttonForgotPass, new CC().alignX("right").alignY("top"));
+
+		setLayout(new GridBagLayout());
+		add(panel);
+		((JPanel) getContentPane()).setOpaque(true);
+		((JPanel) getContentPane()).setBackground(Color.decode("#f7f9fb"));
+
+		setTitle("Login Test");
+		pack();
+		setMinimumSize(getSize());
+		setSize(800, 600);
+		setLocationRelativeTo(null);
+		owner.setContentPane(panel);
+	}
+}

@@ -1,0 +1,185 @@
+Spring事务传播行为：
+spring特有的事务传播行为，spring支持7种事务传播行为，确定客户端和被调用端的事务边界（说得通俗一点就是多个具有事务控制的service的相互调用时所形成的复杂的事务边界控制）下图所示为7钟事务传播机制
+
+
+传播行为
+
+含义
+
+PROPAGATION_REQUIRED（XML文件中为REQUIRED)
+
+表示当前方法必须在一个具有事务的上下文中运行，如有客户端有事务在进行，那么被调用端将在该事务中运行，否则的话重新开启一个事务。（如果被调用端发生异常，那么调用端和被调用端事务都将回滚）
+
+PROPAGATION_SUPPORTS(XML文件中为SUPPORTS）
+
+表示当前方法不必需要具有一个事务上下文，但是如果有一个事务的话，它也可以在这个事务中运行
+
+PROPAGATION_MANDATORY(XML文件中为MANDATORY）
+
+表示当前方法必须在一个事务中运行，如果没有事务，将抛出异常
+
+PROPAGATION_NESTED(XML文件中为NESTED)
+
+表示如果当前方法正有一个事务在运行中，则该方法应该运行在一个嵌套事务中，被嵌套的事务可以独立于被封装的事务中进行提交或者回滚。如果封装事务存在，并且外层事务抛出异常回滚，那么内层事务必须回滚，反之，内层事务并不影响外层事务。如果封装事务不存在，则同PROPAGATION_REQUIRED的一样
+
+PROPAGATION_NEVER（XML文件中为NEVER)
+
+表示当方法务不应该在一个事务中运行，如果存在一个事务，则抛出异常
+
+PROPAGATION_REQUIRES_NEW(XML文件中为REQUIRES_NEW）
+
+表示当前方法必须运行在它自己的事务中。一个新的事务将启动，而且如果有一个现有的事务在运行的话，则这个方法将在运行期被挂起，直到新的事务提交或者回滚才恢复执行。
+
+PROPAGATION_NOT_SUPPORTED（XML文件中为NOT_SUPPORTED）
+
+表示该方法不应该在一个事务中运行。如果有一个事务正在运行，他将在运行期被挂起，直到这个事务提交或者回滚才恢复执行
+
+ 
+
+例子讲解以上七中事务传播机制
+假设有类A的方法methodB(),有类B的方法methodB().
+
+1)     PROPAGATION_REQUIRED
+
+如果B的方法methodB()的事务传播特性是propagation_required，那么如下图
+
+
+A.methodA()调用B的methodB()方法，那么如果A的方法包含事务，则B的方法则不从新开启事务，
+
+1、  如果B的methodB()抛出异常，A的methodB()没有捕获，则A和B的事务都会回滚；
+
+2、   如果B的methodB()运行期间异常会导致B的methodB()的回滚，A如果捕获了异常，并正常提交事务，则会发生Transaction rolled back because it has been marked as rollback-only的异常。
+
+3、  如果A的methodA()运行期间异常，则A和B的Method的事务都会被回滚
+
+ 
+
+ 
+
+2)     PROPAGATION_SUPPORTS
+
+如果B的方法methodB()的事务传播特性是propagation_supports,么如下图
+
+
+
+A.methodA()调用B的methodB()方法，那么如果A的方法包含事务，则B运行在此事务环境中，如果A的方法不包含事务，则B运行在非事务环境；
+
+1、如果A没有事务，则A和B的运行出现异常都不会回滚。
+
+2、如果A有事务，A的method方法执行抛出异常，B.methodB和A.methodA都会回滚。
+
+3、如果A有事务，B.method抛出异常，B.methodB和A.methodA都会回滚，如果A捕获了B.method抛出的异常，则会出现异常Transactionrolled back because it has been marked as rollback-only。
+
+ 
+
+3)     PROPAGATION_MANDATORY
+
+表示当前方法必须在一个事务中运行，如果没有事务，将抛出异常，如下图调用关系：
+
+
+
+
+
+B.methodB()事务传播特性定义为:PROPAGATION_MANDATORY
+
+1、如果A的methoda()方法没有事务运行环境，则B的methodB()执行的时候会报如下异常：No existingtransaction found for transaction marked with propagation 'mandatory'
+
+2、如果A的Methoda()方法有事务并且执行过程中抛出异常，则A.methoda（）和B.methodb（）执行的操作被回滚；
+
+3、如果A的methoda()方法有事务，则B.methodB()抛出异常时，A的methoda()和B.methodB()都会被回滚；如果A捕获了B.method抛出的异常，则会出现异常Transaction rolled back because ithas been marked as rollback-only
+
+ 
+
+ 
+
+4)     PROPAGATION_NESTED
+
+如有一下方法调用关系，如图：
+
+
+
+B的methodB()定义的事务为PROPAGATION_NESTED；
+
+
+
+1、        如果A的MethodA()不存在事务，则B的methodB()运行在一个新的事务中，B.method()抛出的异常，B.methodB()回滚,但A.methodA()不回滚；如果A.methoda()抛出异常，则A.methodA()和B.methodB()操作不回。
+
+2、        如果A的methodA()存在事务，则A的methoda()抛出异常，则A的methoda()和B的Methodb()都会被回滚；
+
+3、        如果A的MethodA()存在事务，则B的methodB()抛出异常，B.methodB()回滚，如果A不捕获异常，则A.methodA()和B.methodB()都会回滚，如果A捕获异常，则B.methodB()回滚,A不回滚；
+
+5）PROPAGATION_NEVER
+
+表示事务传播特性定义为PROPAGATION_NEVER的方法不应该运行在一个事务环境中
+
+有如下调用关系：
+
+
+
+ 
+
+如果B.methodB()的事务传播特性被定义为PROPAGATION_NEVER，则如果A.methodA()方法存在事务，则会出现异常Existingtransaction found for transaction marked with propagation 'never'。
+
+6）PROPAGATION_REQUIRES_NEW
+
+      表示事务传播特性定义为PROPAGATION_REQUIRES_NEW的方法需要运行在一个新的事务中。
+
+如有一下调用关系：B.methodB()事务传播特性为PROPAGATION_REQUIRES_NEW.
+
+
+
+
+
+1、        如果A存在事务，A.methodA()抛出异常，A.methodA()的事务被回滚，但B.methodB()事务不受影响；如果B.methodB()抛出异常，A不捕获的话，A.methodA()和B.methodB()的事务都会被回滚。如果A捕获的话，A.methodA()的事务不受影响但B.methodB()的事务回滚。
+
+7) PROPAGATION_NOT_SUPPORTED
+
+表示该方法不应该在一个事务中运行。如果有一个事务正在运行，他将在运行期被挂起，直到这个事务提交或者回滚才恢复执行。
+
+如有一下调用关系图：
+
+
+
+
+
+如果B.methodB()方法传播特性被定义为：PROPAGATION_NOT_SUPPORTED。
+
+1、        如果A.methodA()存在事务，如果B.methodB()抛出异常，A.methodA()不捕获的话，A.methodA()的事务被回滚，而B.methodB()出现异常前数据库操作不受影响。如果A.methodA()捕获的话，则A.methodA()的事务不受影响，B.methodB()异常抛出前的数据操作不受影响。
+
+
+ 
+
+实际场景中的七大事务传播行为的使用
+1、  在一个话费充值业务处理逻辑中，有如下图所示操作:
+
+
+
+
+
+业务需要扣款操作和创建订单操作同成功或者失败，因此，charger()和order()的事务不能相互独立，需要包含在chargeHandle()的事务中；
+
+通过以上需求，可以给charge()和order()的事务传播行为定义成：PROPAGATION_MANDATORY
+
+只要charge()或者order()抛出异常整个chargeHandle()都一起回滚，即使chargeHandle()捕获异常也没用，不允许提交事务。
+
+2、  如果业务需求没接受到一次请求到要记录日志到数据库，如下图：
+
+
+
+
+
+因为log()的操作不管扣款和创建订单成功与否都要生成日志，并且日志的操作成功与否不影响充值处理，所以log()方法的事务传播行为可以定义为:PROPAGATION_REQUIRES_NEW.
+
+3、  在订单的售后处理中，更新完订单金额后，需要自动统计销售报表，如下图所示：
+
+
+
+
+
+根据业务可知，售后是已经处理完订单的充值请求后的功能，是对订单的后续管理，统计报表report()方法耗时较长，因此，我们需要设置report()的事务传播行为为:PROPAGATION_NEVER,表示不适合在有事务的操作中调用，因为report()太耗时。
+
+4、  在银行新增银行卡业务中，需要执行两个操作，一个是保存银行卡信息，一个是登记新创建的银行卡信息，其中登记银行卡信息成功与否不影响银行卡的创建。
+
+
+
+由以上需求，我们可知对于regster()方法的事务传播行为，可以设置为PROPAGATION_NESTED，action()事务的回滚，regster()保存的信息就没意义，也就需要跟着回滚，而regster()的回滚不影响action()事务；insert()的事务传播行为可以设置为PROPAGATION_REQUIRED, PROPAGATION_MANDATORY，即insert()回滚事务，action()的事务必须跟着回滚。

@@ -1,0 +1,460 @@
+Spring的IOC和AOP?
+	IOC：
+	　Ioc—Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想
+	  谁控制谁，控制什么：传统Java SE程序设计，我们直接在对象内部通过new进行创建对象，是程序主动去创建依赖对象；
+	  而IoC是有专门一个容器来创建这些对象，即由Ioc容器来控制对 象的创建；谁控制谁？当然是IoC 容器控制了对象；控制什么？那就是主要控制了外部资源获取（不只是对象包括比如文件等）。
+
+	AOP(静态代理>>>动态代理>>>AOP)
+	   aspect oriented programming（面向切面编程）；
+			在程序运行期间，将某段代码切入到指定的类的指定方法、指定位置，
+			我们将这种编程思想称为面向切面编程
+			核心是为了解决核心业务逻辑和系统辅助模块的耦合
+          oop：面向对象编程；
+          是一种新的编程思想，对oop的一种补充；
+
+Spring事物传播行为？		  
+		TransactionDefinition.PROPAGATION_REQUIRED：如果当前存在事务，则加入该事务；如果当前没有事务，则创建一个新的事务。这是默认值。
+		TransactionDefinition.PROPAGATION_REQUIRES_NEW：创建一个新的事务，如果当前存在事务，则把当前事务挂起。
+		TransactionDefinition.PROPAGATION_SUPPORTS：如果当前存在事务，则加入该事务；如果当前没有事务，则以非事务的方式继续运行。
+		TransactionDefinition.PROPAGATION_NOT_SUPPORTED：以非事务方式运行，如果当前存在事务，则把当前事务挂起。
+		TransactionDefinition.PROPAGATION_NEVER：以非事务方式运行，如果当前存在事务，则抛出异常。
+		TransactionDefinition.PROPAGATION_MANDATORY：如果当前存在事务，则加入该事务；如果当前没有事务，则抛出异常。
+		TransactionDefinition.PROPAGATION_NESTED：如果当前存在事务，则创建一个事务作为当前事务的嵌套事务来运行；如果当前没有事务，则该取值等价于TransactionDefinition.PROPAGATION_REQUIRED。  
+		/**
+		 * 结账方法
+		 * 我们应该讲这三个方法放在同一个事务中执行，并且错误回滚;
+		 */
+	   @Transactional(propagation= Propagation.REQUIRED,rollbackFor = Exception.class)
+		public void checkout(String isbn,String username){
+			//1、先获取到要结账的图书的价格
+			Double price = bookDao.getPriceByIsbn(isbn);
+			//2、修改图书的库存
+			bookDao.updateStock(isbn);
+			//3、修改用户余额
+			bookDao.updateBalance(username, price);
+			System.out.println("结账成功...");
+
+		}
+			  
+为什么要用spring？
+	spring能够很好的和各大框架整合
+	spring 通过IOC容器管理了对象的创建和销毁  工厂模式
+	在使用hiberna，mybatis的时候，不用每次都编写提交的事务的代码，可以使用spring的AOP来管理事务      AOP其实就是一个动态代理的实现
+	声明式事务和编程式事务
+
+SpringMVC的原理以及返回数据如何渲染到jsp/html上？
+	答：Spring MVC的核心就是 DispatcherServlet ， 一个请求经过 DispatcherServlet ，转发给HandlerMapping ,然后经反射，
+	对应 Controller及其里面方法的@RequestMapping地址，最后经ModelAndView和ViewResoler返回给对应视图 
+
+SpringMVC运行原理？
+	①客户端请求提交到DispatcherServlet
+	②由DispatcherServlet控制器查询一个或多个HandlerMapping，找到处理请求的Controller
+	③DispatcherServlet将请求提交到Controller
+	④Controller调用业务逻辑处理后，返回ModelAndView
+	⑤DispatcherServlet查询一个或多个ViewResoler视图解析器，找到ModelAndView指定的视图
+	视图负责将结果显示到客户端
+
+SpringMVC和Struts2的区别？
+	机制 ：springmvc 的入口是servlet,struts2的入口是filter
+	性能 ： springmvc 会比struts2快一点。springmvc是基于方法设计，struts2是基于类，每次发一次请求都会实例一个action,每个Action都会被注入属性。
+	参数传递：struts2是在接受参数的时候，可以采用属性来接收参数，这家说明可以让多个方法共享
+	拦截器机制：struts2有自己的interceptor机制，springmvc用的是独立的AOP方式，strtus2的配置文件还是比springmvc大，springmvc使用简洁，springMVC比struts2开发效率要高.
+	
+struts2工作原理？
+	客户端初始化一个执行servlet的请求
+	这个请求经过一系列的过滤器，被FilterDispatcher调用，询问ActionMapper来决定是否调用Action
+	FilterDispatcher把请求的处理交给ActionProxy
+	ActionProxy通过Configuraction Manager询问相关的配置文件，找到需要的Action类
+	ActionProxy创建ActionInvocation的实例
+	ActionInvocation调用Action前后的拦截器
+	Action执行完毕后，根据struts.xml配置文件找到对应的视图页面
+
+Hibernate工作原理（配置文件：hibernate.cfg.xml）？
+	读取并解析配置文件
+	创建SessionFactory
+	打开Session
+	创建事务：transaction
+	持久化操作
+	提交事务
+	关闭Session
+	关闭SessionFactory
+	
+Hibernate缓存？
+	Hibernate一级缓存是Session缓存，利用好一级缓存就需要对Session的生命周期进行管理好。建议在一个Action操作中使用一个Session。一级缓存需要对Session进行严格管理。
+
+	Hibernate二级缓存是SessionFactory级的缓存。 SessionFactory的缓存分为内置缓存和外置缓存。内置缓存中存放的是SessionFactory对象的一些集合属性包含的数据(映射元素据及预定SQL语句等),对于应用程序来说,它是只读的。外置缓存中存放的是数据库数据的副本,其作用和一级缓存类似.二级缓存除了以内存作为存储介质外,还可以选用硬盘等外部存储设备。二级缓存称为进程级缓存或SessionFactory级缓存，它可以被所有session共享，它的生命周期伴随着SessionFactory的生命周期存在和消亡。	
+	
+Mybatis缓存机制？	
+	Mybatis的一级缓存是指SqlSession。一级缓存的作用域是一个SqlSession。Mybatis默认开启一级缓存。
+	在同一个SqlSession中，执行相同的查询SQL，第一次会去查询数据库，并写到缓存中；第二次直接从缓存中取。当执行SQL时两次查询中间发生了增删改操作，则SqlSession的缓存清空。
+
+	Mybatis的二级缓存是指mapper映射文件。二级缓存的作用域是同一个namespace下的mapper映射文件内容，多个SqlSession共享。Mybatis需要手动设置启动二级缓存。
+	在同一个namespace下的mapper文件中，执行相同的查询SQL，第一次会去查询数据库，并写到缓存中；第二次直接从缓存中取。当执行SQL时两次查询中间发生了增删改操作，则二级缓存清空。
+
+	不同点
+	Hibernate的二级缓存配置在SessionFactory生成的配置文件中进行详细配置，然后再在具体的表-对象映射中配置是那种缓存。
+	MyBatis的二级缓存配置都是在每个具体的表-对象映射中进行详细配置，这样针对不同的表可以自定义不同的缓存机制。并且Mybatis可以在命名空间中共享相同的缓存配置和实例，通过Cache-ref来实现。
+
+	两者比较
+	因为Hibernate对查询对象有着良好的管理机制，用户无需关心SQL。所以在使用二级缓存时如果出现脏数据，系统会报出错误并提示。
+	而MyBatis在这一方面，使用二级缓存时需要特别小心。如果不能完全确定数据更新操作的波及范围，避免Cache的盲目使用。否则，脏数据的出现会给系统的正常运行带来很大的隐患。	
+
+mybatis的优缺点？
+    优点：SQL写在XML中，便于统一管理和优化
+          供映射标签，支持对象和数据库的orm字段关系映射
+          可以对SQL进行优化
+    缺点：SQL工作量大
+          mybagtis移植姓不好
+          不支持级联
+
+Mybatis和Hibernate对比？
+
+	Mybatis优势
+	MyBatis可以进行更为细致的SQL优化，可以减少查询字段。
+	MyBatis容易掌握，而Hibernate门槛较高。
+
+	Hibernate优势
+	Hibernate的DAO层开发比MyBatis简单，Mybatis需要维护SQL和结果映射。
+	Hibernate对对象的维护和缓存要比MyBatis好，对增删改查的对象的维护要方便。
+	Hibernate数据库移植性很好，MyBatis的数据库移植性不好，不同的数据库需要写不同SQL。
+	Hibernate有更好的二级缓存机制，可以使用第三方缓存。MyBatis本身提供的缓存机制不佳。
+
+	总结：
+	mybatis：小巧、方便、高效、简单、直接、半自动 （二级缓存机制不佳）
+	hibernate：强大、方便、高效、复杂、绕弯子、全自动 （一级缓存session、二级缓存可使用第三方ehcache）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
