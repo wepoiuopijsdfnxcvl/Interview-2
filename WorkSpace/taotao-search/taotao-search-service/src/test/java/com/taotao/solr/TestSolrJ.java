@@ -40,7 +40,7 @@ public class TestSolrJ {
 		// 创建一个SolrServer对象，即HttpSolrServer对象，需要指定solr服务的url
 		SolrServer solrServer = new HttpSolrServer("http://192.168.188.128:8080/solr");
 		// 通过id来删除文档
-		solrServer.deleteById("test001");
+		solrServer.deleteById("153630611860669");
 		// 提交
 		solrServer.commit();
 	}

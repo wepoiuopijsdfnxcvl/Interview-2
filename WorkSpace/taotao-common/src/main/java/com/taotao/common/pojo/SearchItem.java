@@ -8,7 +8,7 @@ public class SearchItem implements Serializable {
 	private String title;
 	private String sell_point;
 	private Long price;
-	private String images;
+	private String image;
 	private String category_name;
 	private String item_desc;
 
@@ -45,11 +45,11 @@ public class SearchItem implements Serializable {
 	}
 
 	public String getImage() {
-		return images;
+		return image;
 	}
 
 	public void setImage(String image) {
-		this.images = image;
+		this.image = image;
 	}
 
 	public String getCategory_name() {
@@ -66,6 +66,14 @@ public class SearchItem implements Serializable {
 
 	public void setItem_desc(String item_desc) {
 		this.item_desc = item_desc;
+	}
+	
+	public String[] getImages() {
+	    if (image != null && !"".equals(image)) {
+	        String[] strings = image.split(",");
+	        return strings;
+	    }
+	    return null;
 	}
 
 }
