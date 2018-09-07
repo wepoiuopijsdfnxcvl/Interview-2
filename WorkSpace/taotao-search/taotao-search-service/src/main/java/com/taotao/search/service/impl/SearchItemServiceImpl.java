@@ -26,9 +26,9 @@ public class SearchItemServiceImpl implements SearchItemService {
 		// 1、查询所有商品数据。
 		List<SearchItem> itemList = itemMapper.getItemList();
 		// 2、创建一个SolrServer对象。
-		// 3、为每个商品创建一个SolrInputDocument对象。
-		SolrInputDocument document = new SolrInputDocument();
 		for (SearchItem searchItem : itemList) {
+			// 3、为每个商品创建一个SolrInputDocument对象。
+			SolrInputDocument document = new SolrInputDocument();
 			// 4、为文档添加域
 			document.addField("id", searchItem.getId());
 			document.addField("item_title", searchItem.getTitle());
