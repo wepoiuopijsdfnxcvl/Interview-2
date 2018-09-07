@@ -1,5 +1,8 @@
 package com.taotao.solr;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
@@ -65,7 +68,7 @@ public class TestSolrJ {
 		// 创建一个SolrServer对象，即HttpSolrServer对象，需要指定solr服务的url
 		SolrServer solrServer = new HttpSolrServer("http://192.168.188.128:8080/solr");
 		SolrQuery query = new SolrQuery();
-		query.setQuery("id:test001");
+		query.setQuery("id:153604377389473");
 		QueryResponse response = solrServer.query(query);
 		SolrDocumentList list = response.getResults();
 		for (SolrDocument document : list) {
@@ -73,6 +76,47 @@ public class TestSolrJ {
 			String title = document.getFieldValue("item_title").toString();
 			System.out.println(id);
 			System.out.println(title);
+		}
+	}
+
+	@Test
+	public void testQueryDocument() throws Exception {
+		SolrServer solrServer = new HttpSolrServer("http://192.168.188.128:8080/solr");
+		// 创建一个SolrQuery对象
+		SolrQuery query = new SolrQuery();
+		query.setQuery("电子书");
+		// 设置自己的分页条件
+		query.setStart(0); // 从0开始
+		query.setRows(3); // 每页取10条记录
+		// 设置默认搜索域
+		query.set("df", "item_keywords");
+		query.setHighlight(true); // 开启高亮显示
+		query.addHighlightField("item_title"); // 添加高亮显示的域
+		query.setHighlightSimplePre("<em>"); // 设置高亮显示的前缀
+		query.setHighlightSimplePost("</em>"); // 设置高亮显示的后缀
+		// 执行查询
+		QueryResponse response = solrServer.query(query);
+		// 取查询结果
+		SolrDocumentList solrDocumentList = response.getResults();
+		// 查询结果总记录数
+		System.out.println("查询结果总记录数：" + solrDocumentList.getNumFound());
+		for (SolrDocument solrDocument : solrDocumentList) {
+			System.out.println(solrDocument.get("id"));
+			String itemName = null;
+			// 取高亮显示
+			Map<String, Map<String, List<String>>> highlighting = response.getHighlighting();
+			List<String> list = highlighting.get(solrDocument.get("id")).get("item_title");
+			if (list != null && list.size() > 0) {
+				itemName = list.get(0); // 将高亮后的结果取出来
+			} else {
+				itemName = (String) solrDocument.get("item_title");
+			}
+			System.out.println(itemName);
+			System.out.println(solrDocument.get("item_sell_point"));
+			System.out.println(solrDocument.get("item_price"));
+			System.out.println(solrDocument.get("item_image"));
+			System.out.println(solrDocument.get("item_category_name"));
+			System.out.println("--------------------------------------------------------------");
 		}
 	}
 }
