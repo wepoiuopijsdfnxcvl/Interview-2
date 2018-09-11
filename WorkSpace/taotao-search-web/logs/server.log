@@ -1,0 +1,916 @@
+
+
+[INFO ] 2018-09-11 14:22:38,534 method:org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:489)
+FrameworkServlet 'taotao-search-web': initialization started
+
+
+[INFO ] 2018-09-11 14:22:38,568 method:org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:578)
+Refreshing WebApplicationContext for namespace 'taotao-search-web-servlet': startup date [Tue Sep 11 14:22:38 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-09-11 14:22:38,617 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from class path resource [spring/springmvc.xml]
+
+
+[INFO ] 2018-09-11 14:22:39,557 method:
+using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+
+
+[INFO ] 2018-09-11 14:22:39,909 method:org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(PropertiesLoaderSupport.java:172)
+Loading properties file from class path resource [resource/resource.properties]
+
+
+[INFO ] 2018-09-11 14:22:39,928 method:org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:153)
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+
+
+[INFO ] 2018-09-11 14:22:40,553 method:com.alibaba.dubbo.registry.support.AbstractRegistry.loadProperties(AbstractRegistry.java:232)
+ [DUBBO] Load registry store file C:\Users\Darrick\.dubbo\dubbo-registry-192.168.188.128.cache, data: {com.taotao.content.service.ContentCategoryService=empty://192.168.188.1/com.taotao.content.service.ContentCategoryService?application=taotao-manager-web&category=configurators&dubbo=2.5.3&interface=com.taotao.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=14800&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536310850622 empty://192.168.188.1/com.taotao.content.service.ContentCategoryService?application=taotao-manager-web&category=routers&dubbo=2.5.3&interface=com.taotao.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=14800&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536310850622 dubbo://192.168.188.1:20881/com.taotao.content.service.ContentCategoryService?anyhost=true&application=taotao-content&dubbo=2.5.3&interface=com.taotao.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=13984&side=provider&timeout=300000&timestamp=1536310677409, com.taotao.search.service.SearchService=empty://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=configurators&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=10360&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536310856549 empty://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=routers&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=10360&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536310856549 dubbo://192.168.188.1:20882/com.taotao.search.service.SearchService?anyhost=true&application=taotao-search&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=9004&side=provider&timeout=300000&timestamp=1536310821203, com.taotao.service.ItemCatService=empty://192.168.188.1:20880/com.taotao.service.ItemCatService?anyhost=true&application=taotao-manager&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.service.ItemCatService&methods=getItemCatList&pid=7492&side=provider&timeout=300000&timestamp=1536310660157, com.taoato.content.service.ContentCategoryService=empty://192.168.188.1/com.taoato.content.service.ContentCategoryService?application=taotao-manager-web&category=configurators&dubbo=2.5.3&interface=com.taoato.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=14316&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536057258914 empty://192.168.188.1/com.taoato.content.service.ContentCategoryService?application=taotao-manager-web&category=routers&dubbo=2.5.3&interface=com.taoato.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=14316&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536057258914 dubbo://192.168.188.1:20881/com.taoato.content.service.ContentCategoryService?anyhost=true&application=taotao-content&dubbo=2.5.3&interface=com.taoato.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=2368&side=provider&timeout=300000&timestamp=1536057230242, com.taotao.service.ItemService=empty://192.168.188.1:20880/com.taotao.service.ItemService?anyhost=true&application=taotao-manager&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.service.ItemService&methods=addItem,getItemList,getItemById&pid=7492&side=provider&timeout=300000&timestamp=1536310654783, com.taoato.content.service.ContentService=empty://192.168.188.1:20881/com.taoato.content.service.ContentService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taoato.content.service.ContentService&methods=getContentList,insertContent&pid=2368&side=provider&timeout=300000&timestamp=1536057235507, com.taotao.content.service.ContentService=empty://192.168.188.1:20881/com.taotao.content.service.ContentService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.content.service.ContentService&methods=getContentList,insertContent&pid=13984&side=provider&timeout=300000&timestamp=1536310682615, com.taotao.search.service.SearchItemService=empty://192.168.188.1:20882/com.taotao.search.service.SearchItemService?anyhost=true&application=taotao-search&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.search.service.SearchItemService&methods=importAllItemToIndex&pid=9004&side=provider&timeout=300000&timestamp=1536310814938}, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-09-11 14:22:40,584 method:org.I0Itec.zkclient.ZkEventThread.run(ZkEventThread.java:64)
+Starting ZkClient event thread.
+
+
+[INFO ] 2018-09-11 14:22:45,119 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:zookeeper.version=3.4.7-1713338, built on 11/09/2015 04:32 GMT
+
+
+[INFO ] 2018-09-11 14:22:45,119 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:host.name=Darrick
+
+
+[INFO ] 2018-09-11 14:22:45,120 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.version=1.8.0_11
+
+
+[INFO ] 2018-09-11 14:22:45,120 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.vendor=Oracle Corporation
+
+
+[INFO ] 2018-09-11 14:22:45,121 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.home=C:\Darrick\SoftWare\jdk1.8.0_11\jre
+
+
+[INFO ] 2018-09-11 14:22:45,121 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.class.path=C:\Darrick\SoftWare\apache-maven-3.3.3\boot\plexus-classworlds-2.5.2.jar
+
+
+[INFO ] 2018-09-11 14:22:45,121 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.library.path=C:\Darrick\SoftWare\jdk1.8.0_11\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Darrick/SoftWare/jdk1.8.0_11/bin/../jre/bin/server;C:/Darrick/SoftWare/jdk1.8.0_11/bin/../jre/bin;C:/Darrick/SoftWare/jdk1.8.0_11/bin/../jre/lib/amd64;C:\Darrick\SoftWare\jdk1.8.0_11\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Darrick\SoftWare\TortoiseSVN\bin;C:\Darrick\SoftWare\apache-maven-3.3.3\bin;C:\Darrick\SoftWare\Subversion\bin;C:\Darrick\SoftWare\apache-ant-1.9.4\bin;C:\Darrick\SoftWare\MySQL Server 5.5\bin;C:\Darrick\SoftWare\Design\Autodesk\Backburner\;C:\Program Files\Common Files\Autodesk Shared\;C:\Darrick\SoftWare\gradle-3.5\bin;D:\Ue\sdk\UE\sdk\platform-tools;C:\Darrick\SoftWare\Git\cmd;%CATALINA_HOME%\bin;C:\Users\Darrick\AppData\Local\Microsoft\WindowsApps;;C:\Darrick\SoftWare\eclipse;;.
+
+
+[INFO ] 2018-09-11 14:22:45,122 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.io.tmpdir=C:\Users\Darrick\AppData\Local\Temp\
+
+
+[INFO ] 2018-09-11 14:22:45,123 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.compiler=<NA>
+
+
+[INFO ] 2018-09-11 14:22:45,126 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.name=Windows 8.1
+
+
+[INFO ] 2018-09-11 14:22:45,126 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.arch=amd64
+
+
+[INFO ] 2018-09-11 14:22:45,127 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.version=6.3
+
+
+[INFO ] 2018-09-11 14:22:45,127 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.name=Darrick
+
+
+[INFO ] 2018-09-11 14:22:45,127 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.home=C:\Users\Darrick
+
+
+[INFO ] 2018-09-11 14:22:45,128 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.dir=C:\Users\Darrick\Desktop\interview\WorkSpace\taotao-search-web
+
+
+[INFO ] 2018-09-11 14:22:45,129 method:org.apache.zookeeper.ZooKeeper.<init>(ZooKeeper.java:438)
+Initiating client connection, connectString=192.168.188.128:2181 sessionTimeout=30000 watcher=org.I0Itec.zkclient.ZkClient@1d5fe5f6
+
+
+[INFO ] 2018-09-11 14:22:45,172 method:org.apache.zookeeper.ClientCnxn$SendThread.logStartConnect(ClientCnxn.java:1032)
+Opening socket connection to server 192.168.188.128/192.168.188.128:2181. Will not attempt to authenticate using SASL (unknown error)
+
+
+[WARN ] 2018-09-11 14:23:06,181 method:org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1162)
+Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection timed out: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:712)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:361)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1141)
+
+
+[INFO ] 2018-09-11 14:23:07,294 method:org.apache.zookeeper.ClientCnxn$SendThread.logStartConnect(ClientCnxn.java:1032)
+Opening socket connection to server 192.168.188.128/192.168.188.128:2181. Will not attempt to authenticate using SASL (unknown error)
+
+
+[WARN ] 2018-09-11 14:23:28,298 method:org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1162)
+Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection timed out: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:712)
+	at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:361)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1141)
+
+
+[INFO ] 2018-09-11 14:23:29,399 method:org.apache.zookeeper.ClientCnxn$SendThread.logStartConnect(ClientCnxn.java:1032)
+Opening socket connection to server 192.168.188.128/192.168.188.128:2181. Will not attempt to authenticate using SASL (unknown error)
+
+
+[INFO ] 2018-09-11 14:29:48,323 method:org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:489)
+FrameworkServlet 'taotao-search-web': initialization started
+
+
+[INFO ] 2018-09-11 14:29:48,383 method:org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:578)
+Refreshing WebApplicationContext for namespace 'taotao-search-web-servlet': startup date [Tue Sep 11 14:29:48 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-09-11 14:29:48,517 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from class path resource [spring/springmvc.xml]
+
+
+[INFO ] 2018-09-11 14:29:49,184 method:
+using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+
+
+[INFO ] 2018-09-11 14:29:49,539 method:org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(PropertiesLoaderSupport.java:172)
+Loading properties file from class path resource [resource/resource.properties]
+
+
+[INFO ] 2018-09-11 14:29:49,550 method:org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:153)
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+
+
+[INFO ] 2018-09-11 14:29:50,545 method:com.alibaba.dubbo.registry.support.AbstractRegistry.loadProperties(AbstractRegistry.java:232)
+ [DUBBO] Load registry store file C:\Users\Darrick\.dubbo\dubbo-registry-192.168.188.128.cache, data: {com.taotao.content.service.ContentCategoryService=empty://192.168.188.1:20881/com.taotao.content.service.ContentCategoryService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=5388&side=provider&timeout=300000&timestamp=1536647325129, com.taotao.search.service.SearchService=empty://192.168.188.1:20882/com.taotao.search.service.SearchService?anyhost=true&application=taotao-search&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=976&side=provider&timeout=300000&timestamp=1536647353946, com.taotao.service.ItemCatService=empty://192.168.188.1:20880/com.taotao.service.ItemCatService?anyhost=true&application=taotao-manager&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.service.ItemCatService&methods=getItemCatList&pid=8068&side=provider&timeout=300000&timestamp=1536647313765, com.taoato.content.service.ContentCategoryService=empty://192.168.188.1/com.taoato.content.service.ContentCategoryService?application=taotao-manager-web&category=configurators&dubbo=2.5.3&interface=com.taoato.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=14316&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536057258914 empty://192.168.188.1/com.taoato.content.service.ContentCategoryService?application=taotao-manager-web&category=routers&dubbo=2.5.3&interface=com.taoato.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=14316&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536057258914 dubbo://192.168.188.1:20881/com.taoato.content.service.ContentCategoryService?anyhost=true&application=taotao-content&dubbo=2.5.3&interface=com.taoato.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=2368&side=provider&timeout=300000&timestamp=1536057230242, com.taotao.service.ItemService=empty://192.168.188.1:20880/com.taotao.service.ItemService?anyhost=true&application=taotao-manager&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.service.ItemService&methods=addItem,getItemList,getItemById&pid=8068&side=provider&timeout=300000&timestamp=1536647307378, com.taoato.content.service.ContentService=empty://192.168.188.1:20881/com.taoato.content.service.ContentService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taoato.content.service.ContentService&methods=getContentList,insertContent&pid=2368&side=provider&timeout=300000&timestamp=1536057235507, com.taotao.content.service.ContentService=empty://192.168.188.1:20881/com.taotao.content.service.ContentService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.content.service.ContentService&methods=getContentList,insertContent&pid=5388&side=provider&timeout=300000&timestamp=1536647331420, com.taotao.search.service.SearchItemService=empty://192.168.188.1:20882/com.taotao.search.service.SearchItemService?anyhost=true&application=taotao-search&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.search.service.SearchItemService&methods=importAllItemToIndex&pid=976&side=provider&timeout=300000&timestamp=1536647347560}, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-09-11 14:29:50,599 method:org.I0Itec.zkclient.ZkEventThread.run(ZkEventThread.java:64)
+Starting ZkClient event thread.
+
+
+[INFO ] 2018-09-11 14:29:55,175 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:zookeeper.version=3.4.7-1713338, built on 11/09/2015 04:32 GMT
+
+
+[INFO ] 2018-09-11 14:29:55,177 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:host.name=Darrick
+
+
+[INFO ] 2018-09-11 14:29:55,178 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.version=1.8.0_11
+
+
+[INFO ] 2018-09-11 14:29:55,178 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.vendor=Oracle Corporation
+
+
+[INFO ] 2018-09-11 14:29:55,179 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.home=C:\Darrick\SoftWare\jdk1.8.0_11\jre
+
+
+[INFO ] 2018-09-11 14:29:55,179 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.class.path=C:\Darrick\SoftWare\apache-maven-3.3.3\boot\plexus-classworlds-2.5.2.jar
+
+
+[INFO ] 2018-09-11 14:29:55,180 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.library.path=C:\Darrick\SoftWare\jdk1.8.0_11\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Darrick\SoftWare\jdk1.8.0_11\jre\bin;C:/Darrick/SoftWare/jdk1.8.0_11/bin/../jre/bin/server;C:/Darrick/SoftWare/jdk1.8.0_11/bin/../jre/bin;C:/Darrick/SoftWare/jdk1.8.0_11/bin/../jre/lib/amd64;C:\Darrick\SoftWare\jdk1.8.0_11\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Darrick\SoftWare\TortoiseSVN\bin;C:\Darrick\SoftWare\apache-maven-3.3.3\bin;C:\Darrick\SoftWare\Subversion\bin;C:\Darrick\SoftWare\apache-ant-1.9.4\bin;C:\Darrick\SoftWare\MySQL Server 5.5\bin;C:\Darrick\SoftWare\Design\Autodesk\Backburner\;C:\Program Files\Common Files\Autodesk Shared\;C:\Darrick\SoftWare\gradle-3.5\bin;D:\Ue\sdk\UE\sdk\platform-tools;C:\Darrick\SoftWare\Git\cmd;%CATALINA_HOME%\bin;C:\Users\Darrick\AppData\Local\Microsoft\WindowsApps;;C:\Darrick\SoftWare\eclipse;;.
+
+
+[INFO ] 2018-09-11 14:29:55,180 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.io.tmpdir=C:\Users\Darrick\AppData\Local\Temp\
+
+
+[INFO ] 2018-09-11 14:29:55,181 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.compiler=<NA>
+
+
+[INFO ] 2018-09-11 14:29:55,182 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.name=Windows 8.1
+
+
+[INFO ] 2018-09-11 14:29:55,183 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.arch=amd64
+
+
+[INFO ] 2018-09-11 14:29:55,183 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.version=6.3
+
+
+[INFO ] 2018-09-11 14:29:55,184 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.name=Darrick
+
+
+[INFO ] 2018-09-11 14:29:55,184 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.home=C:\Users\Darrick
+
+
+[INFO ] 2018-09-11 14:29:55,185 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.dir=C:\Users\Darrick\Desktop\interview\WorkSpace\taotao-search-web
+
+
+[INFO ] 2018-09-11 14:29:55,187 method:org.apache.zookeeper.ZooKeeper.<init>(ZooKeeper.java:438)
+Initiating client connection, connectString=192.168.188.128:2181 sessionTimeout=30000 watcher=org.I0Itec.zkclient.ZkClient@5f5306d5
+
+
+[INFO ] 2018-09-11 14:29:55,245 method:org.apache.zookeeper.ClientCnxn$SendThread.logStartConnect(ClientCnxn.java:1032)
+Opening socket connection to server 192.168.188.128/192.168.188.128:2181. Will not attempt to authenticate using SASL (unknown error)
+
+
+[INFO ] 2018-09-11 14:29:55,250 method:org.apache.zookeeper.ClientCnxn$SendThread.primeConnection(ClientCnxn.java:876)
+Socket connection established to 192.168.188.128/192.168.188.128:2181, initiating session
+
+
+[INFO ] 2018-09-11 14:29:55,265 method:org.apache.zookeeper.ClientCnxn$SendThread.onConnected(ClientCnxn.java:1299)
+Session establishment complete on server 192.168.188.128/192.168.188.128:2181, sessionid = 0x165c74f9f4e0006, negotiated timeout = 30000
+
+
+[INFO ] 2018-09-11 14:29:55,269 method:org.I0Itec.zkclient.ZkClient.processStateChanged(ZkClient.java:449)
+zookeeper state changed (SyncConnected)
+
+
+[INFO ] 2018-09-11 14:29:55,341 method:com.alibaba.dubbo.registry.support.AbstractRegistry.register(AbstractRegistry.java:302)
+ [DUBBO] Register: consumer://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=consumers&check=false&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=14028&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647390391, dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:29:55,428 method:com.alibaba.dubbo.registry.support.AbstractRegistry.subscribe(AbstractRegistry.java:325)
+ [DUBBO] Subscribe: consumer://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=providers,configurators,routers&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=14028&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647390391, dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:29:55,506 method:com.alibaba.dubbo.registry.support.AbstractRegistry.notify(AbstractRegistry.java:422)
+ [DUBBO] Notify urls for subscribe url consumer://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=providers,configurators,routers&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=14028&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647390391, urls: [dubbo://192.168.188.1:20882/com.taotao.search.service.SearchService?anyhost=true&application=taotao-search&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=976&side=provider&timeout=300000&timestamp=1536647353946, empty://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=configurators&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=14028&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647390391, empty://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=routers&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=14028&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647390391], dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:29:56,041 method:com.alibaba.dubbo.remoting.transport.AbstractClient.connect(AbstractClient.java:287)
+ [DUBBO] Successed connect to server /192.168.188.1:20882 from NettyClient 192.168.188.1 using dubbo version 2.5.3, channel is NettyChannel [channel=[id: 0x880294ca, /192.168.188.1:64669 => /192.168.188.1:20882]], dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:29:56,044 method:com.alibaba.dubbo.remoting.transport.AbstractClient.<init>(AbstractClient.java:105)
+ [DUBBO] Start NettyClient Darrick/192.168.188.1 connect to the server /192.168.188.1:20882, dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:29:56,233 method:com.alibaba.dubbo.config.ReferenceConfig.createProxy(ReferenceConfig.java:423)
+ [DUBBO] Refer dubbo service com.taotao.search.service.SearchService from url zookeeper://192.168.188.128:2181/com.alibaba.dubbo.registry.RegistryService?anyhost=true&application=taotao-search-web&check=false&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=14028&revision=0.0.1-SNAPSHOT&side=consumer&timeout=300000&timestamp=1536647390391, dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:29:56,945 method:org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:527)
+Mapped "{[/search]}" onto public java.lang.String com.taotao.search.controller.SearchController.searchItem(java.lang.String,java.lang.Integer,org.springframework.ui.Model) throws java.lang.Exception
+
+
+[INFO ] 2018-09-11 14:29:58,579 method:org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:532)
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'taotao-search-web-servlet': startup date [Tue Sep 11 14:29:48 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-09-11 14:29:58,768 method:org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:532)
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'taotao-search-web-servlet': startup date [Tue Sep 11 14:29:48 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-09-11 14:29:59,217 method:org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:508)
+FrameworkServlet 'taotao-search-web': initialization completed in 10887 ms
+
+
+[WARN ] 2018-09-11 14:30:49,442 method:org.springframework.web.servlet.DispatcherServlet.noHandlerFound(DispatcherServlet.java:1136)
+No mapping found for HTTP request with URI [/] in DispatcherServlet with name 'taotao-search-web'
+
+
+[INFO ] 2018-09-11 14:32:38,294 method:org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:489)
+FrameworkServlet 'taotao-search-web': initialization started
+
+
+[INFO ] 2018-09-11 14:32:38,336 method:org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:578)
+Refreshing WebApplicationContext for namespace 'taotao-search-web-servlet': startup date [Tue Sep 11 14:32:38 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-09-11 14:32:38,401 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from class path resource [spring/springmvc.xml]
+
+
+[INFO ] 2018-09-11 14:32:39,005 method:
+using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+
+
+[INFO ] 2018-09-11 14:32:39,255 method:org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(PropertiesLoaderSupport.java:172)
+Loading properties file from class path resource [resource/resource.properties]
+
+
+[INFO ] 2018-09-11 14:32:39,266 method:org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:153)
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+
+
+[INFO ] 2018-09-11 14:32:39,854 method:com.alibaba.dubbo.registry.support.AbstractRegistry.loadProperties(AbstractRegistry.java:232)
+ [DUBBO] Load registry store file C:\Users\Darrick\.dubbo\dubbo-registry-192.168.188.128.cache, data: {com.taotao.content.service.ContentCategoryService=empty://192.168.188.1:20881/com.taotao.content.service.ContentCategoryService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=5388&side=provider&timeout=300000&timestamp=1536647325129, com.taotao.search.service.SearchService=empty://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=configurators&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=14028&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647390391 empty://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=routers&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=14028&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647390391 dubbo://192.168.188.1:20882/com.taotao.search.service.SearchService?anyhost=true&application=taotao-search&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=976&side=provider&timeout=300000&timestamp=1536647353946, com.taotao.service.ItemCatService=empty://192.168.188.1:20880/com.taotao.service.ItemCatService?anyhost=true&application=taotao-manager&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.service.ItemCatService&methods=getItemCatList&pid=8068&side=provider&timeout=300000&timestamp=1536647313765, com.taoato.content.service.ContentCategoryService=empty://192.168.188.1/com.taoato.content.service.ContentCategoryService?application=taotao-manager-web&category=configurators&dubbo=2.5.3&interface=com.taoato.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=14316&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536057258914 empty://192.168.188.1/com.taoato.content.service.ContentCategoryService?application=taotao-manager-web&category=routers&dubbo=2.5.3&interface=com.taoato.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=14316&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536057258914 dubbo://192.168.188.1:20881/com.taoato.content.service.ContentCategoryService?anyhost=true&application=taotao-content&dubbo=2.5.3&interface=com.taoato.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=2368&side=provider&timeout=300000&timestamp=1536057230242, com.taotao.service.ItemService=empty://192.168.188.1:20880/com.taotao.service.ItemService?anyhost=true&application=taotao-manager&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.service.ItemService&methods=addItem,getItemList,getItemById&pid=8068&side=provider&timeout=300000&timestamp=1536647307378, com.taoato.content.service.ContentService=empty://192.168.188.1:20881/com.taoato.content.service.ContentService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taoato.content.service.ContentService&methods=getContentList,insertContent&pid=2368&side=provider&timeout=300000&timestamp=1536057235507, com.taotao.content.service.ContentService=empty://192.168.188.1:20881/com.taotao.content.service.ContentService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.content.service.ContentService&methods=getContentList,insertContent&pid=5388&side=provider&timeout=300000&timestamp=1536647331420, com.taotao.search.service.SearchItemService=empty://192.168.188.1:20882/com.taotao.search.service.SearchItemService?anyhost=true&application=taotao-search&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.search.service.SearchItemService&methods=importAllItemToIndex&pid=976&side=provider&timeout=300000&timestamp=1536647347560}, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-09-11 14:32:39,891 method:org.I0Itec.zkclient.ZkEventThread.run(ZkEventThread.java:64)
+Starting ZkClient event thread.
+
+
+[INFO ] 2018-09-11 14:32:44,428 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:zookeeper.version=3.4.7-1713338, built on 11/09/2015 04:32 GMT
+
+
+[INFO ] 2018-09-11 14:32:44,429 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:host.name=Darrick
+
+
+[INFO ] 2018-09-11 14:32:44,430 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.version=1.8.0_11
+
+
+[INFO ] 2018-09-11 14:32:44,430 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.vendor=Oracle Corporation
+
+
+[INFO ] 2018-09-11 14:32:44,431 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.home=C:\Darrick\SoftWare\jdk1.8.0_11\jre
+
+
+[INFO ] 2018-09-11 14:32:44,431 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.class.path=C:\Darrick\SoftWare\apache-maven-3.3.3\boot\plexus-classworlds-2.5.2.jar
+
+
+[INFO ] 2018-09-11 14:32:44,432 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.library.path=C:\Darrick\SoftWare\jdk1.8.0_11\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Darrick\SoftWare\jdk1.8.0_11\jre\bin;C:/Darrick/SoftWare/jdk1.8.0_11/bin/../jre/bin/server;C:/Darrick/SoftWare/jdk1.8.0_11/bin/../jre/bin;C:/Darrick/SoftWare/jdk1.8.0_11/bin/../jre/lib/amd64;C:\Darrick\SoftWare\jdk1.8.0_11\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Darrick\SoftWare\TortoiseSVN\bin;C:\Darrick\SoftWare\apache-maven-3.3.3\bin;C:\Darrick\SoftWare\Subversion\bin;C:\Darrick\SoftWare\apache-ant-1.9.4\bin;C:\Darrick\SoftWare\MySQL Server 5.5\bin;C:\Darrick\SoftWare\Design\Autodesk\Backburner\;C:\Program Files\Common Files\Autodesk Shared\;C:\Darrick\SoftWare\gradle-3.5\bin;D:\Ue\sdk\UE\sdk\platform-tools;C:\Darrick\SoftWare\Git\cmd;%CATALINA_HOME%\bin;C:\Users\Darrick\AppData\Local\Microsoft\WindowsApps;;C:\Darrick\SoftWare\eclipse;;.
+
+
+[INFO ] 2018-09-11 14:32:44,432 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.io.tmpdir=C:\Users\Darrick\AppData\Local\Temp\
+
+
+[INFO ] 2018-09-11 14:32:44,433 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.compiler=<NA>
+
+
+[INFO ] 2018-09-11 14:32:44,434 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.name=Windows 8.1
+
+
+[INFO ] 2018-09-11 14:32:44,435 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.arch=amd64
+
+
+[INFO ] 2018-09-11 14:32:44,435 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.version=6.3
+
+
+[INFO ] 2018-09-11 14:32:44,435 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.name=Darrick
+
+
+[INFO ] 2018-09-11 14:32:44,436 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.home=C:\Users\Darrick
+
+
+[INFO ] 2018-09-11 14:32:44,436 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.dir=C:\Users\Darrick\Desktop\interview\WorkSpace\taotao-search-web
+
+
+[INFO ] 2018-09-11 14:32:44,438 method:org.apache.zookeeper.ZooKeeper.<init>(ZooKeeper.java:438)
+Initiating client connection, connectString=192.168.188.128:2181 sessionTimeout=30000 watcher=org.I0Itec.zkclient.ZkClient@25cef92c
+
+
+[INFO ] 2018-09-11 14:32:44,507 method:org.apache.zookeeper.ClientCnxn$SendThread.logStartConnect(ClientCnxn.java:1032)
+Opening socket connection to server 192.168.188.128/192.168.188.128:2181. Will not attempt to authenticate using SASL (unknown error)
+
+
+[INFO ] 2018-09-11 14:32:44,512 method:org.apache.zookeeper.ClientCnxn$SendThread.primeConnection(ClientCnxn.java:876)
+Socket connection established to 192.168.188.128/192.168.188.128:2181, initiating session
+
+
+[INFO ] 2018-09-11 14:32:44,524 method:org.apache.zookeeper.ClientCnxn$SendThread.onConnected(ClientCnxn.java:1299)
+Session establishment complete on server 192.168.188.128/192.168.188.128:2181, sessionid = 0x165c74f9f4e0007, negotiated timeout = 30000
+
+
+[INFO ] 2018-09-11 14:32:44,528 method:org.I0Itec.zkclient.ZkClient.processStateChanged(ZkClient.java:449)
+zookeeper state changed (SyncConnected)
+
+
+[INFO ] 2018-09-11 14:32:44,570 method:com.alibaba.dubbo.registry.support.AbstractRegistry.register(AbstractRegistry.java:302)
+ [DUBBO] Register: consumer://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=consumers&check=false&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=6640&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647559747, dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:32:44,630 method:com.alibaba.dubbo.registry.support.AbstractRegistry.subscribe(AbstractRegistry.java:325)
+ [DUBBO] Subscribe: consumer://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=providers,configurators,routers&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=6640&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647559747, dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:32:44,679 method:com.alibaba.dubbo.registry.support.AbstractRegistry.notify(AbstractRegistry.java:422)
+ [DUBBO] Notify urls for subscribe url consumer://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=providers,configurators,routers&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=6640&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647559747, urls: [dubbo://192.168.188.1:20882/com.taotao.search.service.SearchService?anyhost=true&application=taotao-search&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=976&side=provider&timeout=300000&timestamp=1536647353946, empty://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=configurators&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=6640&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647559747, empty://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=routers&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=6640&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647559747], dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:32:45,202 method:com.alibaba.dubbo.remoting.transport.AbstractClient.connect(AbstractClient.java:287)
+ [DUBBO] Successed connect to server /192.168.188.1:20882 from NettyClient 192.168.188.1 using dubbo version 2.5.3, channel is NettyChannel [channel=[id: 0xc74f9c0c, /192.168.188.1:65453 => /192.168.188.1:20882]], dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:32:45,204 method:com.alibaba.dubbo.remoting.transport.AbstractClient.<init>(AbstractClient.java:105)
+ [DUBBO] Start NettyClient Darrick/192.168.188.1 connect to the server /192.168.188.1:20882, dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:32:45,414 method:com.alibaba.dubbo.config.ReferenceConfig.createProxy(ReferenceConfig.java:423)
+ [DUBBO] Refer dubbo service com.taotao.search.service.SearchService from url zookeeper://192.168.188.128:2181/com.alibaba.dubbo.registry.RegistryService?anyhost=true&application=taotao-search-web&check=false&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=6640&revision=0.0.1-SNAPSHOT&side=consumer&timeout=300000&timestamp=1536647559747, dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:32:46,153 method:org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:527)
+Mapped "{[/search]}" onto public java.lang.String com.taotao.search.controller.SearchController.searchItem(java.lang.String,java.lang.Integer,org.springframework.ui.Model) throws java.lang.Exception
+
+
+[INFO ] 2018-09-11 14:32:46,931 method:org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:532)
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'taotao-search-web-servlet': startup date [Tue Sep 11 14:32:38 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-09-11 14:32:47,112 method:org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:532)
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'taotao-search-web-servlet': startup date [Tue Sep 11 14:32:38 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-09-11 14:32:47,527 method:org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:508)
+FrameworkServlet 'taotao-search-web': initialization completed in 9227 ms
+
+
+[ERROR] 2018-09-11 14:33:04,640 method:com.taotao.search.exception.GlobalExceptionResolver.resolveException(GlobalExceptionResolver.java:18)
+运行时异常
+java.lang.ArithmeticException: / by zero
+	at com.taotao.search.controller.SearchController.searchItem(SearchController.java:36)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:222)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:814)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:737)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:969)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:860)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:621)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:845)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:222)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:123)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:171)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:100)
+	at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:953)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:408)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1041)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:603)
+	at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:310)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+[ERROR] 2018-09-11 14:36:47,933 method:com.taotao.search.exception.GlobalExceptionResolver.resolveException(GlobalExceptionResolver.java:18)
+运行时异常
+java.lang.ArithmeticException: / by zero
+	at com.taotao.search.controller.SearchController.searchItem(SearchController.java:36)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:222)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:814)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:737)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:969)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:860)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:621)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:845)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:222)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:123)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:171)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:100)
+	at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:953)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:408)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1041)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:603)
+	at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:310)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+[INFO ] 2018-09-11 14:37:18,334 method:org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:489)
+FrameworkServlet 'taotao-search-web': initialization started
+
+
+[INFO ] 2018-09-11 14:37:18,382 method:org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:578)
+Refreshing WebApplicationContext for namespace 'taotao-search-web-servlet': startup date [Tue Sep 11 14:37:18 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-09-11 14:37:18,457 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:317)
+Loading XML bean definitions from class path resource [spring/springmvc.xml]
+
+
+[INFO ] 2018-09-11 14:37:19,027 method:
+using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+
+
+[INFO ] 2018-09-11 14:37:19,275 method:org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(PropertiesLoaderSupport.java:172)
+Loading properties file from class path resource [resource/resource.properties]
+
+
+[INFO ] 2018-09-11 14:37:19,282 method:org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:153)
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+
+
+[INFO ] 2018-09-11 14:37:19,970 method:com.alibaba.dubbo.registry.support.AbstractRegistry.loadProperties(AbstractRegistry.java:232)
+ [DUBBO] Load registry store file C:\Users\Darrick\.dubbo\dubbo-registry-192.168.188.128.cache, data: {com.taotao.content.service.ContentCategoryService=empty://192.168.188.1:20881/com.taotao.content.service.ContentCategoryService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=5388&side=provider&timeout=300000&timestamp=1536647325129, com.taotao.search.service.SearchService=empty://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=configurators&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=6640&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647559747 empty://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=routers&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=6640&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647559747 dubbo://192.168.188.1:20882/com.taotao.search.service.SearchService?anyhost=true&application=taotao-search&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=976&side=provider&timeout=300000&timestamp=1536647353946, com.taoato.content.service.ContentCategoryService=empty://192.168.188.1/com.taoato.content.service.ContentCategoryService?application=taotao-manager-web&category=configurators&dubbo=2.5.3&interface=com.taoato.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=14316&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536057258914 empty://192.168.188.1/com.taoato.content.service.ContentCategoryService?application=taotao-manager-web&category=routers&dubbo=2.5.3&interface=com.taoato.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=14316&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536057258914 dubbo://192.168.188.1:20881/com.taoato.content.service.ContentCategoryService?anyhost=true&application=taotao-content&dubbo=2.5.3&interface=com.taoato.content.service.ContentCategoryService&methods=insertContentCat,getContentCatList&pid=2368&side=provider&timeout=300000&timestamp=1536057230242, com.taotao.service.ItemCatService=empty://192.168.188.1:20880/com.taotao.service.ItemCatService?anyhost=true&application=taotao-manager&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.service.ItemCatService&methods=getItemCatList&pid=8068&side=provider&timeout=300000&timestamp=1536647313765, com.taotao.content.service.ContentService=empty://192.168.188.1:20881/com.taotao.content.service.ContentService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.content.service.ContentService&methods=getContentList,insertContent&pid=5388&side=provider&timeout=300000&timestamp=1536647331420, com.taoato.content.service.ContentService=empty://192.168.188.1:20881/com.taoato.content.service.ContentService?anyhost=true&application=taotao-content&category=configurators&check=false&dubbo=2.5.3&interface=com.taoato.content.service.ContentService&methods=getContentList,insertContent&pid=2368&side=provider&timeout=300000&timestamp=1536057235507, com.taotao.service.ItemService=empty://192.168.188.1:20880/com.taotao.service.ItemService?anyhost=true&application=taotao-manager&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.service.ItemService&methods=addItem,getItemList,getItemById&pid=8068&side=provider&timeout=300000&timestamp=1536647307378, com.taotao.search.service.SearchItemService=empty://192.168.188.1:20882/com.taotao.search.service.SearchItemService?anyhost=true&application=taotao-search&category=configurators&check=false&dubbo=2.5.3&interface=com.taotao.search.service.SearchItemService&methods=importAllItemToIndex&pid=976&side=provider&timeout=300000&timestamp=1536647347560}, dubbo version: 2.5.3, current host: 127.0.0.1
+
+
+[INFO ] 2018-09-11 14:37:20,009 method:org.I0Itec.zkclient.ZkEventThread.run(ZkEventThread.java:64)
+Starting ZkClient event thread.
+
+
+[INFO ] 2018-09-11 14:37:24,573 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:zookeeper.version=3.4.7-1713338, built on 11/09/2015 04:32 GMT
+
+
+[INFO ] 2018-09-11 14:37:24,574 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:host.name=Darrick
+
+
+[INFO ] 2018-09-11 14:37:24,575 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.version=1.8.0_11
+
+
+[INFO ] 2018-09-11 14:37:24,576 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.vendor=Oracle Corporation
+
+
+[INFO ] 2018-09-11 14:37:24,576 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.home=C:\Darrick\SoftWare\jdk1.8.0_11\jre
+
+
+[INFO ] 2018-09-11 14:37:24,576 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.class.path=C:\Darrick\SoftWare\apache-maven-3.3.3\boot\plexus-classworlds-2.5.2.jar
+
+
+[INFO ] 2018-09-11 14:37:24,577 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.library.path=C:\Darrick\SoftWare\jdk1.8.0_11\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Darrick\SoftWare\jdk1.8.0_11\jre\bin;C:/Darrick/SoftWare/jdk1.8.0_11/bin/../jre/bin/server;C:/Darrick/SoftWare/jdk1.8.0_11/bin/../jre/bin;C:/Darrick/SoftWare/jdk1.8.0_11/bin/../jre/lib/amd64;C:\Darrick\SoftWare\jdk1.8.0_11\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Darrick\SoftWare\TortoiseSVN\bin;C:\Darrick\SoftWare\apache-maven-3.3.3\bin;C:\Darrick\SoftWare\Subversion\bin;C:\Darrick\SoftWare\apache-ant-1.9.4\bin;C:\Darrick\SoftWare\MySQL Server 5.5\bin;C:\Darrick\SoftWare\Design\Autodesk\Backburner\;C:\Program Files\Common Files\Autodesk Shared\;C:\Darrick\SoftWare\gradle-3.5\bin;D:\Ue\sdk\UE\sdk\platform-tools;C:\Darrick\SoftWare\Git\cmd;%CATALINA_HOME%\bin;C:\Users\Darrick\AppData\Local\Microsoft\WindowsApps;;C:\Darrick\SoftWare\eclipse;;.
+
+
+[INFO ] 2018-09-11 14:37:24,577 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.io.tmpdir=C:\Users\Darrick\AppData\Local\Temp\
+
+
+[INFO ] 2018-09-11 14:37:24,578 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.compiler=<NA>
+
+
+[INFO ] 2018-09-11 14:37:24,580 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.name=Windows 8.1
+
+
+[INFO ] 2018-09-11 14:37:24,580 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.arch=amd64
+
+
+[INFO ] 2018-09-11 14:37:24,580 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.version=6.3
+
+
+[INFO ] 2018-09-11 14:37:24,581 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.name=Darrick
+
+
+[INFO ] 2018-09-11 14:37:24,581 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.home=C:\Users\Darrick
+
+
+[INFO ] 2018-09-11 14:37:24,581 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.dir=C:\Users\Darrick\Desktop\interview\WorkSpace\taotao-search-web
+
+
+[INFO ] 2018-09-11 14:37:24,584 method:org.apache.zookeeper.ZooKeeper.<init>(ZooKeeper.java:438)
+Initiating client connection, connectString=192.168.188.128:2181 sessionTimeout=30000 watcher=org.I0Itec.zkclient.ZkClient@1281217e
+
+
+[INFO ] 2018-09-11 14:37:24,649 method:org.apache.zookeeper.ClientCnxn$SendThread.logStartConnect(ClientCnxn.java:1032)
+Opening socket connection to server 192.168.188.128/192.168.188.128:2181. Will not attempt to authenticate using SASL (unknown error)
+
+
+[INFO ] 2018-09-11 14:37:24,652 method:org.apache.zookeeper.ClientCnxn$SendThread.primeConnection(ClientCnxn.java:876)
+Socket connection established to 192.168.188.128/192.168.188.128:2181, initiating session
+
+
+[INFO ] 2018-09-11 14:37:24,667 method:org.apache.zookeeper.ClientCnxn$SendThread.onConnected(ClientCnxn.java:1299)
+Session establishment complete on server 192.168.188.128/192.168.188.128:2181, sessionid = 0x165c74f9f4e0008, negotiated timeout = 30000
+
+
+[INFO ] 2018-09-11 14:37:24,669 method:org.I0Itec.zkclient.ZkClient.processStateChanged(ZkClient.java:449)
+zookeeper state changed (SyncConnected)
+
+
+[INFO ] 2018-09-11 14:37:24,723 method:com.alibaba.dubbo.registry.support.AbstractRegistry.register(AbstractRegistry.java:302)
+ [DUBBO] Register: consumer://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=consumers&check=false&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=15344&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647839874, dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:37:24,773 method:com.alibaba.dubbo.registry.support.AbstractRegistry.subscribe(AbstractRegistry.java:325)
+ [DUBBO] Subscribe: consumer://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=providers,configurators,routers&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=15344&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647839874, dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:37:24,823 method:com.alibaba.dubbo.registry.support.AbstractRegistry.notify(AbstractRegistry.java:422)
+ [DUBBO] Notify urls for subscribe url consumer://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=providers,configurators,routers&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=15344&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647839874, urls: [dubbo://192.168.188.1:20882/com.taotao.search.service.SearchService?anyhost=true&application=taotao-search&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=976&side=provider&timeout=300000&timestamp=1536647353946, empty://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=configurators&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=15344&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647839874, empty://192.168.188.1/com.taotao.search.service.SearchService?application=taotao-search-web&category=routers&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=15344&revision=0.0.1-SNAPSHOT&side=consumer&timestamp=1536647839874], dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:37:25,219 method:com.alibaba.dubbo.remoting.transport.AbstractClient.connect(AbstractClient.java:287)
+ [DUBBO] Successed connect to server /192.168.188.1:20882 from NettyClient 192.168.188.1 using dubbo version 2.5.3, channel is NettyChannel [channel=[id: 0x9937a09a, /192.168.188.1:50356 => /192.168.188.1:20882]], dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:37:25,220 method:com.alibaba.dubbo.remoting.transport.AbstractClient.<init>(AbstractClient.java:105)
+ [DUBBO] Start NettyClient Darrick/192.168.188.1 connect to the server /192.168.188.1:20882, dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:37:25,339 method:com.alibaba.dubbo.config.ReferenceConfig.createProxy(ReferenceConfig.java:423)
+ [DUBBO] Refer dubbo service com.taotao.search.service.SearchService from url zookeeper://192.168.188.128:2181/com.alibaba.dubbo.registry.RegistryService?anyhost=true&application=taotao-search-web&check=false&dubbo=2.5.3&interface=com.taotao.search.service.SearchService&methods=search&pid=15344&revision=0.0.1-SNAPSHOT&side=consumer&timeout=300000&timestamp=1536647839874, dubbo version: 2.5.3, current host: 192.168.188.1
+
+
+[INFO ] 2018-09-11 14:37:26,111 method:org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:527)
+Mapped "{[/search]}" onto public java.lang.String com.taotao.search.controller.SearchController.searchItem(java.lang.String,java.lang.Integer,org.springframework.ui.Model) throws java.lang.Exception
+
+
+[INFO ] 2018-09-11 14:37:26,778 method:org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:532)
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'taotao-search-web-servlet': startup date [Tue Sep 11 14:37:18 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-09-11 14:37:27,021 method:org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:532)
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'taotao-search-web-servlet': startup date [Tue Sep 11 14:37:18 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-09-11 14:37:27,536 method:org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:508)
+FrameworkServlet 'taotao-search-web': initialization completed in 9197 ms
+
+
+[ERROR] 2018-09-11 14:37:33,134 method:com.taotao.search.exception.GlobalExceptionResolver.resolveException(GlobalExceptionResolver.java:18)
+运行时异常
+java.lang.ArithmeticException: / by zero
+	at com.taotao.search.controller.SearchController.searchItem(SearchController.java:36)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:222)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:814)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:737)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:969)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:860)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:621)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:845)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:222)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:123)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:171)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:100)
+	at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:953)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:408)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1041)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:603)
+	at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:310)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+[ERROR] 2018-09-11 14:38:03,300 method:com.taotao.search.exception.GlobalExceptionResolver.resolveException(GlobalExceptionResolver.java:18)
+运行时异常
+java.lang.ArithmeticException: / by zero
+	at com.taotao.search.controller.SearchController.searchItem(SearchController.java:36)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:222)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:814)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:737)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:969)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:860)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:621)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:845)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:222)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:123)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:171)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:100)
+	at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:953)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:408)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1041)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:603)
+	at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:310)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+[ERROR] 2018-09-11 14:40:33,088 method:com.taotao.search.exception.GlobalExceptionResolver.resolveException(GlobalExceptionResolver.java:18)
+运行时异常
+java.lang.ArithmeticException: / by zero
+	at com.taotao.search.controller.SearchController.searchItem(SearchController.java:36)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:222)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:814)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:737)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:969)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:860)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:621)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:845)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:222)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:123)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:171)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:100)
+	at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:953)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:408)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1041)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:603)
+	at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:310)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+[ERROR] 2018-09-11 14:40:37,533 method:com.taotao.search.exception.GlobalExceptionResolver.resolveException(GlobalExceptionResolver.java:18)
+运行时异常
+java.lang.ArithmeticException: / by zero
+	at com.taotao.search.controller.SearchController.searchItem(SearchController.java:36)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:222)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:814)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:737)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:969)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:860)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:621)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:845)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:222)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:123)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:171)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:100)
+	at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:953)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:408)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1041)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:603)
+	at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:310)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+[WARN ] 2018-09-11 14:40:42,709 method:org.springframework.web.servlet.DispatcherServlet.noHandlerFound(DispatcherServlet.java:1136)
+No mapping found for HTTP request with URI [/] in DispatcherServlet with name 'taotao-search-web'
+
+
+[WARN ] 2018-09-11 14:40:47,405 method:org.springframework.web.servlet.DispatcherServlet.noHandlerFound(DispatcherServlet.java:1136)
+No mapping found for HTTP request with URI [/] in DispatcherServlet with name 'taotao-search-web'
+
+
+[ERROR] 2018-09-11 14:41:54,560 method:com.taotao.search.exception.GlobalExceptionResolver.resolveException(GlobalExceptionResolver.java:18)
+运行时异常
+java.lang.ArithmeticException: / by zero
+	at com.taotao.search.controller.SearchController.searchItem(SearchController.java:36)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:483)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:222)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:814)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:737)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:969)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:860)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:621)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:845)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:728)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:305)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:243)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:210)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:222)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:123)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:171)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:100)
+	at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:953)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:118)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:408)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1041)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:603)
+	at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:310)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
