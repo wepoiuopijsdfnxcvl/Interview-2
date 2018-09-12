@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/beautyeye_lnf.jar"/>
+	<classpathentry kind="lib" path="lib/miglayout-swing-4.2.jar"/>
+	<classpathentry kind="lib" path="lib/weblaf-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/miglayout-core-4.2.jar"/>
+	<classpathentry kind="lib" path="lib/fastjson-1.2.12.jar"/>
+	<classpathentry kind="lib" path="lib/httpclient-4.5.2.jar"/>
+	<classpathentry kind="lib" path="lib/httpcore-4.4.5.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/netty-all-4.1.9.Final.jar"/>
+	<classpathentry kind="lib" path="lib/quartz-2.2.1.jar" sourcepath="E:/MyWork2017/P2PWebMaster/repository/org/quartz-scheduler/quartz/2.2.1/quartz-2.2.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.6.6.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.7.jar"/>
+	<classpathentry kind="lib" path="lib/swingx-core-1.6.5.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-nop-1.6.6.jar"/>
+	<classpathentry kind="lib" path="src/libs/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="src/libs/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="src/libs/fastjson-1.2.12.jar"/>
+	<classpathentry kind="lib" path="src/libs/httpclient-4.5.2.jar"/>
+	<classpathentry kind="lib" path="src/libs/httpcore-4.4.5.jar"/>
+	<classpathentry kind="lib" path="src/libs/log4j-api-2.6.1.jar"/>
+	<classpathentry kind="lib" path="src/libs/log4j-core-2.6.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
