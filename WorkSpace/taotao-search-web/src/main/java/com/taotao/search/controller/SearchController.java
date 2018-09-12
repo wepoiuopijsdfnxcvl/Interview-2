@@ -33,7 +33,7 @@ public class SearchController {
 		model.addAttribute("itemList", searchResult.getItemList());
 		model.addAttribute("page", page);
 		// 返回逻辑视图
-		int i = 2/0;
+		//int i = 2/0;
 		return "search";
 	}
 

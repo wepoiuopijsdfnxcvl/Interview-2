@@ -27,7 +27,10 @@
 		<module>taotao-manager-interface</module>
 		<module>taotao-manger-service</module>
 	</modules>
-
+	 <!-- maven install 跳过junit test -->
+    <properties>
+      <maven.test.skip>true</maven.test.skip>
+    </properties>
 	<!-- 配置tomcat插件 -->
 	<build>
 		<plugins>

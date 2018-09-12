@@ -3,7 +3,16 @@ package com.taotao.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+import javax.jms.Topic;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
@@ -27,6 +36,12 @@ public class ItemServiceImpl implements ItemService {
 	@Autowired
 	private TbItemDescMapper tbItemDescMapper;
 
+	@Autowired
+	private JmsTemplate jmsTemplate;
+	
+	@Resource(name="topicDestination")
+	private Topic topicDestination;
+	
 	@Override
 	public TbItem getItemById(long itemId) {
 		TbItem item = tbItemMapper.selectByPrimaryKey(itemId);
@@ -52,7 +67,7 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public TaotaoResult addItem(TbItem item, String desc) {
 		//先生成商品id
-		long itemId = IDUtils.genItemId();
+		final long itemId = IDUtils.genItemId();
 		item.setId(itemId);
 		//商品状态：1-正常，2-下架，3-删除
 		item.setStatus((byte)1);
@@ -70,7 +85,24 @@ public class ItemServiceImpl implements ItemService {
 		itemDesc.setUpdated(date);
 		//插入商品描述
 		tbItemDescMapper.insert(itemDesc);
+		
+		//商品添加完成后发送一个MQ消息
+		jmsTemplate.send(topicDestination,new MessageCreator() {
+			@Override
+			public Message createMessage(Session session) throws JMSException {
+				//创建一个消息对象
+				//要在匿名内部类访问局部变量itemId，itemId需要final修饰
+				TextMessage message = session.createTextMessage(itemId+"");
+				return message;
+			}
+		});
 		return TaotaoResult.ok();
+	}
+
+	@Override
+	public TbItemDesc getItemDesc(long itemId) {
+		TbItemDesc itemDesc = tbItemDescMapper.selectByPrimaryKey(itemId);
+		return itemDesc;
 	}
 
 }
