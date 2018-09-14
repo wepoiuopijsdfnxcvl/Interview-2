@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import freemarker.template.Configuration;
@@ -20,6 +21,7 @@ public class FreemarkerController {
 	private FreeMarkerConfigurer freeMarkerConfigurer;
 
 	@RequestMapping("/genHtml")
+	@ResponseBody
 	public String genHtml() throws Exception {
 		Configuration configuration = freeMarkerConfigurer.getConfiguration();
 		Template template = configuration.getTemplate("hello.ftl");
