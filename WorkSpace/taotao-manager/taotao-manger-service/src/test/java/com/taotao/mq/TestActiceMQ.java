@@ -14,6 +14,7 @@ import javax.jms.Topic;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQTextMessage;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 public class TestActiceMQ {
@@ -184,4 +185,13 @@ public class TestActiceMQ {
 		session.close();
 		connection.close();
 	}
+	@Test
+	public void testString() {
+		String str = null;
+		boolean noneBlank = StringUtils.isNotBlank(str);
+		System.out.println(noneBlank);
+	}
+	
+	
+	
 }

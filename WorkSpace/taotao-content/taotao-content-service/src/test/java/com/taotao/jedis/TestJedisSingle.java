@@ -53,8 +53,8 @@ public class TestJedisSingle {
 		nodes.add(new HostAndPort("192.168.188.128", 7006));
 		// 创建JedisCluster对象
 		JedisCluster jedisCluster = new JedisCluster(nodes);
-		jedisCluster.set("jedisCluster", "123456");
-		String result = jedisCluster.get("jedisCluster");
+		jedisCluster.set("jedisCluster:sdfdsfd:wew:rere:rer", "123456");
+		String result = jedisCluster.get("jedisCluster:sdfdsfd");
 		System.out.println(result);
 		// 系统结束前关闭jedisCluster对象
 		jedisCluster.close();
