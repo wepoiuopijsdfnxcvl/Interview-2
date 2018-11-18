@@ -32,7 +32,6 @@ public class PrintABC {
 					} finally {
 						lock.unlock();
 					}
-
 				}
 		}
 	}

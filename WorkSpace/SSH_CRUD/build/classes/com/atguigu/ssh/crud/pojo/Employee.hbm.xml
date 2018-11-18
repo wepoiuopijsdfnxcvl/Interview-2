@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-9-7 16:38:43 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.atguigu.ssh.crud.pojo.Employee" table="T_EMP">
+        <id name="empId" type="java.lang.Integer">
+            <column name="EMP_ID" />
+            <generator class="native" />
+        </id>
+        <property name="empName" type="java.lang.String">
+            <column name="EMP_NAME" />
+        </property>
+        <many-to-one name="department" class="com.atguigu.ssh.crud.pojo.Department" fetch="join">
+            <column name="DEPT_ID_FK" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
