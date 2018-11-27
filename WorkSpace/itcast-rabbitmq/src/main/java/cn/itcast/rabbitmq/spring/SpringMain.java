@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringMain {
     public static void main(final String... args) throws Exception {
-        AbstractApplicationContext ctx = new ClassPathXmlApplicationContext(
+       AbstractApplicationContext ctx = new ClassPathXmlApplicationContext(
                 "classpath:spring/rabbitmq-context.xml");
         //RabbitMQ模板
         RabbitTemplate template = ctx.getBean(RabbitTemplate.class);
@@ -14,5 +14,5 @@ public class SpringMain {
         template.convertAndSend("Hello, world!");
         Thread.sleep(1000);// 休眠1秒
         ctx.destroy(); //容器销毁
-    }
+   }
 }
