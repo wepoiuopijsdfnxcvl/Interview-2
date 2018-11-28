@@ -1,4 +1,4 @@
-package cn.collabtech.sign;
+package cn.collabtech.utils;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,8 +12,37 @@ import org.apache.commons.codec.digest.DigestUtils;
  * @author: 研发部-黄泽建
  * @since: 2018年8月13日下午4:00:34 
  * @version: 1.0.4
+ * 假设请求参数如下
+a: 20
+b: 10
+c: 30
+
+公共参数:
+nonceStr： 430f08b340be43e5b87e9061ff960e78
+timestamp： 1542868554259
+apiKey： 123456
+
+按请求参数和公共参数按首字母升序排序：
+a=20&apiKey=123456&b=10&c=30&nonceStr=430f08b340be43e5b87e9061ff960e78&timestamp=1542868554259
+
+签名密钥
+密钥为：654321
+
+sign的计算方式为：
+md5(“a=20&apiKey=123456&b=10&c=30&nonceStr=430f08b340be43e5b87e9061ff960e78&timestamp=1542868554259”+”&key=654321”)
+得到的sign值应为：4F497DB40FAC2C10E4D19956F6422338
+
  */
 public class SignUtil {
+	
+	public static void main(String[] args) {
+		Map<String, String> paramMap = new HashMap<>();
+		paramMap.put("name", "A");
+		paramMap.put("password", "123456");
+		String sign = SignUtil.getSign(paramMap,"key65423");
+		System.out.println(sign);
+	}
+	
 
     /**
      * 获取随机字符串
