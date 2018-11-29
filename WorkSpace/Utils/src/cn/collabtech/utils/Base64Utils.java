@@ -2,7 +2,7 @@ package cn.collabtech.utils;
 public class Base64Utils {
 	
 	public static void main(String[] args) {
-		String str = "123456";
+		String str = "zz";
 		//编码
 		String encode = encode(str);
 		System.out.println(encode);
