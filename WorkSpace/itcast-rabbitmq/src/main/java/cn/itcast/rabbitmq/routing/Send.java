@@ -1,7 +1,6 @@
 package cn.itcast.rabbitmq.routing;
 
 import cn.itcast.rabbitmq.util.ConnectionUtil;
-
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 
