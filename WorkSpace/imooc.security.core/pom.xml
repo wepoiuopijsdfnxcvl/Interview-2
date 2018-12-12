@@ -8,7 +8,6 @@
   	<relativePath>../imooc.security</relativePath>
   </parent>
   
-  
   		<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
