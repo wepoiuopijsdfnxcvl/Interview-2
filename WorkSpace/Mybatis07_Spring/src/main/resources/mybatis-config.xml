@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- 1.引入外部属性文件：jdbc.properties -->
+	<!-- 转移至Spring -->
+	
+	<!-- 2.配置MyBatis当前的运行环境 -->
+	<!-- 转移至Spring -->
+	
+	<!-- 3.XxxMapper.xml配置文件的位置 -->
+	<!-- 转移至Spring -->
+
+</configuration>

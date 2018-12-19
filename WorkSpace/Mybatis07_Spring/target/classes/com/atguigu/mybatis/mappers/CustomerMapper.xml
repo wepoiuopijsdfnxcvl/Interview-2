@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 指定接口全类名 -->
+<mapper namespace="com.atguigu.mybatis.mappers.CustomerMapper">
+
+	<select id="getCustomerById" parameterType="integer" resultType="Customer">
+		select cust_id custId,cust_name custName,cust_age custAge
+		from tbl_cust
+		where cust_id=#{custId}
+	</select>
+
+</mapper>
