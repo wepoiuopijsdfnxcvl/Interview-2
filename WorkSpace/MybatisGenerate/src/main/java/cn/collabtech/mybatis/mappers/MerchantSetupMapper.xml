@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zcy.zcmorefun.jifen.dao.MerchantSetupMapper" >
+  <resultMap id="BaseResultMap" type="com.zcy.zcmorefun.jifen.model.system.MerchantSetup" >
+    <id column="setup_id" property="setupId" jdbcType="INTEGER" />
+    <result column="merchant_id" property="merchantId" jdbcType="INTEGER" />
+    <result column="exchange_status" property="exchangeStatus" jdbcType="INTEGER" />
+    <result column="integral_unit" property="integralUnit" jdbcType="VARCHAR" />
+    <result column="exchange_rate" property="exchangeRate" jdbcType="INTEGER" />
+    <result column="optional_status" property="optionalStatus" jdbcType="INTEGER" />
+    <result column="limit_status" property="limitStatus" jdbcType="INTEGER" />
+    <result column="exchange_begin_date" property="exchangeBeginDate" jdbcType="TIMESTAMP" />
+    <result column="exchange_end_date" property="exchangeEndDate" jdbcType="TIMESTAMP" />
+    <result column="exchange_limit" property="exchangeLimit" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="integral_rate" property="integralRate" jdbcType="INTEGER" />
+    <result column="clear_status" property="clearStatus" jdbcType="INTEGER" />
+    <result column="clear_time" property="clearTime" jdbcType="TIMESTAMP" />
+    <result column="inform_status" property="informStatus" jdbcType="INTEGER" />
+    <result column="inform_time" property="informTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    setup_id, merchant_id, exchange_status, integral_unit, exchange_rate, optional_status, 
+    limit_status, exchange_begin_date, exchange_end_date, exchange_limit, update_time, 
+    integral_rate, clear_status, clear_time, inform_status, inform_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from merchant_setup
+    where setup_id = #{setupId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from merchant_setup
+    where setup_id = #{setupId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zcy.zcmorefun.jifen.model.system.MerchantSetup" >
+    insert into merchant_setup (setup_id, merchant_id, exchange_status, 
+      integral_unit, exchange_rate, optional_status, 
+      limit_status, exchange_begin_date, exchange_end_date, 
+      exchange_limit, update_time, integral_rate, 
+      clear_status, clear_time, inform_status, 
+      inform_time)
+    values (#{setupId,jdbcType=INTEGER}, #{merchantId,jdbcType=INTEGER}, #{exchangeStatus,jdbcType=INTEGER}, 
+      #{integralUnit,jdbcType=VARCHAR}, #{exchangeRate,jdbcType=INTEGER}, #{optionalStatus,jdbcType=INTEGER}, 
+      #{limitStatus,jdbcType=INTEGER}, #{exchangeBeginDate,jdbcType=TIMESTAMP}, #{exchangeEndDate,jdbcType=TIMESTAMP}, 
+      #{exchangeLimit,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{integralRate,jdbcType=INTEGER}, 
+      #{clearStatus,jdbcType=INTEGER}, #{clearTime,jdbcType=TIMESTAMP}, #{informStatus,jdbcType=INTEGER}, 
+      #{informTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zcy.zcmorefun.jifen.model.system.MerchantSetup" >
+    insert into merchant_setup
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="setupId != null" >
+        setup_id,
+      </if>
+      <if test="merchantId != null" >
+        merchant_id,
+      </if>
+      <if test="exchangeStatus != null" >
+        exchange_status,
+      </if>
+      <if test="integralUnit != null" >
+        integral_unit,
+      </if>
+      <if test="exchangeRate != null" >
+        exchange_rate,
+      </if>
+      <if test="optionalStatus != null" >
+        optional_status,
+      </if>
+      <if test="limitStatus != null" >
+        limit_status,
+      </if>
+      <if test="exchangeBeginDate != null" >
+        exchange_begin_date,
+      </if>
+      <if test="exchangeEndDate != null" >
+        exchange_end_date,
+      </if>
+      <if test="exchangeLimit != null" >
+        exchange_limit,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="integralRate != null" >
+        integral_rate,
+      </if>
+      <if test="clearStatus != null" >
+        clear_status,
+      </if>
+      <if test="clearTime != null" >
+        clear_time,
+      </if>
+      <if test="informStatus != null" >
+        inform_status,
+      </if>
+      <if test="informTime != null" >
+        inform_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="setupId != null" >
+        #{setupId,jdbcType=INTEGER},
+      </if>
+      <if test="merchantId != null" >
+        #{merchantId,jdbcType=INTEGER},
+      </if>
+      <if test="exchangeStatus != null" >
+        #{exchangeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="integralUnit != null" >
+        #{integralUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="exchangeRate != null" >
+        #{exchangeRate,jdbcType=INTEGER},
+      </if>
+      <if test="optionalStatus != null" >
+        #{optionalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="limitStatus != null" >
+        #{limitStatus,jdbcType=INTEGER},
+      </if>
+      <if test="exchangeBeginDate != null" >
+        #{exchangeBeginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exchangeEndDate != null" >
+        #{exchangeEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exchangeLimit != null" >
+        #{exchangeLimit,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="integralRate != null" >
+        #{integralRate,jdbcType=INTEGER},
+      </if>
+      <if test="clearStatus != null" >
+        #{clearStatus,jdbcType=INTEGER},
+      </if>
+      <if test="clearTime != null" >
+        #{clearTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="informStatus != null" >
+        #{informStatus,jdbcType=INTEGER},
+      </if>
+      <if test="informTime != null" >
+        #{informTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zcy.zcmorefun.jifen.model.system.MerchantSetup" >
+    update merchant_setup
+    <set >
+      <if test="merchantId != null" >
+        merchant_id = #{merchantId,jdbcType=INTEGER},
+      </if>
+      <if test="exchangeStatus != null" >
+        exchange_status = #{exchangeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="integralUnit != null" >
+        integral_unit = #{integralUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="exchangeRate != null" >
+        exchange_rate = #{exchangeRate,jdbcType=INTEGER},
+      </if>
+      <if test="optionalStatus != null" >
+        optional_status = #{optionalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="limitStatus != null" >
+        limit_status = #{limitStatus,jdbcType=INTEGER},
+      </if>
+      <if test="exchangeBeginDate != null" >
+        exchange_begin_date = #{exchangeBeginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exchangeEndDate != null" >
+        exchange_end_date = #{exchangeEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exchangeLimit != null" >
+        exchange_limit = #{exchangeLimit,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="integralRate != null" >
+        integral_rate = #{integralRate,jdbcType=INTEGER},
+      </if>
+      <if test="clearStatus != null" >
+        clear_status = #{clearStatus,jdbcType=INTEGER},
+      </if>
+      <if test="clearTime != null" >
+        clear_time = #{clearTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="informStatus != null" >
+        inform_status = #{informStatus,jdbcType=INTEGER},
+      </if>
+      <if test="informTime != null" >
+        inform_time = #{informTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where setup_id = #{setupId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zcy.zcmorefun.jifen.model.system.MerchantSetup" >
+    update merchant_setup
+    set merchant_id = #{merchantId,jdbcType=INTEGER},
+      exchange_status = #{exchangeStatus,jdbcType=INTEGER},
+      integral_unit = #{integralUnit,jdbcType=VARCHAR},
+      exchange_rate = #{exchangeRate,jdbcType=INTEGER},
+      optional_status = #{optionalStatus,jdbcType=INTEGER},
+      limit_status = #{limitStatus,jdbcType=INTEGER},
+      exchange_begin_date = #{exchangeBeginDate,jdbcType=TIMESTAMP},
+      exchange_end_date = #{exchangeEndDate,jdbcType=TIMESTAMP},
+      exchange_limit = #{exchangeLimit,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      integral_rate = #{integralRate,jdbcType=INTEGER},
+      clear_status = #{clearStatus,jdbcType=INTEGER},
+      clear_time = #{clearTime,jdbcType=TIMESTAMP},
+      inform_status = #{informStatus,jdbcType=INTEGER},
+      inform_time = #{informTime,jdbcType=TIMESTAMP}
+    where setup_id = #{setupId,jdbcType=INTEGER}
+  </update>
+</mapper>
