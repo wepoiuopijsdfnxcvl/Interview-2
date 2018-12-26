@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.collabtech.ssm.mapper.StudentMapper">
+    <select id="findAll" resultType="Student">
+        select * from student
+    </select>
+
+    <!--按id查找-->
+    <select id="findStudentById" parameterType="int" resultType="Student">
+        select * from student WHERE id=#{id}
+    </select>
+
+    <!--插入增加-->
+    <insert id="addStudent" parameterType="Student">
+        INSERT INTO student(id,name,age) VALUES(#{id},#{name},#{age})
+     </insert>
+
+    <!--删除学生-->
+    <delete id="delStudentById" parameterType="Student">
+        DELETE FROM student WHERE id = #{id}
+    </delete>
+
+    <!--更新学生-->
+    <update id="updateStudent" parameterType="Student">
+        UPDATE student
+        SET name = #{name},
+        age = #{age}
+        WHERE id = #{id};
+    </update>
+
+</mapper>

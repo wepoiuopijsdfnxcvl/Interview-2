@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.collabtech.ssm.mapper.TeacherMapper">
+
+    <resultMap id="queryForListMap" type= "cn.collabtech.ssm.bean.Teacher">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <collection property="courses" javaType="java.util.List" ofType="cn.collabtech.ssm.bean.Course">
+            <id column="id" property="id" jdbcType="INTEGER" />
+            <result column="name" property="name" jdbcType="VARCHAR" />
+        </collection>
+    </resultMap>
+
+    <select id="findAll" resultMap="queryForListMap">
+        select * from teacher t LEFT JOIN course c ON t.id=c.t_id
+    </select>
+
+    <!--插入返回主键-->
+    <insert id="insertReturnKey" parameterType="cn.collabtech.ssm.bean.Teacher" useGeneratedKeys="true" keyProperty="id">
+        insert into teacher(id,name)
+        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
+    </insert>
+
+    <!--批量插入返回主键-->
+    <insert id="insertBatchReturnKey" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+        insert into teacher(id,name)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id,jdbcType=INTEGER}, #{item.name,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+    <!--批量插入返回主键-->
+    <insert id="insertBatchReturnKeyByVo" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+        insert into teacher(teacher_id,name)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.teacherId,jdbcType=INTEGER}, #{item.name,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+</mapper>
