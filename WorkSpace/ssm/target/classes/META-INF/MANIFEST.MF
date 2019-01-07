@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: ssm
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: HP
+Implementation-Vendor-Id: cn.collabtech
+Build-Jdk: 1.8.0_181
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/ssm
+Created-By: Maven Integration for Eclipse
+
