@@ -45,7 +45,7 @@
 					</javaClientGenerator>
 
 					<!-- 数据库表名字和我们的entity类对应的映射指定 -->
-					<table tableName="merchant_setup" domainObjectName="MerchantSetup"  enableCountByExample="false" enableUpdateByExample="false"  enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+					<table tableName="activity_key" domainObjectName="ActivityKey"  enableCountByExample="false" enableUpdateByExample="false"  enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
 
 				</context>
 			</generatorConfiguration>
