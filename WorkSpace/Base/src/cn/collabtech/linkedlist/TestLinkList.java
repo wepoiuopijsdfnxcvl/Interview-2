@@ -9,5 +9,10 @@ public class TestLinkList {
 		list.addFirst("B");
 		list.addLast("C");
 		System.out.println(list); 
+		int [] intArray = new int[] {};
+		intArray[0] = 1;
+		
+		
+		
 	}
 }
