@@ -7,7 +7,7 @@ public class Base64Utils {
 		String encode = encode(str);
 		System.out.println(encode);
 		//解码
-		String decode = decode("YTEyMzQ1Njc=");
+		String decode = decode("YWRtaW5AMzMz");
 		System.out.println(decode);
 		
 	}
