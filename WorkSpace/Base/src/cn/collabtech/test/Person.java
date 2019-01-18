@@ -5,6 +5,7 @@ public class Person {
 	int i = 0;
 
 	public void add(Person p) {
+		p = new Person();
 		p.i = 2;
 	}
 
