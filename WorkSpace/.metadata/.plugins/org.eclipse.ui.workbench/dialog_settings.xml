@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="workingset_selection_history">
+		<item value="Websocket&amp;SSE"/>
+	</list>
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="54" key="DIALOG_X_ORIGIN"/>
+		<item value="114" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="ContentTypeFilenameAssociationDialog">
+		<item value="527" key="DIALOG_WIDTH"/>
+		<item value="1|Microsoft YaHei UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft YaHei UI" key="DIALOG_FONT_NAME"/>
+		<item value="319" key="DIALOG_HEIGHT"/>
+		<item value="54" key="DIALOG_X_ORIGIN"/>
+		<item value="129" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="EditorSelectionDialog">
+	</section>
+	<section name="org.eclipse.ui.internal.QuickAccess">
+		<item value="145" key="dialogHeight"/>
+		<item value="353" key="dialogWidth"/>
+		<list key="textEntries">
+			<item value="1"/>
+			<item value="1"/>
+			<item value="1"/>
+			<item value="1"/>
+			<item value="1"/>
+			<item value="1"/>
+			<item value="1"/>
+		</list>
+		<list key="orderedElements">
+			<item value="org.eclipse.ui.views.ResourceNavigator"/>
+			<item value="org.eclipse.jdt.ui.PackageExplorer"/>
+			<item value="org.eclipse.jdt.junit.ResultView"/>
+			<item value="org.eclipse.ui.console.ConsoleView"/>
+			<item value="org.eclipse.ui.views.ProblemView"/>
+			<item value="org.eclipse.ui.views.ProgressView"/>
+			<item value="org.eclipse.ui.views.TaskList"/>
+		</list>
+		<list key="orderedProviders">
+			<item value="org.eclipse.e4.ui.parts"/>
+			<item value="org.eclipse.e4.ui.parts"/>
+			<item value="org.eclipse.e4.ui.parts"/>
+			<item value="org.eclipse.e4.ui.parts"/>
+			<item value="org.eclipse.e4.ui.parts"/>
+			<item value="org.eclipse.e4.ui.parts"/>
+			<item value="org.eclipse.e4.ui.parts"/>
+		</list>
+		<list key="textArray">
+			<item value="nav"/>
+			<item value="pack"/>
+			<item value="ju"/>
+			<item value="conso"/>
+			<item value="prob"/>
+			<item value="progre"/>
+			<item value="tasks"/>
+		</list>
+	</section>
+	<section name="ImportExportAction">
+		<item value="org.eclipse.m2e.core.wizards.Maven2ImportWizard" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
+			<item value="org.eclipse.m2e"/>
+		</list>
+	</section>
+</section>

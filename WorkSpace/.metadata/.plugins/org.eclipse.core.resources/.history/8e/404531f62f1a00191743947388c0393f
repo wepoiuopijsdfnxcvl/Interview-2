@@ -1,0 +1,22 @@
+package test;
+
+public class NumberTest {
+	
+	/**
+	 * 通兑订单编号规则 （）
+	  商户id后4位  (不足4位补0)
+	  
+	  ZC+4+190117+4位随机数  （17）
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,27 @@
+package cn.collabtech.utils;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateUtils {
+	public static void main(String[] args) {
+
+		 String time="2010-11-20 00:00:00"; 
+		  Date date=null; 
+		  try {
+		  SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+	
+			date=formatter.parse(time);
+			
+			
+			 DateFormat df2 = DateFormat.getDateTimeInstance();//可以精确到时分秒
+		        System.out.println(df2.format(date));
+			System.out.println(date.getTime());
+			  System.out.println((date.getTime())%(24*60*60*1000)+"");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+
+	}
+
+}

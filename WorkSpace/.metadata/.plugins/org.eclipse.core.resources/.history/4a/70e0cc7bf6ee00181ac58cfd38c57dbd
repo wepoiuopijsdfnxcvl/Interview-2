@@ -1,0 +1,7 @@
+package cn.collabtech.sign;
+
+public class TestSign {
+	public static void main(String[] args) {
+		
+	}
+}

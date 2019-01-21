@@ -1,0 +1,28 @@
+package test;
+
+import java.text.SimpleDateFormat;
+
+import cn.collabtech.utils.RandomUtils;
+
+public class NumberTest {
+	
+	/**
+	 * 通兑订单编号规则 （）
+	  商户id后4位  (不足4位补0)
+	  
+	  ZC+4+190117+4位随机数  （17）
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+	     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+	        String newDate = sdf.format(new Date());
+	        int random = RandomUtils.random(4);
+		
+		
+		
+		
+		
+	}
+
+}

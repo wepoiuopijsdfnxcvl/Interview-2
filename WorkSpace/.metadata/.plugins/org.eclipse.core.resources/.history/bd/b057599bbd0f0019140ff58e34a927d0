@@ -1,0 +1,18 @@
+package cn.collabtech.thread.join;
+
+public class ThreadJoin {
+	
+	static Thread thread1 = new Thread(new Runnable() {
+		@Override
+		public void run() {
+			System.out.println("thread1");
+		}
+	});
+	
+	
+	
+	
+	
+	
+
+}
