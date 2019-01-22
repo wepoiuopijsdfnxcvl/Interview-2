@@ -15,6 +15,13 @@ druid:
 ########################
 ####  Common Data  #####
 ########################
+
+#mybatis settings
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
 #redis settings
 spring.redis:
   host: 172.16.5.112
@@ -27,3 +34,5 @@ spring.redis:
       max-wait: -1
       max-idle: 8
       min-idle: 0
+
+

@@ -55,6 +55,4 @@ spring:
 ###########################
 
 
-#mybatis settings
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
+
