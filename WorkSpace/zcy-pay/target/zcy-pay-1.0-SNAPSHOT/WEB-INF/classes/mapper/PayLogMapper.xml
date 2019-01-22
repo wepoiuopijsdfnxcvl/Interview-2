@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zcy.dao.PayLogMapper" >
+  <resultMap id="BaseResultMap" type="com.zcy.model.PayLog" >
+    <id column="log_id" property="logId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="spend_time" property="spendTime" jdbcType="INTEGER" />
+    <result column="method" property="method" jdbcType="VARCHAR" />
+    <result column="user_agent" property="userAgent" jdbcType="VARCHAR" />
+    <result column="user_ip" property="userIp" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zcy.model.PayLog" extends="BaseResultMap" >
+    <result column="opt_content" property="optContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    log_id, user_id, create_time, spend_time, method, user_agent, user_ip, url
+  </sql>
+  <sql id="Blob_Column_List" >
+    opt_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from client_log
+    where log_id = #{logId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from client_log
+    where log_id = #{logId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zcy.model.PayLog" >
+    insert into client_log (log_id, user_id, create_time, 
+      spend_time, method, user_agent, 
+      user_ip, url, opt_content
+      )
+    values (#{logId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+      #{spendTime,jdbcType=INTEGER}, #{method,jdbcType=VARCHAR}, #{userAgent,jdbcType=VARCHAR}, 
+      #{userIp,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{optContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zcy.model.PayLog" >
+    insert into client_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+        log_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="spendTime != null" >
+        spend_time,
+      </if>
+      <if test="method != null" >
+        method,
+      </if>
+      <if test="userAgent != null" >
+        user_agent,
+      </if>
+      <if test="userIp != null" >
+        user_ip,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="optContent != null" >
+        opt_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="logId != null" >
+        #{logId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spendTime != null" >
+        #{spendTime,jdbcType=INTEGER},
+      </if>
+      <if test="method != null" >
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="userAgent != null" >
+        #{userAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="userIp != null" >
+        #{userIp,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="optContent != null" >
+        #{optContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zcy.model.PayLog" >
+    update client_log
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spendTime != null" >
+        spend_time = #{spendTime,jdbcType=INTEGER},
+      </if>
+      <if test="method != null" >
+        method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="userAgent != null" >
+        user_agent = #{userAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="userIp != null" >
+        user_ip = #{userIp,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="optContent != null" >
+        opt_content = #{optContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where log_id = #{logId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zcy.model.PayLog" >
+    update client_log
+    set user_id = #{userId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      spend_time = #{spendTime,jdbcType=INTEGER},
+      method = #{method,jdbcType=VARCHAR},
+      user_agent = #{userAgent,jdbcType=VARCHAR},
+      user_ip = #{userIp,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      opt_content = #{optContent,jdbcType=LONGVARCHAR}
+    where log_id = #{logId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zcy.model.PayLog" >
+    update client_log
+    set user_id = #{userId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      spend_time = #{spendTime,jdbcType=INTEGER},
+      method = #{method,jdbcType=VARCHAR},
+      user_agent = #{userAgent,jdbcType=VARCHAR},
+      user_ip = #{userIp,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
+    where log_id = #{logId,jdbcType=INTEGER}
+  </update>
+
+  <update id="createTable" parameterType="java.lang.String">
+      CREATE TABLE IF NOT EXISTS ${tableName} LIKE `client_log`;
+  </update>
+
+  <insert id="saveLog" parameterType="java.util.Map">
+    insert into ${params.tableName} (log_id, user_id, create_time,
+      spend_time, method, user_agent,
+      user_ip, url, opt_content, opt_result
+      )
+    values (#{params.sysLog.logId,jdbcType=INTEGER}, #{params.sysLog.userId,jdbcType=VARCHAR}, #{params.sysLog.createTime,jdbcType=TIMESTAMP},
+      #{params.sysLog.spendTime,jdbcType=INTEGER}, #{params.sysLog.method,jdbcType=VARCHAR}, #{params.sysLog.userAgent,jdbcType=VARCHAR},
+      #{params.sysLog.userIp,jdbcType=VARCHAR}, #{params.sysLog.url,jdbcType=VARCHAR}, #{params.sysLog.optContent,jdbcType=LONGVARCHAR}, 
+      #{params.sysLog.optResult,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+</mapper>

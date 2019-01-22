@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "",
+      "type": "com.zcy.jedis.RedisConfiguration$DataJedisProperties",
+      "sourceType": "com.zcy.jedis.RedisConfiguration$DataJedisProperties"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}

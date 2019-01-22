@@ -1,0 +1,29 @@
+#Multiple Access Schemes
+spring:
+  profiles:
+    #选择启用的环境配置（dev test prod）
+    active: dev
+
+#druid(http://localhost:9999/druid)
+druid:
+  allow: #允许登陆的IP地址
+    ip: 127.0.0.1
+  login: #登陆的账户密码
+    user_name: root
+    password: root
+
+########################
+####  Common Data  #####
+########################
+#redis settings
+spring.redis:
+  host: 172.16.5.112
+  port: 6379
+  password:
+  timeout: 1000
+  jedis:
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
