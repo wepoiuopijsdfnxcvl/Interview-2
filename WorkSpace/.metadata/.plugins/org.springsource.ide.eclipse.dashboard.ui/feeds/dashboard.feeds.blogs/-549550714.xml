@@ -5,7 +5,491 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2019-01-21T00:00:00Z</updated>
+  <updated>2019-01-21T14:32:00Z</updated>
+  <entry>
+    <title>Manual Bean Definitions in Spring Boot</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/01/21/manual-bean-definitions-in-spring-boot" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Dave Syer</name>
+    </author>
+    <id>tag:spring.io,2019-01-21:3545</id>
+    <updated>2019-01-21T14:32:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;Suppose you want to use Spring Boot, but you don&amp;#8217;t want to
+&lt;code&gt;@EnableAutoConfiguration&lt;/code&gt;. What should you do exactly? In an
+&lt;a href="https://spring.io/blog/2018/12/12/how-fast-is-spring"&gt;earlier article&lt;/a&gt;
+I showed that Spring is intrinsically fast and lightweight, but one of
+the short pieces of advice improve startup time was to consider
+manually importing the Spring Boot autoconfigurations, instead of
+sucking them all in automatically. It won&amp;#8217;t be the right thing to do
+for all applications, but it might help, and it certainly won&amp;#8217;t hurt
+to understand what the options are. In this piece we explore various
+ways of doing manual configuration and assess their impact.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="full-autoconfiguration-hello-world-webflux"&gt;&lt;a class="anchor" href="#full-autoconfiguration-hello-world-webflux"&gt;&lt;/a&gt;Full Autoconfiguration: Hello World WebFlux&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;As a baseline, let&amp;#8217;s look at a Spring Boot application that has a
+single HTTP endpoint:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@SpringBootApplication
+@RestController
+public class DemoApplication {
+
+  @GetMapping("/")
+  public Mono&amp;lt;String&amp;gt; home() {
+    return Mono.just("Hello World");
+  }
+
+  public void main(String[] args) {
+    SpringApplication.run(DemoApplication.class, args);
+  }
+
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;If you run this app with all the tweaks suggested in the earlier
+article it should start in round about a second, or a bit longer
+depending on your hardware. It does a lot in that time - sets up a
+logging system, reads and binds to configuration files, starts Netty
+and listens on port 8080, providing a route to the &lt;code&gt;@GetMapping&lt;/code&gt; in
+the application, and also provides default error handling. If the
+Spring Boot Actuator is on the classpath, you also get a /health and
+an /info endpoint (and it will take a bit longer to start up because
+of that).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The &lt;code&gt;@SpringBootApplication&lt;/code&gt; annotation, in case you didn&amp;#8217;t know, is
+meta-annotated with &lt;code&gt;@EnableAutoConfiguration&lt;/code&gt; and this is what
+provides all that useful functionality for free. That&amp;#8217;s what makes
+Spring Boot popular, so we don&amp;#8217;t want to lose any of it, but we can
+take a closer look at what is actually happening and maybe do some of
+it manually, to see if we learn anything.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock note"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Note&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+if you want to try this code out, it&amp;#8217;s easy to get an empty
+WebFlux app from the &lt;a href="https://spring.io"&gt;Spring Initializr&lt;/a&gt;. Just select
+the "Reactive Web" checkbox and download the project.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="manual-imports-of-autoconfiguration"&gt;&lt;a class="anchor" href="#manual-imports-of-autoconfiguration"&gt;&lt;/a&gt;Manual Imports of Autoconfiguration&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;While the &lt;code&gt;@EnableAutoConfiguration&lt;/code&gt; feature makes adding features to
+an application easy, it also takes away some control over which
+features are enabled. Most people are happy to make that compromise -
+the ease of use outweighs the loss of control. Potentially there are
+performance penalties - the application might start a bit slower
+because Spring Boot has to do some work to find all those features and
+install them. In fact there is not a significant amount of effort
+involved in finding the right features: there is no classpath scan,
+and condition evaluation is extremely fast, after careful
+optimization. The bulk (80% or so) of startup time for one of this
+application is taken up by the JVM loading classes, so practically the
+only way to make it start up quicker is to ask it to do less, by
+installing fewer features.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Autoconfiguration can always be disabled using the &lt;code&gt;exclude&lt;/code&gt; attribute
+in the &lt;code&gt;@EnableAutoConfiguration&lt;/code&gt; annotation. Some individual
+autoconfigurations also have their own boolean configuration flag that
+can be set externally, e.g. for JMX we could use
+&lt;code&gt;spring.jmx.enabled=false&lt;/code&gt; (as a System property or in a properties
+file, for example). We could go down that road and manually switch off
+everything we didn&amp;#8217;t want to use, but that gets a bit clumsy and
+doesn&amp;#8217;t stop additional things being switched on if the classpath
+changes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Instead, let&amp;#8217;s see what we can do using the existing autoconfiguration
+classes but just applying the ones we know we want to use,
+corresponding to the features we like. We could call this the "a la
+carte" approach, as opposed to "all you can eat" that comes with full
+autoconfiguration. Autoconfiguration classes are just regular
+&lt;code&gt;@Configuration&lt;/code&gt; so we can &lt;code&gt;@Import&lt;/code&gt; them into an application that
+does not &lt;code&gt;@EnableAutoConfiguration&lt;/code&gt;. For example, here is the
+application above, with all the features we want (excluding
+actuators):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@SpringBootConfiguration
+@Import({
+    WebFluxAutoConfiguration.class,
+    ReactiveWebServerFactoryAutoConfiguration.class,
+    ErrorWebFluxAutoConfiguration.class,
+    HttpHandlerAutoConfiguration.class,
+    ConfigurationPropertiesAutoConfiguration.class,
+    PropertyPlaceholderAutoConfiguration.class
+})
+@RestController
+public class DemoApplication {
+
+  @GetMapping("/")
+  public Mono&amp;lt;String&amp;gt; home() {
+    return Mono.just("Hello World");
+  }
+
+  public void main(String[] args) {
+    SpringApplication.run(DemoApplication.class, args);
+  }
+
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This version of the application will still have all the features we
+described above, but will start faster (probably by 30% or so). So
+what did we give up to get that faster start up? Here&amp;#8217;s a quick
+rundown:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The full features set of Spring Boot autoconfiguration includes
+other stuff that might actually be needed in a real application, as
+opposed to the specific tiny sample. In other words, the 30% speed up
+is not going to be available for all applications, and your mileage
+may vary.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The manual configuration is brittle, and hard to guess. If you wrote
+another application that did slightly different things, you would need
+a different configuration import. You can mitigate this by extracting
+it into a convenience class or annotation, and re-using it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;An &lt;code&gt;@Import&lt;/code&gt; does not behave the same way as
+&lt;code&gt;@EnableAutoConfiguration&lt;/code&gt; in relation to ordering of configuration
+classes. The order is important within the &lt;code&gt;@Import&lt;/code&gt; in case some
+classes have conditional behaviour that depend on earlier
+classes. To mitigate you just have to be careful.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;There is another ordering problem in a typical real-world
+application. To mimic the behaviour of &lt;code&gt;@EnableAutoConfiguration&lt;/code&gt; you
+need the user configurations to be processed first, so that they can
+override the conditional configuration in Spring Boot. If you use
+&lt;code&gt;@ComponentScan&lt;/code&gt;, you can&amp;#8217;t control the order of the scan, or the
+order those classes are processed compared to &lt;code&gt;@Imports&lt;/code&gt;. You can
+mitigate this by using a different annotation (see below).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The Spring Boot autoconfigurations were actually never designed to
+be used this way, and doing so might introduce subtle bugs in your
+application. The only mitigations for this are exhaustive testing that
+it works the way you expect, and being cautious about upgrades.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="adding-actuators"&gt;&lt;a class="anchor" href="#adding-actuators"&gt;&lt;/a&gt;Adding Actuators&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We can also add the actuators if they are on the classpath:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@SpringBootConfiguration
+@Import({
+    WebFluxAutoConfiguration.class,
+    ReactiveWebServerFactoryAutoConfiguration.class,
+    ErrorWebFluxAutoConfiguration.class,
+    HttpHandlerAutoConfiguration.class,
+    EndpointAutoConfiguration.class,
+    HealthIndicatorAutoConfiguration.class, HealthEndpointAutoConfiguration.class,
+    InfoEndpointAutoConfiguration.class, WebEndpointAutoConfiguration.class,
+    ReactiveManagementContextAutoConfiguration.class,
+    ManagementContextAutoConfiguration.class,
+    ConfigurationPropertiesAutoConfiguration.class,
+    PropertyPlaceholderAutoConfiguration.class
+})
+@RestController
+public class DemoApplication {
+
+  @GetMapping("/")
+  public Mono&amp;lt;String&amp;gt; home() {
+    return Mono.just("Hello World");
+  }
+
+  public void main(String[] args) {
+    SpringApplication.run(DemoApplication.class, args);
+  }
+
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This app starts even faster comparative to the full
+&lt;code&gt;@EndpointAutoConfiguration&lt;/code&gt; application (maybe even 50% faster),
+because we only included the configuration relevant to the two default
+endpoints. Spring Boot activates all endpoints by default but does not
+expose them to HTTP. If we only care about /health and /info that is
+wasteful, but of course it also leaves a lot of really useful features
+on the table.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock note"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Note&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+Spring Boot may well do more in the future to disable actuators
+that have not been exposed or have not been used. E.g. see issues on
+&lt;a href="https://github.com/spring-projects/spring-boot/issues/7578"&gt;lazy
+actuators&lt;/a&gt; and
+&lt;a href="https://github.com/spring-projects/spring-boot/issues/15451"&gt;conditional
+endpoints&lt;/a&gt; (which is already in Spring Boot 2.1.2).
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="what-s-the-difference"&gt;&lt;a class="anchor" href="#what-s-the-difference"&gt;&lt;/a&gt;What&amp;#8217;s the difference?&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The manually configured application has 51 beans, while the fully
+leaded autoconfigured application has 107 beans (not counting
+actuators). So it&amp;#8217;s maybe not a surprise that it starts up a bit
+quicker. Before we move on to a different way to implement the sample
+application, let&amp;#8217;s take a look at what we have left out in order to
+get it to start up faster. If you list the bean definitions in both
+apps you will see that all the differences come from the
+autoconfigurations that we left out, and which would not have been
+conditionally excluded by Spring Boot. Here&amp;#8217;s the list (assuming that
+you are using &lt;code&gt;spring-boot-start-webflux&lt;/code&gt; with no manual exclusions):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code&gt;AutoConfigurationPackages
+CodecsAutoConfiguration
+JacksonAutoConfiguration
+JmxAutoConfiguration
+ProjectInfoAutoConfiguration
+ReactorCoreAutoConfiguration
+TaskExecutionAutoConfiguration
+TaskSchedulingAutoConfiguration
+ValidationAutoConfiguration
+HttpMessageConvertersAutoConfiguration
+RestTemplateAutoConfiguration
+WebClientAutoConfiguration&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;So that&amp;#8217;s 12 autoconfigurations that we didn&amp;#8217;t need (yet anyway) and
+which led to 56 additional beans in the autoconfigured
+application. They all provide useful features, so we might want to
+include them again one day, but for now let&amp;#8217;s assume that we are happy
+to live without whatever they are doing.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="admonitionblock note"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Note&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+&lt;code&gt;spring-boot-autoconfigure&lt;/code&gt; has 122 autoconfigurations (there
+are more in &lt;code&gt;spring-boot-actuator-autoconfigure&lt;/code&gt;) and the fully leaded
+autoconfigured sample application above only used 18 of them. The
+computation of which ones to use takes place very early and most of
+them are discarded by Spring Boot before any classes are even
+loaded. It&amp;#8217;s very fast (a few milliseconds).
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="spring-boot-autoconfiguration-imports"&gt;&lt;a class="anchor" href="#spring-boot-autoconfiguration-imports"&gt;&lt;/a&gt;Spring Boot Autoconfiguration Imports&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The ordering issue associated with the difference between user
+configuration (which has to be applied last) and autoconfiguration can
+be addressed partially by using a different annotation. Spring Boot
+provides an annotation for this: &lt;code&gt;@ImportAutoConfiguration&lt;/code&gt;, which is
+from &lt;code&gt;spring-boot-autoconfigure&lt;/code&gt; but used in the
+&lt;a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-testing-spring-boot-applications-testing-autoconfigured-tests"&gt;test
+slices&lt;/a&gt; features that ship with Spring Boot Test. So you can replace
+the &lt;code&gt;@Import&lt;/code&gt; annotation in the examples above with
+&lt;code&gt;@ImportAutoConfiguration&lt;/code&gt; and the effect is to defer processing of
+the autoconfigurations until after all the user configurations
+(e.g. picked up via &lt;code&gt;@ComponentScan&lt;/code&gt; or &lt;code&gt;@Import&lt;/code&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We can even go a stage further than that if we are prepared to curate
+the list of autoconfigurations into a custom annotation. Instead of
+just copying them into an explicit &lt;code&gt;@ImportAutoConfiguration&lt;/code&gt;, we can
+write a custom annotation like this:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@ImportAutoConfiguration
+public @interface EnableWebFluxAutoConfiguration {
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The main feature of this annotation is that it is meta-annotated with
+&lt;code&gt;@ImportAutoConfiguration&lt;/code&gt;. With that in place we can add the new
+annotation to our application:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@SpringBootConfiguration
+@EnableWebFluxAutoConfiguration
+@RestController
+public class DemoApplication {
+
+  @GetMapping("/")
+  public Mono&amp;lt;String&amp;gt; home() {
+    return Mono.just("Hello World");
+  }
+
+  public void main(String[] args) {
+    SpringApplication.run(DemoApplication.class, args);
+  }
+
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;and list the actual configuration classes in &lt;code&gt;/META-INF/spring.factories&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code&gt;com.example.config.EnableWebFluxAutoConfiguration=\
+org.springframework.boot.autoconfigure.web.reactive.WebFluxAutoConfiguration,\
+org.springframework.boot.autoconfigure.web.reactive.ReactiveWebServerFactoryAutoConfiguration,\
+org.springframework.boot.autoconfigure.web.reactive.error.ErrorWebFluxAutoConfiguration,\
+org.springframework.boot.autoconfigure.web.reactive.HttpHandlerAutoConfiguration,\
+org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration,\
+org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The advantages of doing this are that the application code no longer
+has to manually enumerate the configurations, and also that the
+ordering is now taken care of by Spring Boot (the properties file
+entry is sorted before it is used). The disadvantage is that it is
+only useful for applications which need precisely these features, and
+has to be replaced or augmented in any application that wants to do
+something a bit different. It is still fast though - Spring Boot does
+a little bit of extra work for the book keeping (sorting and
+ordering), but not really very much. It will probably still start in
+less than 700ms on the right hardware, with the right JVM flags.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="functional-bean-definitions"&gt;&lt;a class="anchor" href="#functional-bean-definitions"&gt;&lt;/a&gt;Functional Bean Definitions&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In the earlier article I mentioned that functional bean definitions
+would be the most efficient way to get an application started with
+Spring. This is still the case, and we can squeeze an extra 10% or so
+out of this application by re-writing all the Spring Boot
+autoconfigurations as &lt;code&gt;ApplicationContextInitializers&lt;/code&gt;. You could do
+that manually, or you could use some initializers that have already
+been prepared for you, as long as you don&amp;#8217;t mind trying out some
+experimental features. There are 2 projects currently active exploring
+the idea of new tools and new programming models based on functional
+bean definitions: &lt;a href="https://github.com/spring-projects/spring-fu"&gt;Spring
+Fu&lt;/a&gt; and
+&lt;a href="https://github.com/spring-projects-experimental/spring-init"&gt;Spring
+Init&lt;/a&gt;. Both provide at least a minimal set of functional bean
+definitions replacing or wrapping the Spring Boot
+autoconfigurations. Spring Fu is API (DSL) based, and doesn&amp;#8217;t use
+reflection or annotations. Spring Init has the functional bean
+definitions and also has a prototype of an annotation-based
+programming model for "a la carte" configuration. Both are covered
+in more detail elsewhere.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The main point to note here is that functional bean definitions are
+faster, but if that is your main concern, remember that it is only a
+10% effect. As soon as you put all the features back in the
+application that we stripped down above, you are back to loading all
+the necessary classes and back to roughly the same approximate startup
+time as well. To put this another way, the cost of the
+&lt;code&gt;@Configuration&lt;/code&gt; processing at runtime is not completely negligible,
+but it also isn&amp;#8217;t very high (10% or so in these tiny apps, or maybe
+100ms).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="summary-and-future-directions"&gt;&lt;a class="anchor" href="#summary-and-future-directions"&gt;&lt;/a&gt;Summary and Future Directions&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Here&amp;#8217;s a graph summarizing some benchmark results from a different
+application, the &lt;a href="https://github.com/spring-projects/spring-petclinic"&gt;Spring PetClinic&lt;/a&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="imageblock"&gt;
+&lt;div class="content"&gt;
+&lt;img src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQpSEfx0Y1W9aD3XVyn91-S0jtUp2DRCQSy_W_LMGyMR91YLAQ1mL7MiR1BRd8VzshvtuxzL6WAnlxf/pubchart?oid=1003506885&amp;format=image" alt="pubchart?oid=1003506885&amp;amp;format=image"&gt;
+&lt;/div&gt;
+&lt;div class="title"&gt;Figure 1. Petclinic Startup Time (Seconds)&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;It&amp;#8217;s not a "real" application, but it is heavier than the simple
+sample, and uses a lot more features at runtime (like Hibernate for
+example), so it is somewhat more realistic. There are two
+versions, "demo" and "actr", where the latter is just the same but
+with Actuators. For both samples, the fastest startup time is the
+yellow dot, which is functional bean definitions, but only 10% behind
+that (about 200ms in this app) are the "a la carte" options (green and
+red). Green uses a custom annotation like the
+&lt;code&gt;@EnableWebFluxAutoConfiguration&lt;/code&gt; one above. Red is a different "a la
+carte" option where groups of autoconfigurations can be imported
+together via a different custom annotation, currently named
+&lt;code&gt;@SpringInitApplication&lt;/code&gt; and being prototyped in Spring Init. Blue is
+the fully leaded autoconfiguration (out of the box Spring Boot).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Spring Boot autoconfiguration is hugely convenient, but can be
+characterized as "all you can eat". Currently (as of 2.1.x) it is
+maybe providing more features than some applications use or
+require. In the "a la carte" approach, you can use Spring Boot as a
+convenient collection of prepared and pre-tested configurations and
+choose which parts you use. If you do that then
+&lt;code&gt;@ImportAutoConfiguration&lt;/code&gt; is an important part of the toolkit, but
+exactly how you should best use it might change as we research this
+topic further. Future versions of Spring Boot, and possibly other new
+projects like Spring Fu or Spring Init, will make it easier to narrow
+the choice of configurations used at runtime, either automatically or
+by explicit choice. At the end of the day, &lt;code&gt;@Configuration&lt;/code&gt; processing
+at runtime is not free, but it isn&amp;#8217;t particularly expensive either
+(especially with Spring Boot 2.1.x). The smaller number of features
+you use, the fewer classes are loaded, which lead to faster
+startup. At the end of the day we don&amp;#8217;t expect
+&lt;code&gt;@EnableAutoConfiguration&lt;/code&gt; to lose its value or its popularity.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content>
+  </entry>
   <entry>
     <title>Bootiful Azure: To Production (6/6)</title>
     <link rel="alternate" href="https://spring.io/blog/2019/01/21/bootiful-azure-to-production-6-6" />
@@ -1061,18 +1545,5 @@ open fun transform(): (String) -&amp;gt; String {&#xD;
 &lt;p&gt;The 4.3.x line reaches an extended support phase now, with no regular maintenance being planned beyond 4.3.22 anymore but serious issues still to be addressed in infrequent releases on demand. No official EOL date has been set yet; we expect it around mid 2020.&lt;/p&gt;
 &lt;p&gt;Cheers,&lt;br/&gt;Juergen&lt;/p&gt;
 &lt;p&gt;P.S.:&lt;br/&gt;Development towards 5.2 will start in our master branch soon, with 5.2 RC1 expected in May. On a related note, we are about to migrate from JIRA to GitHub issues; stay tuned!&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Tips: Business Process Management with Flowable</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/01/09/spring-tips-business-process-management-with-flowable" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2018-12-30:3514</id>
-    <updated>2019-01-09T00:00:00Z</updated>
-    <content type="html">&lt;p&gt;Hi Spring fans! In this installment of Spring Tips we look at how to use the Apache 2 licensed Flowable BPMN 2 workflow engine with Spring.&lt;/p&gt;
-&lt;p&gt;speaker: &lt;a href="http://twitter.com/starbuxman"&gt;Josh Long&lt;/a&gt;&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/43_OLrxU3so" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;</content>
   </entry>
 </feed>
