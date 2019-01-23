@@ -6,11 +6,12 @@
 
   <groupId>cn.collabtech.springcloud</groupId>
   <artifactId>microservicecloud</artifactId>
+  <packaging>pom</packaging>
   <version>0.0.1-SNAPSHOT</version>
-
-  <name>microservicecloud</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <modules>
+    <module>microservicecloud-api</module>
+    <module>microservicecloud-provider-dept-8001</module>
+  </modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -40,7 +41,7 @@
       <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
-        <version>5.0.4</version>
+        <version>5.0.0</version>
       </dependency>
       <dependency>
         <groupId>com.alibaba</groupId>
