@@ -1,331 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0931c913-650a-4f17-a181-21aa075d9b7e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../scfchapter1/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../scfchapter1/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../scfchapter1/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../scfchapter1/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../scfchapter1/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../scfchapter1/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../scfchapter1/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../scfchapter1/scfchapter1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../scfchapter1/src/main/java/com/forezp/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../scfchapter1/src/test/java/com/forezp/AppTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/ServletInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/SwaggerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/ZcyPayApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/annotation/AuthorizationRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/annotation/LimitRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/annotation/NoNeedCheck.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/aspect/ControllerExceptionAdvice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/aspect/HttpServletRequestReplacedFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/aspect/LimitRequestAspect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/aspect/SignAspect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/constant/AllinPayStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/constant/ClientCommon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/constant/RequestStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/controller/TestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/controller/UserVirtualCardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/dao/PayLogMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/dao/PlatformKeyMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/dao/UserVirtualCardMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/dao/WhiteIpMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/druid/DruidConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/exception/LimitIPRequestException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/exception/SignException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/exception/WhiteIpException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/jedis/JedisClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/jedis/JedisClientPool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/jedis/RedisConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/model/PayLog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/model/PlatformKey.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/model/UserVirtualCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/model/WhiteIp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/service/AllinPayApiService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/service/PayLogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/service/UserVirtualCardService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/service/impl/AllinPayApiServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/service/impl/PayLogServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/service/impl/UserVirtualCardServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/utils/AllinSignUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/utils/ClientResponseUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/utils/DateTimeJsonSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/utils/HttpClientHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/utils/HttpHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/utils/IpUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/utils/ObjectUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/utils/RSAUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/utils/RandomUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/utils/RequestReaderHttpServletRequestWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/utils/ResponseUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/utils/SignUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/vo/AllinResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/vo/Arg.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/vo/Args.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/vo/BaseRequset.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/vo/BaseResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/vo/BaseSign.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/vo/CardAddResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/vo/CardBackResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/vo/CardRegisterResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/vo/CustregResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/vo/ResultInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/java/com/zcy/vo/ServiceResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/resources/application-dev.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/resources/application-prod.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/resources/application-test.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/resources/banner.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/resources/config/allinpay.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/resources/druid-bean.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/resources/mapper/PayLogMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/resources/mapper/PlatformKeyMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/resources/mapper/UserVirtualCardMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/main/resources/mapper/WhiteIpMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/test/java/com/zcy/test/UserVirtualCardControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/src/test/java/com/zcy/test/dao/DBTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/META-INF/spring-configuration-metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/META-INF/zcy-pay.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/application-dev.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/application-prod.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/application-test.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/banner.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/ServletInitializer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/SwaggerConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/ZcyPayApplication.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/annotation/AuthorizationRequest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/annotation/LimitRequest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/annotation/NoNeedCheck.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/aspect/ControllerExceptionAdvice.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/aspect/HttpServletRequestReplacedFilter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/aspect/LimitRequestAspect.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/aspect/SignAspect.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/constant/AllinPayStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/constant/ClientCommon.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/constant/RequestStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/controller/TestController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/controller/UserVirtualCardController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/dao/PayLogMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/dao/PlatformKeyMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/dao/UserVirtualCardMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/dao/WhiteIpMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/druid/DruidConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/exception/LimitIPRequestException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/exception/SignException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/exception/WhiteIpException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/jedis/JedisClient.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/jedis/JedisClientPool.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/jedis/RedisConfiguration$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/jedis/RedisConfiguration$DataJedisProperties.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/jedis/RedisConfiguration.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/model/PayLog.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/model/PlatformKey.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/model/UserVirtualCard.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/model/WhiteIp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/service/AllinPayApiService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/service/PayLogService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/service/UserVirtualCardService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/service/impl/AllinPayApiServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/service/impl/PayLogServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/service/impl/UserVirtualCardServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/utils/AllinSignUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/utils/ClientResponseUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/utils/DateTimeJsonSerializer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/utils/HttpClientHelper$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/utils/HttpClientHelper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/utils/HttpHelper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/utils/IpUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/utils/ObjectUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/utils/RSAUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/utils/RandomUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/utils/RequestReaderHttpServletRequestWrapper$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/utils/RequestReaderHttpServletRequestWrapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/utils/ResponseUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/utils/SignUtils$SpellComparator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/utils/SignUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/vo/AllinResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/vo/Arg.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/vo/Args.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/vo/BaseRequset.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/vo/BaseResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/vo/BaseSign.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/vo/CardAddResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/vo/CardBackResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/vo/CardRegisterResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/vo/CustregResult.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/vo/ResultInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/com/zcy/vo/ServiceResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/config/allinpay.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/druid-bean.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/mapper/PayLogMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/mapper/PlatformKeyMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/mapper/UserVirtualCardMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/classes/mapper/WhiteIpMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/maven-archiver/pom.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/test-classes/com/zcy/test/UserVirtualCardControllerTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/test-classes/com/zcy/test/dao/DBTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT.war" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT.war.original" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/META-INF/spring-configuration-metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/ServletInitializer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/SwaggerConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/ZcyPayApplication.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/annotation/AuthorizationRequest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/annotation/LimitRequest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/annotation/NoNeedCheck.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/aspect/ControllerExceptionAdvice.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/aspect/HttpServletRequestReplacedFilter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/aspect/LimitRequestAspect.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/aspect/SignAspect.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/constant/AllinPayStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/constant/ClientCommon.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/constant/RequestStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/controller/UserVirtualCardController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/dao/PayLogMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/dao/PlatformKeyMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/dao/UserVirtualCardMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/dao/WhiteIpMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/exception/LimitIPRequestException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/exception/SignException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/exception/WhiteIpException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/jedis/JedisClient.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/jedis/JedisClientPool.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/jedis/RedisConfiguration$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/jedis/RedisConfiguration$DataJedisProperties.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/jedis/RedisConfiguration.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/model/PayLog.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/model/PlatformKey.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/model/UserVirtualCard.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/model/WhiteIp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/service/AllinPayApiService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/service/PayLogService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/service/UserVirtualCardService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/service/impl/AllinPayApiServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/service/impl/PayLogServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/service/impl/UserVirtualCardServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/utils/AllinSignUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/utils/ClientResponseUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/utils/DateTimeJsonSerializer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/utils/HttpClientHelper$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/utils/HttpClientHelper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/utils/HttpHelper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/utils/IpUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/utils/ObjectUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/utils/RSAUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/utils/RandomUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/utils/RequestReaderHttpServletRequestWrapper$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/utils/RequestReaderHttpServletRequestWrapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/utils/ResponseUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/utils/SignUtils$SpellComparator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/utils/SignUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/vo/AllinResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/vo/Arg.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/vo/Args.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/vo/BaseRequset.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/vo/BaseResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/vo/BaseSign.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/vo/CardAddResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/vo/CardBackResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/vo/CardRegisterResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/vo/CustregResult.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/vo/ResultInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/com/zcy/vo/ServiceResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/config/allinpay.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/mapper/PayLogMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/mapper/PlatformKeyMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/mapper/UserVirtualCardMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/classes/mapper/WhiteIpMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/HikariCP-3.2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/aspectjweaver-1.9.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/byte-buddy-1.9.7.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/classmate-1.4.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/commons-codec-1.11.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/commons-lang3-3.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/commons-pool2-2.6.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/fastjson-1.2.54.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/guava-20.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/hibernate-validator-6.0.14.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/httpclient-4.5.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/httpcore-4.4.10.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/jackson-annotations-2.9.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/jackson-core-2.9.8.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/jackson-databind-2.9.8.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/jackson-datatype-jdk8-2.9.8.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/jackson-datatype-jsr310-2.9.8.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/jackson-module-parameter-names-2.9.8.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/javax.annotation-api-1.3.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/jboss-logging-3.3.2.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/jcl-over-slf4j-1.7.25.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/jedis-2.9.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/jul-to-slf4j-1.7.25.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/log4j-1.2.17.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/log4j-api-2.11.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/log4j-to-slf4j-2.11.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/logback-classic-1.2.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/logback-core-1.2.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/mapstruct-1.2.0.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/mybatis-3.4.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/mybatis-spring-1.3.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/mybatis-spring-boot-autoconfigure-1.3.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/mybatis-spring-boot-starter-1.3.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/mysql-connector-java-8.0.13.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/slf4j-api-1.7.25.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/slf4j-log4j12-1.7.25.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/snakeyaml-1.23.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-aop-5.1.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-beans-5.1.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-boot-2.1.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-boot-autoconfigure-2.1.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-boot-starter-2.1.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-boot-starter-data-redis-2.1.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-boot-starter-jdbc-2.1.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-boot-starter-json-2.1.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-boot-starter-log4j-1.3.8.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-boot-starter-logging-2.1.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-boot-starter-web-2.1.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-context-5.1.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-context-support-5.1.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-core-5.1.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-data-commons-2.1.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-data-keyvalue-2.1.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-data-redis-2.1.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-expression-5.1.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-jcl-5.1.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-jdbc-5.1.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-oxm-5.1.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-plugin-core-1.2.0.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-plugin-metadata-1.2.0.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-tx-5.1.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-web-5.1.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/spring-webmvc-5.1.4.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/springfox-core-2.9.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/springfox-schema-2.9.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/springfox-spi-2.9.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/springfox-spring-web-2.9.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/springfox-swagger-common-2.9.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/springfox-swagger-ui-2.9.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/springfox-swagger2-2.9.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/swagger-annotations-1.5.20.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/swagger-models-1.5.20.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zcy-pay/target/zcy-pay-1.0-SNAPSHOT/WEB-INF/lib/validation-api-2.0.1.Final.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../WorkSpace/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" beforeDir="false" afterPath="$PROJECT_DIR$/../../WorkSpace/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../WorkSpace/.metadata/.plugins/org.springsource.ide.eclipse.dashboard.ui/feeds/dashboard.feeds.blogs/-549550714.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../WorkSpace/.metadata/.plugins/org.springsource.ide.eclipse.dashboard.ui/feeds/dashboard.feeds.blogs/-549550714.xml" afterDir="false" />
-    </list>
+    <list default="true" id="0931c913-650a-4f17-a181-21aa075d9b7e" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/../girl/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -337,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1679">
-              <caret line="73" selection-start-line="73" selection-end-line="73" />
+            <state relative-caret-position="253">
+              <caret line="11" column="50" lean-forward="true" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
             </state>
           </provider>
           <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
@@ -386,53 +65,6 @@
               <item name="microservicecloud" type="b2602c69:ProjectViewProjectNode" />
               <item name="microservicecloud" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="microservicecloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="microservicecloud" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="microservicecloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="microservicecloud" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="microservicecloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="microservicecloud" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="microservicecloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="microservicecloud" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="springcloud" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="microservicecloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="microservicecloud" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="microservicecloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="microservicecloud" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="microservicecloud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="microservicecloud" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="springcloud" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -442,7 +74,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548227507391" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548229474610" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../girl" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -482,29 +114,31 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1548227250553</updated>
-      <workItem from="1548227256456" duration="176000" />
+      <workItem from="1548227256456" duration="907000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176000" />
+    <option name="totallyTimeSpent" value="907000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="UI Designer" />
       <window_info id="Favorites" side_tool="true" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24946696" />
+      <window_info id="Web" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15511727" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="FindBugs-IDEA" />
       <window_info anchor="bottom" id="MyBatis Sql Log" />
+      <window_info anchor="bottom" id="Spring" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Messages" visible="true" weight="0.26256984" />
+      <window_info anchor="bottom" id="Java Enterprise" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
@@ -522,6 +156,7 @@
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Palette&#9;" />
       <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Bean Validation" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -533,8 +168,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1679">
-          <caret line="73" selection-start-line="73" selection-end-line="73" />
+        <state relative-caret-position="253">
+          <caret line="11" column="50" lean-forward="true" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
         </state>
       </provider>
       <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
@@ -542,9 +177,81 @@
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>microservicecloud</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
