@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zcy.dao.UserVirtualCardMapper">
+  <resultMap id="BaseResultMap" type="com.zcy.model.UserVirtualCard">
+    <id column="virtual_card_id" jdbcType="INTEGER" property="virtualCardId" />
+    <result column="card_id" jdbcType="VARCHAR" property="cardId" />
+    <result column="pay_merchant_id" jdbcType="INTEGER" property="payMerchantId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="card_balance" jdbcType="DECIMAL" property="cardBalance" />
+    <result column="card_stat" jdbcType="INTEGER" property="cardStat" />
+    <result column="validity_date" jdbcType="TIMESTAMP" property="validityDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    virtual_card_id, card_id, pay_merchant_id, user_id, create_time, card_balance, card_stat, 
+    validity_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_virtual_card
+    where virtual_card_id = #{virtualCardId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_virtual_card
+    where virtual_card_id = #{virtualCardId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zcy.model.UserVirtualCard">
+    insert into user_virtual_card (virtual_card_id, card_id, pay_merchant_id, 
+      user_id, create_time, card_balance, 
+      card_stat, validity_date)
+    values (#{virtualCardId,jdbcType=INTEGER}, #{cardId,jdbcType=VARCHAR}, #{payMerchantId,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{cardBalance,jdbcType=DECIMAL}, 
+      #{cardStat,jdbcType=INTEGER}, #{validityDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zcy.model.UserVirtualCard">
+    insert into user_virtual_card
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="virtualCardId != null">
+        virtual_card_id,
+      </if>
+      <if test="cardId != null">
+        card_id,
+      </if>
+      <if test="payMerchantId != null">
+        pay_merchant_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="cardBalance != null">
+        card_balance,
+      </if>
+      <if test="cardStat != null">
+        card_stat,
+      </if>
+      <if test="validityDate != null">
+        validity_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="virtualCardId != null">
+        #{virtualCardId,jdbcType=INTEGER},
+      </if>
+      <if test="cardId != null">
+        #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="payMerchantId != null">
+        #{payMerchantId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cardBalance != null">
+        #{cardBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="cardStat != null">
+        #{cardStat,jdbcType=INTEGER},
+      </if>
+      <if test="validityDate != null">
+        #{validityDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zcy.model.UserVirtualCard">
+    update user_virtual_card
+    <set>
+      <if test="cardId != null">
+        card_id = #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="payMerchantId != null">
+        pay_merchant_id = #{payMerchantId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cardBalance != null">
+        card_balance = #{cardBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="cardStat != null">
+        card_stat = #{cardStat,jdbcType=INTEGER},
+      </if>
+      <if test="validityDate != null">
+        validity_date = #{validityDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where virtual_card_id = #{virtualCardId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zcy.model.UserVirtualCard">
+    update user_virtual_card
+    set card_id = #{cardId,jdbcType=VARCHAR},
+      pay_merchant_id = #{payMerchantId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      card_balance = #{cardBalance,jdbcType=DECIMAL},
+      card_stat = #{cardStat,jdbcType=INTEGER},
+      validity_date = #{validityDate,jdbcType=TIMESTAMP}
+    where virtual_card_id = #{virtualCardId,jdbcType=INTEGER}
+  </update>
+</mapper>

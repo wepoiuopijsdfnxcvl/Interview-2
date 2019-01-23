@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zcy.dao.WhiteIpMapper">
+	<resultMap id="BaseResultMap" type="com.zcy.model.WhiteIp">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="api_key" jdbcType="VARCHAR" property="apiKey" />
+		<result column="ip_address" jdbcType="VARCHAR" property="ipAddress" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, api_key, ip_address, create_time, status
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from white_ip
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from white_ip
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.zcy.model.WhiteIp">
+		insert into white_ip (id, api_key, ip_address,
+		create_time, status)
+		values (#{id,jdbcType=INTEGER}, #{apiKey,jdbcType=VARCHAR}, #{ipAddress,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="com.zcy.model.WhiteIp">
+		insert into white_ip
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="apiKey != null">
+				api_key,
+			</if>
+			<if test="ipAddress != null">
+				ip_address,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="apiKey != null">
+				#{apiKey,jdbcType=VARCHAR},
+			</if>
+			<if test="ipAddress != null">
+				#{ipAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.zcy.model.WhiteIp">
+		update white_ip
+		<set>
+			<if test="apiKey != null">
+				api_key = #{apiKey,jdbcType=VARCHAR},
+			</if>
+			<if test="ipAddress != null">
+				ip_address = #{ipAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.zcy.model.WhiteIp">
+		update white_ip
+		set api_key = #{apiKey,jdbcType=VARCHAR},
+		ip_address = #{ipAddress,jdbcType=VARCHAR},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		status = #{status,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectWhiteIpList"  resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from white_ip
+		where status = 0
+	</select>
+</mapper>

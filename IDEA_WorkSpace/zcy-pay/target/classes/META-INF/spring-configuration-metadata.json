@@ -1,0 +1,17 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.zcy.jedis.RedisConfiguration$DataJedisProperties",
+      "name": "",
+      "type": "com.zcy.jedis.RedisConfiguration$DataJedisProperties"
+    },
+    {
+      "sourceType": "com.zcy.druid.DruidConfig",
+      "name": "spring.datasource",
+      "sourceMethod": "druidDataSource()",
+      "type": "javax.sql.DataSource"
+    }
+  ],
+  "properties": []
+}
