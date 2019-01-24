@@ -34,6 +34,6 @@ eureka:
 #微服务info内容详细信息
 info:
   app.name: atguigu-microservicecloud
-  company.name: www.atguigu.com
+  company.name: www.collabtech.cn
   build.artifactId: $project.artifactId$
   build.version: $project.version$
