@@ -1,0 +1,5 @@
+cn\collabtech\springcloud\dao\DeptDao.class
+cn\collabtech\springcloud\service\DeptService.class
+cn\collabtech\springcloud\service\impl\DeptServiceImpl.class
+cn\collabtech\springcloud\controller\DeptController.class
+cn\collabtech\springcloud\DeptProvider8003_App.class

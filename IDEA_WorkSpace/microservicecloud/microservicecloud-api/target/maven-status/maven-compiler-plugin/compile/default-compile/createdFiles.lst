@@ -1,1 +1,2 @@
 cn\collabtech\springcloud\entities\Dept.class
+cn\collabtech\springcloud\service\DeptClientService.class

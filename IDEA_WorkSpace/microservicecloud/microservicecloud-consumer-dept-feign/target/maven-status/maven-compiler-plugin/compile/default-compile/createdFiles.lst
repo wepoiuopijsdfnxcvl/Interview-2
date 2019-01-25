@@ -1,0 +1,3 @@
+cn\collabtech\springcloud\controller\DeptController_Feign.class
+cn\collabtech\springcloud\DeptConsumer80_Feign_App.class
+cn\collabtech\springcloud\cfgbeans\ConfigBean.class
