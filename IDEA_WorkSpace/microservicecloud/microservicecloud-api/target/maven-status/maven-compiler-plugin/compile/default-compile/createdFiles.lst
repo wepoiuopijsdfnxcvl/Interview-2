@@ -1,2 +1,4 @@
-cn\collabtech\springcloud\entities\Dept.class
+cn\collabtech\springcloud\service\DeptClientServiceFallbackFactory$1.class
 cn\collabtech\springcloud\service\DeptClientService.class
+cn\collabtech\springcloud\service\DeptClientServiceFallbackFactory.class
+cn\collabtech\springcloud\entities\Dept.class
