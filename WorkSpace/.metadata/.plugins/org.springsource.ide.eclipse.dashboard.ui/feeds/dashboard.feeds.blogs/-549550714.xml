@@ -5,7 +5,20 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2019-01-24T20:07:25Z</updated>
+  <updated>2019-01-25T09:12:01Z</updated>
+  <entry>
+    <title>A Bootiful Podcast: an Interview with Spring Boot engineer Madhura Bhave</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/01/25/a-bootiful-podcast-an-interview-with-spring-boot-engineer-madhura-bhave" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2019-01-25:3550</id>
+    <updated>2019-01-25T09:12:01Z</updated>
+    <content type="html">&lt;p&gt;In this installment of the pod we talk to Madhura Bhave, an engineer on the Spring Boot team who has improved the project in big ways - working on things like security, actuator, OAuth and more - since she moved from her epic run on the Cloud Foundry and UAA teams. We recorded this interview in August of 2018.&lt;/p&gt;
+&lt;p&gt;Twitter: &lt;a href="http://twitter.com/madhurabhave23"&gt;@madhurabhave23&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href="http://twitter.com/SpringBoot"&gt;@SpringBoot&lt;/a&gt;&lt;/p&gt;
+&lt;iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/564342702&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"&gt;&lt;/iframe&gt;</content>
+  </entry>
   <entry>
     <title>Spring IO Platform Cairo-SR7</title>
     <link rel="alternate" href="https://spring.io/blog/2019/01/24/spring-io-platform-cairo-sr7" />
@@ -1543,20 +1556,5 @@ class ServiceBusProducer implements Ordered {&#xD;
 &lt;p&gt;If you haven¡¯t already upgraded to Spring Boot 2, please consider doing so as support for 1.x will &lt;a href="https://spring.io/blog/2018/07/30/spring-boot-1-x-eol-aug-1st-2019"&gt;end on August 1st 2019&lt;/a&gt;. &lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
 &lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/1.5.19.RELEASE/reference/htmlsingle"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Batch 4.1.1, 4.0.2, and 3.0.10 available now</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/01/11/spring-batch-4-1-1-4-0-2-and-3-0-10-available-now" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Mahmoud Ben Hassine</name>
-    </author>
-    <id>tag:spring.io,2019-01-10:3527</id>
-    <updated>2019-01-11T16:15:00Z</updated>
-    <content type="html">&lt;p&gt;We are pleased to announce that Spring Batch 4.1.1, 4.0.2, and 3.0.10 are available from &lt;a href="https://repo.spring.io"&gt;repo.spring.io&lt;/a&gt; and &lt;a href="https://search.maven.org/search?q=g:org.springframework.batch"&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;These releases contain security and bug fixes as well as dependencies updates. We recommend users upgrade to one of these versions. Please find the change log for each version in the following links: &lt;a href="https://jira.spring.io/secure/ReleaseNote.jspa?projectId=10090&amp;version=17249"&gt;4.1.1&lt;/a&gt; | &lt;a href="https://jira.spring.io/secure/ReleaseNote.jspa?projectId=10090&amp;version=16717"&gt;4.0.2&lt;/a&gt; | &lt;a href="https://jira.spring.io/secure/ReleaseNote.jspa?projectId=10090&amp;version=16718"&gt;3.0.10&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;As we announced &lt;a href="https://spring.io/blog/2018/03/07/spring-batch-3-0-9-release-and-4-0-1-release-are-now-available"&gt;earlier&lt;/a&gt;, please note that v3.0.10 is the last planned release for the 3.x line, so we highly recommend users to upgrade to the latest possible version.&lt;/p&gt;
-&lt;p&gt;P.S.:&lt;br/&gt;We have started work on v4.2, which will focus on &lt;strong&gt;performance++&lt;/strong&gt; ! Stay tuned!&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://spring.io/projects/spring-batch"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-batch"&gt;GitHub&lt;/a&gt; | &lt;a href="https://jira.spring.io/projects/BATCH"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-batch/4.1.x/reference/html/index.html"&gt;Documentation&lt;/a&gt; | &lt;a href="https://stackoverflow.com/questions/tagged/spring-batch"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-batch/Lobby"&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>
