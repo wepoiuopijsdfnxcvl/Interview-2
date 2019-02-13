@@ -1,0 +1,18 @@
+package cn.collabtech.objectArray;
+
+public class TestObjectArray {
+	
+	
+	
+	
+
+}
+
+
+class Person{
+	
+	private String name;
+	private int age;
+	
+	
+}
