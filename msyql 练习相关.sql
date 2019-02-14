@@ -83,24 +83,25 @@ INSERT INTO score VALUES('109','6-166','81');
 ###45小题答案
 
 #1、 查询Student表中的所有记录的Sname、Ssex和Class列。
-     SELECT Sname,Ssex,Class FROM student;
+	SELECT Sname,Ssex,Class FROM student;
 
 #2、 查询教师所有的单位即不重复的Depart列。
-     SELECT DISTINCT depart FROM teacher;
+	SELECT DISTINCT depart FROM teacher;
 
 #3、查询Student表的所有记录。
-     SELECT * FROM student;
+	SELECT * FROM student;
 	
 #4、查询Score表中成绩在60到80之间的所有记录。
-     SELECT * FROM score WHERE degree >=60 AND degree<=80;
+	SELECT * FROM score WHERE degree >=60 AND degree<=80;
 
+#5、查询Score表中成绩为85，86或88的记录。
+	SELECT * FROM score WHERE degree IN(85,86,88);
 
+#6、查询Student表中“95031”班或性别为“女”的同学记录。
+	SELECT * FROM student WHERE ssex='女' OR class=95031
 
-
-
-
-
-
+#7、以Class降序查询Student表的所有记录。
+	SELECT * FROM student ORDER BY class DESC;
 
 
 
