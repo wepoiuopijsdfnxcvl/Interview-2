@@ -1,4 +1,5 @@
 
+
   专业技能 
 1、熟练应用：eclipse、idea、Xshell、webstorm、oracle、mysql、postgresql、git、svn、source insight、wireshark等软件的使用。
 2、具备构建高并发系统的能力，深刻理解分布式系统的设计、编码实施等工作。
