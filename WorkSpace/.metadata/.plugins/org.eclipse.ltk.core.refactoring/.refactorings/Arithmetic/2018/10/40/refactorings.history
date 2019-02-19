@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;cn.collabtech.recursion.Snippet.java&apos; to &apos;FibonacciSequence.java&apos;&#x0D;&#x0A;- Original project: &apos;Arithmetic&apos;&#x0D;&#x0A;- Original element: &apos;cn.collabtech.recursion.Snippet.java&apos;&#x0D;&#x0A;- Renamed element: &apos;cn.collabtech.recursion.FibonacciSequence.java&apos;" description="Rename compilation unit &apos;Snippet.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;cn.collabtech.recursion{Snippet.java" name="FibonacciSequence.java" references="false" stamp="1538813070706" version="1.0"/>
+</session>
