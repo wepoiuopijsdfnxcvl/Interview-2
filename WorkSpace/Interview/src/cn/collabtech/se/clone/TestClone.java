@@ -2,7 +2,6 @@ package cn.collabtech.se.clone;
 
 /**
  * 测试对象的深拷贝和浅拷贝
- * 
  * @author Darrick
  * @Date 2019年2月20日
  * @Description
