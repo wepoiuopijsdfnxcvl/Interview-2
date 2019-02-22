@@ -5,7 +5,60 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2019-02-20T10:57:26Z</updated>
+  <updated>2019-02-22T00:34:09Z</updated>
+  <entry>
+    <title>A Bootiful Podcast: an Interview with Sree Tummidi, Senior Product Manager for Security at Pivotal</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/02/22/a-bootiful-podcast-an-interview-with-sree-tummidi-senior-product-manager-for-security-at-pivotal" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2019-02-22:3572</id>
+    <updated>2019-02-22T00:34:09Z</updated>
+    <content type="html">&lt;p&gt;Hi Spring fans! This week I&amp;rsquo;m excited to welcome Sreee Tummidi, a senior product manager working at the intersection of application security and platform at Pivotal. We talked about security, Spring Security, cloud platforms, OAuth, OIDC and OIDC Connect, SAML, and of course the Cloud Foundry UAA, and tons more.&lt;/p&gt;
+&lt;p&gt;Twitter: &lt;a href="http://twitter.com/sreetummidi"&gt;@sreetummidi&lt;/a&gt;&lt;br/&gt;&lt;a href="github.com/cloudfoundry/uaa"&gt;UAA&lt;/a&gt;&lt;/p&gt;
+&lt;iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/579250395&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"&gt;&lt;/iframe&gt;</content>
+  </entry>
+  <entry>
+    <title>CVE-2019-3778: Spring Security OAuth 2.3.5, 2.2.4, 2.1.4, 2.0.17 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/02/21/cve-2019-3778-spring-security-oauth-2-3-5-2-2-4-2-1-4-2-0-17-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Joe Grandja</name>
+    </author>
+    <id>tag:spring.io,2019-02-21:3571</id>
+    <updated>2019-02-21T17:06:10Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;We have released Spring Security OAuth 2.3.5, 2.2.4, 2.1.4 and 2.0.17 to address &lt;a href="https://pivotal.io/security/cve-2019-3778"&gt;CVE-2019-3778: Open Redirector in spring-security-oauth2&lt;/a&gt;. Please review the information in the CVE report and upgrade immediately.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;For additional changes included in each release, please refer to:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-security-oauth/milestone/42?closed=1"&gt;2.3.5 changelog&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-security-oauth/milestone/44?closed=1"&gt;2.2.4 changelog&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-security-oauth/milestone/45?closed=1"&gt;2.1.4 changelog&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-security-oauth/milestone/43?closed=1"&gt;2.0.17 changelog&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; For users of &lt;strong&gt;Spring Boot 1.5.x&lt;/strong&gt; and &lt;strong&gt;Spring IO Platform Cairo&lt;/strong&gt;, it is highly recommended to override the &lt;code&gt;spring-security-oauth&lt;/code&gt; version to the latest version containing the fix for the CVE. Please see the &lt;strong&gt;Mitigation&lt;/strong&gt; section in the CVE report for detailed instructions on how to override the version.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-security-oauth/"&gt;Project Page&lt;/a&gt; |
+&lt;a href="https://github.com/spring-projects/spring-security-oauth/"&gt;GitHub&lt;/a&gt; |
+&lt;a href="http://projects.spring.io/spring-security-oauth/docs/Home.html"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-security-oauth2"&gt;Help&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
   <entry>
     <title>What's new with Spring Initializr</title>
     <link rel="alternate" href="https://spring.io/blog/2019/02/20/what-s-new-with-spring-initializr" />
@@ -680,31 +733,5 @@ Data&lt;/em&gt; &lt;code&gt;Kay&lt;/code&gt;, so too will SSDG &lt;code&gt;2.0.x
 &lt;p&gt;Thank you!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>A Bootiful Podcast: Oleg Zhurakousky</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/02/01/a-bootiful-podcast-oleg-zhurakousky" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2019-02-01:3553</id>
-    <updated>2019-02-01T02:24:41Z</updated>
-    <content type="html">&lt;p&gt;Hi Spring fans! In this installment we talk to Oleg Zhurakousky, lead of the Spring Cloud Stream project, an application integration and messaging wonk, and a prolific contributor to Spring Integration. Oleg also has the dubious honor of being one of my oldest friends on the Spring team - poor guy!&lt;/p&gt;
-&lt;p&gt;Twitter: &lt;a href="http://twitter.com/z_oleg"&gt;@z_oleg&lt;/a&gt;&lt;br/&gt;Twitter: &lt;a href="http://twitter.com/SpringCloud"&gt;@SpringCloud&lt;/a&gt;&lt;/p&gt;
-&lt;iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/568258017&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Tips: The Reactor Context</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/01/30/spring-tips-the-reactor-context" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2019-01-16:3541</id>
-    <updated>2019-01-30T00:00:00Z</updated>
-    <content type="html">&lt;p&gt;Hi Spring fans! In this installment of Spring Tips we answer the question, &amp;ldquo;how do I propagate state across asynchronous, reactive execution pipelines?&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;speaker: &lt;a href="http://twitter.com/Starbuxman"&gt;Josh Long&lt;/a&gt;&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/5tlZddM5Jo0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;</content>
   </entry>
 </feed>
