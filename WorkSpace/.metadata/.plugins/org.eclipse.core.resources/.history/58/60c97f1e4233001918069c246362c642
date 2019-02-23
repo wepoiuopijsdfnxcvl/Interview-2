@@ -1,0 +1,9 @@
+package cn.collabtech.test;
+Public class NULL{
+Public static void haha(){
+System.out.println(“haha”);
+}
+Public static void main(String[] args){
+((NULL)null).haha();
+}
+}

@@ -2,12 +2,12 @@ package cn.collabtech.utils;
 public class Base64Utils {
 	
 	public static void main(String[] args) {
-		String str = "YWRtaW4xMjNA";
+		String str = "zz";
 		//编码
 		String encode = encode(str);
 		System.out.println(encode);
 		//解码
-		String decode = decode("YWRtaW5AMzMz");
+		String decode = decode("YWExMjM0NTY=");
 		System.out.println(decode);
 		
 	}
