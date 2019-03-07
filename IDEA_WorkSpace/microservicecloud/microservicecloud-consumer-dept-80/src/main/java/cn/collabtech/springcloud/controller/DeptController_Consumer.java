@@ -13,7 +13,7 @@ import java.util.List;
 public class DeptController_Consumer
 {
     //Ribbon和Eureka整合后Consumer可以直接调用服务而不用再关心地址和端口号
-    //private static final String REST_URL_PREFIX = "http://localhost:8001";
+    //private static final String REST_URL_PREFIX = "https://localhost:8001";
     private static final String REST_URL_PREFIX = "http://MICROSERVICECLOUD-DEPT";
     
     @Autowired

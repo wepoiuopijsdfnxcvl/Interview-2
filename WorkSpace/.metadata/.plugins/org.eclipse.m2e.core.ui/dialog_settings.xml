@@ -4,13 +4,12 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
-			<item value="cn.collabtech"/>
+			<item value="com.ruisitch.bi"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
-			<item value="Websocket"/>
-			<item value="RestLimit"/>
+			<item value="rsbi"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -21,6 +20,7 @@
 			<item value="[name]"/>
 		</list>
 		<list key="version">
+			<item value="4.5"/>
 			<item value="0.0.1-SNAPSHOT"/>
 		</list>
 	</section>
@@ -28,6 +28,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="E:\rsbi"/>
 			<item value="C:\Users\HP\Desktop\IBU\Darrick\Interview\WorkSpace\SpringbootWebSocket"/>
 			<item value="C:\Users\HP\Desktop\IBU\Darrick\Interview\WorkSpace\WebSocket"/>
 			<item value="C:\Users\HP\Desktop\IBU\Darrick\springboot_Learn_9"/>
@@ -43,6 +44,7 @@
 		</list>
 	</section>
 	<section name="MavenProjectWizardArchetypePage">
+		<item value="All Catalogs" key="catalog"/>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
 			<item value="[artifactId]-TRUNK"/>

@@ -11,6 +11,18 @@ public class BinarySearchTest01 {
 		int[] tmp = { 1, 5, 6, 3, 2, 4, 7 };
 		// 利用二分法查找元素并返回其下标
 		System.out.println(searchEle(tmp, 6));
+
+		System.out.println(f(7));
+
+	}
+
+	public static int f(int n) {
+		// 1 1 2 3 5 8 13
+		if (n == 1 || n == 2) {
+			return 1;
+		} else {
+			return f(n - 1) + f(n - 2);
+		}
 	}
 
 	private static int searchEle(int[] array, int i) {
